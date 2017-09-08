@@ -77,7 +77,6 @@ ExportedObj/
 
 # Unity3D generated meta files
 *.pidb.meta
-*.meta	# Trying to fix folder glitch
 
 # Unity3D Generated File On Crash Reports
 sysinfo.txt
