@@ -5,6 +5,7 @@ using UnityEngine;
 public class MovementPlayer : MonoBehaviour {
 
     public float speed;
+    public float rotation;
 
     private Rigidbody2D rb2d;
 
@@ -15,9 +16,13 @@ public class MovementPlayer : MonoBehaviour {
 
     private void FixedUpdate()
     {
+        //x
         float moveHorizontal = Input.GetAxis("Horizontal");
+        //y
         float moveVertical = Input.GetAxis("Vertical");
-        Vector2 movement = new Vector2(moveHorizontal, moveVertical);
-        rb2d.velocity = movement * speed;
+
+        //Vector2 movement = new Vector2(moveHorizontal, moveVertical);
+        rb2d.angularVelocity = moveHorizontal * rotation;
+        rb2d.velocity = transform.up * moveVertical * speed;
     }
 }
