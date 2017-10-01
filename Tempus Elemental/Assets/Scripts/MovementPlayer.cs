@@ -13,7 +13,7 @@ public class MovementPlayer : MonoBehaviour {
     {
         rb2d = GetComponent<Rigidbody2D>();
     }
-
+		
     private void FixedUpdate()
     {
         //x
@@ -22,7 +22,9 @@ public class MovementPlayer : MonoBehaviour {
         float moveVertical = Input.GetAxis("Vertical");
 
         //Vector2 movement = new Vector2(moveHorizontal, moveVertical);
-        rb2d.angularVelocity = moveHorizontal * rotation;
+
+        // Hey this is tanks controls, which typically isn't intuitive for the player. Are we sure we want this?
+		rb2d.angularVelocity = moveHorizontal * rotation;
         rb2d.velocity = transform.up * moveVertical * speed;
     }
 }
