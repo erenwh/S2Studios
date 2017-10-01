@@ -250,9 +250,8 @@ GameObject:
   - component: {fileID: 516092584}
   - component: {fileID: 516092583}
   - component: {fileID: 516092582}
-  - component: {fileID: 516092585}
   - component: {fileID: 516092586}
-  - component: {fileID: 516092587}
+  - component: {fileID: 516092585}
   m_Layer: 0
   m_Name: DummySprite
   m_TagString: Player
@@ -446,7 +445,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 3
-  rotation: 250
 --- !u!50 &516092586
 Rigidbody2D:
   serializedVersion: 4
@@ -466,19 +464,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 1
-  m_Constraints: 0
---- !u!114 &516092587
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 516092581}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e6e9a4a862d56ec4b937b8a511a2723d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  forcePush: 25
+  m_Constraints: 4
 --- !u!1 &1147250703
 GameObject:
   m_ObjectHideFlags: 0

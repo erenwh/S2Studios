@@ -2,10 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MovementPlayer : MonoBehaviour {
+public class PlayerMovement : MonoBehaviour {
 
     public float speed;
-    public float rotation;
 
     private Rigidbody2D rb2d;
 
@@ -21,10 +20,8 @@ public class MovementPlayer : MonoBehaviour {
         //y
         float moveVertical = Input.GetAxis("Vertical");
 
-        //Vector2 movement = new Vector2(moveHorizontal, moveVertical);
+        Vector2 movement = new Vector2(moveHorizontal, moveVertical);
 
-        // Hey this is tanks controls, which typically isn't intuitive for the player. Are we sure we want this?
-		rb2d.angularVelocity = moveHorizontal * rotation;
-        rb2d.velocity = transform.up * moveVertical * speed;
+        rb2d.velocity = movement * speed;
     }
 }
