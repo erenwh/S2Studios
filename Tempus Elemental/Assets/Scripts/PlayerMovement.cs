@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour {
 
-    public float speed;
+    public float speed;					//how quickly the player moves
+	public float rotationSpeed = 30.0f;	//how quickly the player faces the direction they are moving
 
     private Rigidbody2D rb2d;
 
@@ -20,8 +21,15 @@ public class PlayerMovement : MonoBehaviour {
         //y
         float moveVertical = Input.GetAxis("Vertical");
 
-        Vector2 movement = new Vector2(moveHorizontal, moveVertical);
+		Vector2 movement = new Vector2(moveHorizontal, moveVertical).normalized;
 
         rb2d.velocity = movement * speed;
+
+		//(Parr's rotation suggestion) <- delete this comment if you like it :)
+		//Angular Movement
+		if (Mathf.Abs (moveHorizontal) > 0.1 || Mathf.Abs (moveVertical) > 0.1) {
+			float angle = Mathf.Atan2 (moveVertical, moveHorizontal) * Mathf.Rad2Deg - 90;
+			transform.rotation = Quaternion.Slerp (transform.rotation, Quaternion.AngleAxis (angle, Vector3.forward), Time.deltaTime * rotationSpeed);
+		} 
     }
 }
