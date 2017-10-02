@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour {
     public int initTime = 60;                                   // The amount of Time the player starts the game with.
@@ -18,6 +19,7 @@ public class PlayerHealth : MonoBehaviour {
         anim = GetComponent<Animator>();
         playerMovement = GetComponent<PlayerMovement>();
 
+        // we do not set the bool values because they are false by default, as per Microsoft Docs
 
         // Set the initial time of the player
         currTime = initTime;
