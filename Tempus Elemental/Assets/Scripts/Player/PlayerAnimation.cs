@@ -34,7 +34,7 @@ public class PlayerAnimation : MonoBehaviour {
 
         state = nextState;
 
-		animator.SetBool("idle", change);
+		animator.SetBool("change", change);
 		animator.SetInteger("state", (int)state);
 
 	}
