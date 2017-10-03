@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour {
+public class PlayerMovement3 : MonoBehaviour {
 
     public float speed;					//how quickly the player moves
 	public float rotationSpeed = 30.0f;	//how quickly the player faces the direction they are moving
@@ -17,9 +17,9 @@ public class PlayerMovement : MonoBehaviour {
     private void FixedUpdate()
     {
         //x
-        float moveHorizontal = Input.GetAxis("Horizontal");
+        float moveHorizontal = Input.GetAxis("Horizontal3");
         //y
-        float moveVertical = Input.GetAxis("Vertical");
+        float moveVertical = Input.GetAxis("Vertical3");
 
 		Vector2 movement = new Vector2(moveHorizontal, moveVertical).normalized;
 
