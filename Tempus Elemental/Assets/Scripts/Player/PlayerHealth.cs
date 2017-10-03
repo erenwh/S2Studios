@@ -14,6 +14,7 @@ public class PlayerHealth : MonoBehaviour {
     PlayerMovement playerMovement;                              // Reference to the player's movement.
     bool isDead;                                                // Whether the player is dead.
     bool damaged;                                               // True when the player gets damaged.
+    int tickDown;                                               // Used to help with every 60 frames
 
     void Start () {
         anim = GetComponent<Animator>();
@@ -28,6 +29,10 @@ public class PlayerHealth : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         // currTime -= 1; for ticking down. needs revising for once per second rather than frame
+        /* Temp Fix Requires way not tied to framerate */
+        tickDown++;
+        if ((tickDown % 60) == 0) { currTime--; tickDown = 0; }
+        // I am wondering if this can be done even if a frame drops.
     }
 
     public void TakeDamage(int amount)
