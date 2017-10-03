@@ -1,11 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerTime : MonoBehaviour {
 
 	public int startingTime = 30;
 	public int timeRemaining;
+	public Slider timeIndicator;
 
 	// Use this for initialization
 	void Start () {
@@ -35,6 +37,7 @@ public class PlayerTime : MonoBehaviour {
 		while (true) {
 			yield return new WaitForSeconds (1f);
 			timeRemaining--;
+			timeIndicator.value = timeRemaining;
 			if (timeRemaining < 1) {
 				//Call Death animation & play sfx
 				//let game controller know
