@@ -6,6 +6,16 @@ public class PlayerAnimation : MonoBehaviour {
 
 	Animator animator;
 
+    bool change = false;
+    States state = States.idle;
+
+    enum States
+    {
+        idle = 0,
+        movingUp, movingRight, movingDown, movingLeft,
+        attackUp, attackRight, attackDown, attackLeft
+    }
+
 	// Use this for initialization
 	void Start () 
     {
@@ -15,30 +25,59 @@ public class PlayerAnimation : MonoBehaviour {
 	// Update is called once per frame
 	void Update () 
     {
+        change = true;
+        States nextState = CalculateNextState();
+
+        if (nextState == state) {
+            change = false;
+        }
+
+        state = nextState;
+
+		animator.SetBool("idle", change);
+		animator.SetInteger("state", (int)state);
+
+	}
+
+    States CalculateNextState() 
+    {
 		float h = Input.GetAxis("Horizontal");
 		float v = Input.GetAxis("Vertical");
-		bool fire = Input.GetButtonDown("Fire1");
 
-        bool isMoving = h * v < Mathf.Epsilon;
-        int oldDirection = animator.GetInteger("Direction");
-        int direction;
-        if (Mathf.Abs(h) < Mathf.Epsilon) 
-        {
-            direction = oldDirection;
-        } else 
-        {
-            direction = Mathf.Sign(h) < 0 ? 3 : 1;
-        }
+
+		// check for movement
+		if (Mathf.Abs(h) < Mathf.Epsilon && Mathf.Abs(v) < Mathf.Epsilon)
+		{
+			return States.idle;
+			
+		}
+
+		if (Mathf.Abs(h) > Mathf.Epsilon)
+		{
+			if (Mathf.Sign(h) > 0)
+			{
+				return States.movingRight;
+			}
+			else
+			{
+				return States.movingLeft;
+			}
+		}
 
 		if (Mathf.Abs(v) > Mathf.Epsilon)
 		{
-			direction = Mathf.Sign(v) < 0 ? 2 : 0;
+			if (Mathf.Sign(v) > 0)
+			{
+				return States.movingUp;
+			}
+			else
+			{
+				return States.movingDown;
+			}
 		}
 
-        animator.SetBool("Moving", isMoving);
+        return States.idle;
 
-        animator.SetInteger("Direction", direction);
-		animator.SetBool("Fire", fire);	
 	}
 }
 
