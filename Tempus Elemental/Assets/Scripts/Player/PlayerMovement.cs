@@ -17,9 +17,9 @@ public class PlayerMovement : MonoBehaviour {
     private void FixedUpdate()
     {
         //x
-        float moveHorizontal = Input.GetAxis("Horizontal1");
+        float moveHorizontal = Input.GetAxis("Horizontal1" + gameObject.tag);
         //y
-        float moveVertical = Input.GetAxis("Vertical1");
+        float moveVertical = Input.GetAxis("Vertical1" + gameObject.tag);
 
 		Vector2 movement = new Vector2(moveHorizontal, moveVertical).normalized;
 
