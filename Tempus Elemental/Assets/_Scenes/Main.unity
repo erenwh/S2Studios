@@ -880,7 +880,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c3ee80a9cdb0eb4eb338931e1223cb9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0
+  speed: 3
   rotationSpeed: 30
 --- !u!114 &252572096
 MonoBehaviour:
@@ -1557,7 +1557,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c3ee80a9cdb0eb4eb338931e1223cb9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0
+  speed: 3
   rotationSpeed: 30
 --- !u!114 &1536324280
 MonoBehaviour:
@@ -1787,7 +1787,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c3ee80a9cdb0eb4eb338931e1223cb9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0
+  speed: 3
   rotationSpeed: 30
 --- !u!114 &1997994286
 MonoBehaviour:
