@@ -11,8 +11,8 @@ public class PlayerMovement2 : MonoBehaviour {
 
     void Start()
     {
-        GameObject p2 = GameObject.FindGameObjectWithTag("Player2");
-        rb2d = p2.GetComponent<Rigidbody2D>();
+        //GameObject p2 = GameObject.FindGameObjectWithTag("Player2");
+        rb2d = GetComponent<Rigidbody2D>();
     }
 		
     private void FixedUpdate()
