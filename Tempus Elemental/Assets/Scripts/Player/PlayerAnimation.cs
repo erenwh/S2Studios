@@ -44,6 +44,35 @@ public class PlayerAnimation : MonoBehaviour {
 		float h = Input.GetAxis("Horizontal" + gameObject.tag);
 		float v = Input.GetAxis("Vertical" + gameObject.tag);
 
+        bool isAttacking = Input.GetButton("Fire" + gameObject.tag);
+
+
+        if (isAttacking) {
+			if (Mathf.Abs(h) > Mathf.Epsilon)
+			{
+				if (Mathf.Sign(h) > 0)
+				{
+                    return States.attackRight;
+				}
+				else
+				{
+                    return States.attackLeft;
+				}
+			}
+
+			if (Mathf.Abs(v) > Mathf.Epsilon)
+			{
+				if (Mathf.Sign(v) > 0)
+				{
+                    return States.attackUp;
+				}
+				else
+				{
+                    return States.attackDown;
+				}
+			}   
+        }
+
 
 		// check for movement
 		if (Mathf.Abs(h) < Mathf.Epsilon && Mathf.Abs(v) < Mathf.Epsilon)
