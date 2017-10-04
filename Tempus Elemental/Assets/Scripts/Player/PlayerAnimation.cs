@@ -41,8 +41,8 @@ public class PlayerAnimation : MonoBehaviour {
 
     States CalculateNextState() 
     {
-		float h = Input.GetAxis("Horizontal");
-		float v = Input.GetAxis("Vertical");
+		float h = Input.GetAxis("Horizontal" + gameObject.tag);
+		float v = Input.GetAxis("Vertical" + gameObject.tag);
 
 
 		// check for movement
