@@ -50,9 +50,9 @@ InputManager:
     sensitivity: 1000
     snap: 1
     invert: 0
-    type: 0
+    type: 2
     axis: 0
-    joyNum: 3
+    joyNum: 1
   - serializedVersion: 3
     m_Name: HorizontalPlayer4
     descriptiveName: 
@@ -66,9 +66,9 @@ InputManager:
     sensitivity: 1000
     snap: 1
     invert: 0
-    type: 0
+    type: 2
     axis: 0
-    joyNum: 3
+    joyNum: 2
   - serializedVersion: 3
     m_Name: VerticalPlayer1
     descriptiveName: 
@@ -114,9 +114,9 @@ InputManager:
     sensitivity: 1000
     snap: 1
     invert: 0
-    type: 0
+    type: 2
     axis: 0
-    joyNum: 3
+    joyNum: 1
   - serializedVersion: 3
     m_Name: VerticalPlayer4
     descriptiveName: 
@@ -130,9 +130,9 @@ InputManager:
     sensitivity: 1000
     snap: 1
     invert: 0
-    type: 0
+    type: 2
     axis: 0
-    joyNum: 4
+    joyNum: 2
   - serializedVersion: 3
     m_Name: Fire1
     descriptiveName: 
