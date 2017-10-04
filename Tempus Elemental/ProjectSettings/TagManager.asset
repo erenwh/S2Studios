@@ -5,6 +5,11 @@ TagManager:
   serializedVersion: 2
   tags:
   - Fire
+  - Walls
+  - Player1
+  - Player2
+  - Player3
+  - Player4
   layers:
   - Default
   - TransparentFX
