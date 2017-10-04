@@ -20,7 +20,7 @@ InputManager:
     invert: 0
     type: 0
     axis: 0
-    joyNum: 1
+    joyNum: 0
   - serializedVersion: 3
     m_Name: HorizontalPlayer2
     descriptiveName: 
@@ -36,7 +36,7 @@ InputManager:
     invert: 0
     type: 0
     axis: 0
-    joyNum: 2
+    joyNum: 0
   - serializedVersion: 3
     m_Name: HorizontalPlayer3
     descriptiveName: 
@@ -51,7 +51,7 @@ InputManager:
     snap: 1
     invert: 0
     type: 2
-    axis: 0
+    axis: 5
     joyNum: 1
   - serializedVersion: 3
     m_Name: HorizontalPlayer4
@@ -67,7 +67,7 @@ InputManager:
     snap: 1
     invert: 0
     type: 2
-    axis: 0
+    axis: 5
     joyNum: 2
   - serializedVersion: 3
     m_Name: VerticalPlayer1
@@ -83,8 +83,8 @@ InputManager:
     snap: 1
     invert: 0
     type: 0
-    axis: 0
-    joyNum: 1
+    axis: 1
+    joyNum: 0
   - serializedVersion: 3
     m_Name: VerticalPlayer2
     descriptiveName: 
@@ -99,8 +99,8 @@ InputManager:
     snap: 1
     invert: 0
     type: 0
-    axis: 0
-    joyNum: 2
+    axis: 1
+    joyNum: 0
   - serializedVersion: 3
     m_Name: VerticalPlayer3
     descriptiveName: 
@@ -114,8 +114,8 @@ InputManager:
     sensitivity: 1000
     snap: 1
     invert: 0
-    type: 2
-    axis: 0
+    type: 0
+    axis: 6
     joyNum: 1
   - serializedVersion: 3
     m_Name: VerticalPlayer4
@@ -131,14 +131,14 @@ InputManager:
     snap: 1
     invert: 0
     type: 2
-    axis: 0
+    axis: 6
     joyNum: 2
   - serializedVersion: 3
     m_Name: Fire1
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 
-    positiveButton: left ctrl
+    positiveButton: f
     altNegativeButton: 
     altPositiveButton: mouse 0
     gravity: 1000
@@ -154,7 +154,7 @@ InputManager:
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 
-    positiveButton: left alt
+    positiveButton: 0
     altNegativeButton: 
     altPositiveButton: mouse 1
     gravity: 1000
