@@ -8,6 +8,7 @@ public class Powerup : MonoBehaviour {
     public float powerupLength;
     public float speedMultiplier;
     public int amountTimeAdd;
+    public float duration = 5f;            // the duration of powerup on map
 
     private PowerupController controller;
 
@@ -19,8 +20,12 @@ public class Powerup : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
-	}
+        duration -= Time.deltaTime;
+        if (duration <= 0)
+        {
+            Destroy(gameObject);
+        }
+    }
 
     void OnTriggerEnter2D(Collider2D coll)
     {
