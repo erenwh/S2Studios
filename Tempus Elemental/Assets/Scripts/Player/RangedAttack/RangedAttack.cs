@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class RangedAttack : MonoBehaviour {
-	public float ProjectileForce;                           // the speed of the projectile
+	public float ProjectileForce = 150f;                           // the speed of the projectile
     public GameObject fireball;
 	public string playerNum;
 	public float delay = 0.5f;								// ranged attack delay
