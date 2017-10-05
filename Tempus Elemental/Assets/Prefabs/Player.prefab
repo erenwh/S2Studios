@@ -159,7 +159,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1412594545588478}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.04, y: -1.3, z: 0}
+  m_LocalPosition: {x: 0.3720351, y: -2.0236166, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 224053422276427540}
@@ -198,9 +198,9 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.01, y: 0}
   serializedVersion: 2
-  m_Radius: 0.42
+  m_Radius: 0.1807966
 --- !u!60 &60683995051414108
 PolygonCollider2D:
   m_ObjectHideFlags: 1
@@ -225,17 +225,17 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0.089999996, y: 0.42}
-      - {x: -0.089999996, y: 0.42}
-      - {x: -0.17, y: 0.39999998}
-      - {x: -0.099999994, y: 0.29}
-      - {x: -0.17999999, y: 0.17999999}
-      - {x: -0.17999999, y: -0.14999999}
-      - {x: -0.14, y: -0.32}
-      - {x: -0.08, y: -0.42}
-      - {x: 0.08, y: -0.42}
-      - {x: 0.16, y: -0.25}
-      - {x: 0.16, y: 0.21}
+    - - {x: 0.07214895, y: 0.24148989}
+      - {x: -0.025736421, y: 0.2629112}
+      - {x: -0.027191997, y: 0.25719213}
+      - {x: -0.099999994, y: 0.24715745}
+      - {x: -0.1585788, y: 0.15500855}
+      - {x: -0.1478682, y: -0.1428597}
+      - {x: -0.1292894, y: -0.20218325}
+      - {x: -0.069289386, y: -0.2736218}
+      - {x: 0.008596003, y: -0.27719212}
+      - {x: 0.11358738, y: -0.2714212}
+      - {x: 0.13500857, y: 0.18857884}
 --- !u!95 &95631900047228554
 Animator:
   serializedVersion: 3
@@ -495,6 +495,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ProjectileForce: 150
   fireball: {fileID: 1027716303461822, guid: aa00f6fc1b86ab045ba3b9f37b01da39, type: 2}
+  playerNum: 
 --- !u!212 &212096129990206330
 SpriteRenderer:
   m_ObjectHideFlags: 1
