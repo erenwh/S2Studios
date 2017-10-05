@@ -16,7 +16,7 @@ public class RangedAttack : MonoBehaviour {
 	void Update () {
 		if (Input.GetButtonDown ("FirePlayer1")) {
             GameObject newFireball = Instantiate(fireball, transform.position, transform.rotation);
-            newFireball.GetComponent<Rigidbody2D>().AddRelativeForce(new Vector2(0f, 100f));
+            newFireball.GetComponent<Rigidbody2D>().AddRelativeForce(new Vector2(0f, -100f));
         }
 	}
 
