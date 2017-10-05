@@ -9,21 +9,25 @@ public class PowerupController : MonoBehaviour {
     private bool powerupActive;             // powerup is active
     private float speedMultiplier;          // movement speed multiplier
     private float ogspeed;
+    private int flag = 0;
 
     private float powerupLengthCounter;     // count how long it has been active
-    const string powerupsPath = "Prefabs/Powerups/Powerup_";
 
 	// Use this for initialization
 	void Start () {
-        ogspeed = touchedPlayer.GetComponent<PlayerMovement>().speed;               // keep track of speed of player
     }
 
     // Update is called once per frame
     void Update () {
         if (powerupActive)
         {
+            if (flag == 0)
+            {
+                touchedPlayer.GetComponent<PlayerMovement>().speed *= speedMultiplier;  // speed up
+                flag = 1;
+            }
             powerupLengthCounter -= Time.deltaTime;                                 // only run for that length
-            touchedPlayer.GetComponent<PlayerMovement>().speed *= speedMultiplier;  // speed up
+            
             if (powerupLengthCounter <= 0)               
             {
                 if (ptype == 1)                                                     // if powerup type is speed up
@@ -32,6 +36,7 @@ public class PowerupController : MonoBehaviour {
                     touchedPlayer.GetComponent<PlayerMovement>().speed = ogspeed;   // return to original speed
                 }
                 powerupActive = false;
+                flag = 0;
             }
         }
 
@@ -47,6 +52,7 @@ public class PowerupController : MonoBehaviour {
         ptype = type;
         powerupLengthCounter = time;
         speedMultiplier = multiplier;
+        ogspeed = touchedPlayer.GetComponent<PlayerMovement>().speed;               // keep track of speed of player
 
         if (ptype == 0) // if powerup type is add time 
         {
