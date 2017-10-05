@@ -963,12 +963,12 @@ Prefab:
     - target: {fileID: 224070235906474774, guid: 7d4f45117b4f025479076c7ae86f3376,
         type: 2}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224693083146548012, guid: 7d4f45117b4f025479076c7ae86f3376,
         type: 2}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1412594545588478, guid: 7d4f45117b4f025479076c7ae86f3376, type: 2}
       propertyPath: m_Name
@@ -1322,8 +1322,8 @@ MonoBehaviour:
   - {fileID: 1412619592639186, guid: 42425612da3924b4b97414bce2176626, type: 2}
   spawnValues: {x: 5, y: 5, z: 0}
   spawnWait: 0
-  spawnMostWait: 4
-  spawnLeastWait: 2
+  spawnMostWait: 5
+  spawnLeastWait: 3
   startWait: 1
 --- !u!1001 &908555435
 Prefab:
@@ -1375,12 +1375,12 @@ Prefab:
     - target: {fileID: 224070235906474774, guid: 7d4f45117b4f025479076c7ae86f3376,
         type: 2}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224693083146548012, guid: 7d4f45117b4f025479076c7ae86f3376,
         type: 2}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114905883382755946, guid: 7d4f45117b4f025479076c7ae86f3376,
         type: 2}
