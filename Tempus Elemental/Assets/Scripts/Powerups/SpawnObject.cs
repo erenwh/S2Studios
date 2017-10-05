@@ -20,7 +20,7 @@ public class SpawnObject : MonoBehaviour {
 	
 	// Update is called once per frame 
 	void Update () {
-        spawnWait = Range.Range(spawnLeastWait, spawnMostWait); 
+        spawnWait = Random.Range(spawnLeastWait, spawnMostWait); 
 	}
     
     IEnumerator Spawner ()
@@ -29,7 +29,7 @@ public class SpawnObject : MonoBehaviour {
         while (true)
         {
             randpup = 0; // grab the time powerup for now but later change to picking a random powerup
-            Vector3 spawnPosition = new Vector3(Random.Range(-spawnValues.x, spawnValues.x), 1, Random.Range(-spawnValues.z, spawnValues.z));   // grab the spawn position with random vals
+            Vector3 spawnPosition = new Vector3(Random.Range(-spawnValues.x, spawnValues.x), Random.Range(-spawnValues.y, spawnValues.y) , 1);   // grab the spawn position with random vals
             Instantiate(pups[randpup], spawnPosition + transform.TransformPoint(0,0,0), gameObject.transform.rotation);                         // spawn the object
 
             yield return new WaitForSeconds(spawnWait);
