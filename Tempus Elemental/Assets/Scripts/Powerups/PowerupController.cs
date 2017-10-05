@@ -15,9 +15,8 @@ public class PowerupController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        AssignPlayer(GameObject.FindGameObjectWithTag("Player"));                   // assign the player boject
         ogspeed = touchedPlayer.GetComponent<PlayerMovement>().speed;               // keep track of speed of player
-}
+    }
 
     // Update is called once per frame
     void Update () {
