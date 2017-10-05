@@ -41,7 +41,7 @@ public class PlayerTime : MonoBehaviour {
 			if (timeRemaining < 1) {
 				//Call Death animation & play sfx
 				//let game controller know
-				//Destroy (gameObject);
+				Destroy(gameObject);
 			}
 		}
 	}

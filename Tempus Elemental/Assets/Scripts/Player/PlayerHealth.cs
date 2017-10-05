@@ -33,6 +33,10 @@ public class PlayerHealth : MonoBehaviour {
         tickDown++;
         if ((tickDown % 60) == 0) { currTime--; tickDown = 0; }
         // I am wondering if this can be done even if a frame drops.
+        if(currTime == 0)
+        {
+            isDead = true;
+        }
     }
 
     public void TakeDamage(int amount)
@@ -61,6 +65,8 @@ public class PlayerHealth : MonoBehaviour {
 
         // Turn off the movement and shooting scripts.
         playerMovement.enabled = false;
+
+        Object.Destroy(gameObject);
     }
 
 }
