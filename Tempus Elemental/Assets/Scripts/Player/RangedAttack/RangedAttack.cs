@@ -38,7 +38,6 @@ public class RangedAttack : MonoBehaviour {
                 pm.charging = true;
 				aimDirc = new Vector3(Input.GetAxis("Horizontal" + gameObject.tag), Input.GetAxis("Vertical" + gameObject.tag), 0).normalized;
 			}
-
 		} else if (timepassed >= delay && Input.GetButtonUp ("Fire" + gameObject.tag)) {
             fire(timepassed);
             waitToCharging = false;
@@ -50,7 +49,9 @@ public class RangedAttack : MonoBehaviour {
 
 	void fire(float time) {
         gameObject.GetComponent<PlayerTime>().timeRemaining -= (int) time + 1;
-        GameObject newFireball = Instantiate(fireball, transform.position, Quaternion.Euler(aimDirc));
-        newFireball.GetComponent<Rigidbody2D>().velocity = aimDirc * ProjectileForce;
+        //GameObject newFireball = Instantiate(fireball, transform.position, Quaternion.Euler(aimDirc));
+        //newFireball.GetComponent<Rigidbody2D>().velocity = aimDirc * ProjectileForce;
+		GameObject newFireball = Instantiate(fireball, transform.position, transform.rotation);
+		newFireball.GetComponent<Rigidbody2D>().AddRelativeForce(new Vector2(0f, -ProjectileForce));
 	}
 }
