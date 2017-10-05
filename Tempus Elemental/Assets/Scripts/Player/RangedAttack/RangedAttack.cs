@@ -6,7 +6,7 @@ public class RangedAttack : MonoBehaviour {
 	public float ProjectileForce;                           // the speed of the projectile
     public GameObject fireball;
 	public string playerNum;
-	public float delay = 1f;										// ranged attack delay
+	public float delay = 0.5f;								// ranged attack delay
 	public float timepassed;
 	private bool waitToCharging = false;
 
@@ -29,20 +29,18 @@ public class RangedAttack : MonoBehaviour {
 				// wait for delay
 				timepassed = 0f;
 				StartCoroutine ("DelayTime");
-			} else {
-				
-			}
+			} 
+        } else if (timepassed >= delay && Input.GetButtonUp ("Fire" + gameObject.tag)) {
 
-        } else
-		if (timepassed >= delay && Input.GetButtonUp ("Fire" + gameObject.tag)) {
-			fire ();
+			fire (timepassed);
 			waitToCharging = false;
 			timepassed = 0f;
 		}
 
 	}
-	void fire() {
-		GameObject newFireball = Instantiate(fireball, transform.position, transform.rotation);
+	void fire(float time) {
+        gameObject.GetComponent<PlayerTime>().timeRemaining -= (int) time + 1;
+        GameObject newFireball = Instantiate(fireball, transform.position, transform.rotation);
 		newFireball.GetComponent<Rigidbody2D> ().AddRelativeForce (new Vector2 (0f, -ProjectileForce));
 	
 	}
