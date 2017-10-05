@@ -1007,6 +1007,26 @@ Prefab:
       propertyPath: playerNum
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 58116628563692054, guid: 7d4f45117b4f025479076c7ae86f3376,
+        type: 2}
+      propertyPath: m_Radius
+      value: 0.22
+      objectReference: {fileID: 0}
+    - target: {fileID: 58116628563692054, guid: 7d4f45117b4f025479076c7ae86f3376,
+        type: 2}
+      propertyPath: m_Offset.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 58116628563692054, guid: 7d4f45117b4f025479076c7ae86f3376,
+        type: 2}
+      propertyPath: m_Offset.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114204873116486256, guid: 7d4f45117b4f025479076c7ae86f3376,
+        type: 2}
+      propertyPath: startingTime
+      value: 30
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7d4f45117b4f025479076c7ae86f3376, type: 2}
   m_IsPrefabParent: 0
@@ -1407,6 +1427,11 @@ Prefab:
         type: 2}
       propertyPath: playerNum
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114204873116486256, guid: 7d4f45117b4f025479076c7ae86f3376,
+        type: 2}
+      propertyPath: startingTime
+      value: 30
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7d4f45117b4f025479076c7ae86f3376, type: 2}
