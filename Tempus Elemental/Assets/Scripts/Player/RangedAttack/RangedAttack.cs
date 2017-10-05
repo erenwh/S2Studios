@@ -16,6 +16,7 @@ public class RangedAttack : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (Input.GetButtonDown ("FirePlayer" + playerNum)) {
+            gameObject.GetComponent<PlayerTime>().timeRemaining -= 5;
             GameObject newFireball = Instantiate(fireball, transform.position, transform.rotation);
 			newFireball.GetComponent<Rigidbody2D>().AddRelativeForce(new Vector2(0f, -ProjectileForce));
         }
