@@ -9,6 +9,8 @@ public class RangedAttack : MonoBehaviour {
 	public float delay = 0.5f;								// ranged attack delay
 	public float timepassed;
 	private bool waitToCharging = false;
+	private Vector3 aimDirc;
+	private PlayerMovement pm;
 
 	IEnumerator DelayTime () {
 		waitToCharging = true;
@@ -20,6 +22,7 @@ public class RangedAttack : MonoBehaviour {
     // Use this for initialization
     void Start () {
 		timepassed = 0f;
+		pm = GetComponent<PlayerMovement> ();
     }
 
 	// Update is called once per frame
@@ -30,18 +33,24 @@ public class RangedAttack : MonoBehaviour {
 				timepassed = 0f;
 				StartCoroutine ("DelayTime");
 			} 
-        } else if (timepassed >= delay && Input.GetButtonUp ("Fire" + gameObject.tag)) {
+            else {
+                // change direction while aming
+                pm.charging = true;
+				aimDirc = new Vector3(Input.GetAxis("Horizontal" + gameObject.tag), Input.GetAxis("Vertical" + gameObject.tag), 0).normalized;
+			}
 
-			fire (timepassed);
-			waitToCharging = false;
+		} else if (timepassed >= delay && Input.GetButtonUp ("Fire" + gameObject.tag)) {
+            fire(timepassed);
+            waitToCharging = false;
 			timepassed = 0f;
+			pm.charging = false;
 		}
 
 	}
+
 	void fire(float time) {
         gameObject.GetComponent<PlayerTime>().timeRemaining -= (int) time + 1;
-        GameObject newFireball = Instantiate(fireball, transform.position, transform.rotation);
-		newFireball.GetComponent<Rigidbody2D> ().AddRelativeForce (new Vector2 (0f, -ProjectileForce));
-	
+        GameObject newFireball = Instantiate(fireball, transform.position, Quaternion.Euler(aimDirc));
+        newFireball.GetComponent<Rigidbody2D>().velocity = aimDirc * ProjectileForce;
 	}
 }
