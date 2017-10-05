@@ -233,12 +233,6 @@ Prefab:
       propertyPath: m_AnchorMax.y
       value: 1
       objectReference: {fileID: 0}
-<<<<<<< HEAD
-    - target: {fileID: 1412594545588478, guid: 7d4f45117b4f025479076c7ae86f3376, type: 2}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-=======
     - target: {fileID: 114905883382755946, guid: 7d4f45117b4f025479076c7ae86f3376,
         type: 2}
       propertyPath: m_Sprite
@@ -256,7 +250,6 @@ Prefab:
       value: 
       objectReference: {fileID: 21300000, guid: 43f393f59f49ac341b87101938b5e544,
         type: 3}
->>>>>>> d701c1318cfe66ca135f54eb2eaa7a39350e3d06
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7d4f45117b4f025479076c7ae86f3376, type: 2}
   m_IsPrefabParent: 0
@@ -917,13 +910,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ptype: 0
   powerupLength: 0
-<<<<<<< HEAD
-  amountTimeAdd: 0
-  speedMultiplier: 0
-=======
   speedMultiplier: 0
   amountTimeAdd: 5
->>>>>>> d701c1318cfe66ca135f54eb2eaa7a39350e3d06
 --- !u!58 &505900814
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -1085,30 +1073,6 @@ Prefab:
       propertyPath: m_Name
       value: Player1
       objectReference: {fileID: 0}
-<<<<<<< HEAD
-    - target: {fileID: 60683995051414108, guid: 7d4f45117b4f025479076c7ae86f3376,
-        type: 2}
-      propertyPath: m_AutoTiling
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114992581191780018, guid: 7d4f45117b4f025479076c7ae86f3376,
-        type: 2}
-      propertyPath: ProjectileSpeed
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 114992581191780018, guid: 7d4f45117b4f025479076c7ae86f3376,
-        type: 2}
-      propertyPath: myrb
-      value: 
-      objectReference: {fileID: 50455964262945966, guid: aa00f6fc1b86ab045ba3b9f37b01da39,
-        type: 2}
-    - target: {fileID: 114992581191780018, guid: 7d4f45117b4f025479076c7ae86f3376,
-        type: 2}
-      propertyPath: fireball
-      value: 
-      objectReference: {fileID: 1027716303461822, guid: aa00f6fc1b86ab045ba3b9f37b01da39,
-        type: 2}
-=======
     - target: {fileID: 114905883382755946, guid: 7d4f45117b4f025479076c7ae86f3376,
         type: 2}
       propertyPath: m_Sprite
@@ -1126,7 +1090,6 @@ Prefab:
       value: 
       objectReference: {fileID: 21300000, guid: 43f393f59f49ac341b87101938b5e544,
         type: 3}
->>>>>>> d701c1318cfe66ca135f54eb2eaa7a39350e3d06
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7d4f45117b4f025479076c7ae86f3376, type: 2}
   m_IsPrefabParent: 0
@@ -1187,12 +1150,6 @@ Prefab:
       propertyPath: m_AnchorMax.y
       value: 1
       objectReference: {fileID: 0}
-<<<<<<< HEAD
-    - target: {fileID: 1412594545588478, guid: 7d4f45117b4f025479076c7ae86f3376, type: 2}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-=======
     - target: {fileID: 114905883382755946, guid: 7d4f45117b4f025479076c7ae86f3376,
         type: 2}
       propertyPath: m_Sprite
@@ -1210,7 +1167,6 @@ Prefab:
       value: 
       objectReference: {fileID: 21300000, guid: 43f393f59f49ac341b87101938b5e544,
         type: 3}
->>>>>>> d701c1318cfe66ca135f54eb2eaa7a39350e3d06
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7d4f45117b4f025479076c7ae86f3376, type: 2}
   m_IsPrefabParent: 0
@@ -1505,12 +1461,6 @@ Prefab:
       propertyPath: m_AnchorMax.y
       value: 1
       objectReference: {fileID: 0}
-<<<<<<< HEAD
-    - target: {fileID: 1412594545588478, guid: 7d4f45117b4f025479076c7ae86f3376, type: 2}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-=======
     - target: {fileID: 114905883382755946, guid: 7d4f45117b4f025479076c7ae86f3376,
         type: 2}
       propertyPath: m_Sprite
@@ -1528,7 +1478,6 @@ Prefab:
       value: 
       objectReference: {fileID: 21300000, guid: 43f393f59f49ac341b87101938b5e544,
         type: 3}
->>>>>>> d701c1318cfe66ca135f54eb2eaa7a39350e3d06
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7d4f45117b4f025479076c7ae86f3376, type: 2}
   m_IsPrefabParent: 0
