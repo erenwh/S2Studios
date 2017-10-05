@@ -6,16 +6,19 @@ public class PlayerMovement : MonoBehaviour {
 
     public float speed;					//how quickly the player moves
 	public float rotationSpeed = 30.0f;	//how quickly the player faces the direction they are moving
+	public bool charging;
 
     private Rigidbody2D rb2d;
 
     void Start()
     {
+		charging = false;
         rb2d = GetComponent<Rigidbody2D>();
     }
 		
     private void FixedUpdate()
     {
+		if(!charging) {
         //x
         float moveHorizontal = Input.GetAxis("Horizontal" + gameObject.tag);
         //y
@@ -31,5 +34,6 @@ public class PlayerMovement : MonoBehaviour {
 //			float angle = Mathf.Atan2 (moveVertical, moveHorizontal) * Mathf.Rad2Deg - 90;
 //			transform.rotation = Quaternion.Slerp (transform.rotation, Quaternion.AngleAxis (angle, Vector3.forward), Time.deltaTime * rotationSpeed);
 //		} 
+		}
     }
 }
