@@ -24,13 +24,13 @@ public class Powerup : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D coll)
     {
-        controller.AssignPlayer(coll.gameObject);
-        controller.ActivatePowerup(ptype, powerupLength, speedMultiplier, amountTimeAdd);
-        /*if (coll.CompareTag("Player*"))
+        // controller.AssignPlayer(coll.gameObject);
+        // controller.ActivatePowerup(ptype, powerupLength, speedMultiplier, amountTimeAdd);
+        if (coll.CompareTag("Player1") || coll.CompareTag("Player2") || coll.CompareTag("Player3") || coll.CompareTag("Player4"))
         {
             controller.AssignPlayer(coll.gameObject);
             controller.ActivatePowerup(ptype, powerupLength, speedMultiplier, amountTimeAdd);
-        }*/
+        }
 
         gameObject.SetActive(false);
     }
