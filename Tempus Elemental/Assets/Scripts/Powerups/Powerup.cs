@@ -6,8 +6,8 @@ public class Powerup : MonoBehaviour {
 
     public int ptype;
     public float powerupLength;
-    public int amountTimeAdd;
     public float speedMultiplier;
+    public int amountTimeAdd;
 
     private PowerupController controller;
 
@@ -26,6 +26,7 @@ public class Powerup : MonoBehaviour {
     {
         if (coll.CompareTag("Player"))
         {
+            controller.AssignPlayer(coll.gameObject);
             controller.ActivatePowerup(ptype, powerupLength, speedMultiplier, amountTimeAdd);
         }
 
