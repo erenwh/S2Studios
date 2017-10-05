@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class RangedAttack : MonoBehaviour {
-    public Vector2 speed;                           // the speed of the projectile
-    private int projectileHealth = 10;              // the distance of the projectile can travel
+	public float ProjectileForce;                           // the speed of the projectile
+    private int projectileHealth;              // the distance of the projectile can travel
     public GameObject fireball;
+	public string playerNum;
 
     // Use this for initialization
     void Start () {
@@ -14,9 +15,9 @@ public class RangedAttack : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (Input.GetButtonDown ("FirePlayer1")) {
+		if (Input.GetButtonDown ("FirePlayer" + playerNum)) {
             GameObject newFireball = Instantiate(fireball, transform.position, transform.rotation);
-            newFireball.GetComponent<Rigidbody2D>().AddRelativeForce(new Vector2(0f, -100f));
+			newFireball.GetComponent<Rigidbody2D>().AddRelativeForce(new Vector2(0f, -ProjectileForce));
         }
 	}
 
