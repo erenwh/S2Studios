@@ -42,7 +42,7 @@ public class PlayerMovement : MonoBehaviour {
 			}
 
 			rb2d.velocity = movement * speed;
-			cc2d.offset = movement * circleOffsetCoefficient;
+			cc2d.offset = lastDirection * circleOffsetCoefficient;
 			//(Parr's rotation suggestion) <- delete this comment if you like it 🙂
 			//Angular Movement
 			//		if (Mathf.Abs (moveHorizontal) > 0.1 || Mathf.Abs (moveVertical) > 0.1) {
