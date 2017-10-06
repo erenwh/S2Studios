@@ -23,7 +23,7 @@ public class PowerupController : MonoBehaviour {
         {
             if (flag == 0)
             {
-                touchedPlayer.GetComponent<PlayerMovement>().speed *= speedMultiplier;  // speed up
+                touchedPlayer.GetComponent<PlayerMovement>().speed += speedMultiplier;  // speed up
                 flag = 1;
             }
             powerupLengthCounter -= Time.deltaTime;                                 // only run for that length
