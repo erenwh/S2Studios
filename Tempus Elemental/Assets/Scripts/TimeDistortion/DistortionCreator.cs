@@ -55,7 +55,7 @@ public class DistortionCreator : MonoBehaviour {
 		if (distorting) {
 			timeDistorted += (Time.deltaTime * timeUsedPerSecond);
 			if (timeDistorted >= 1.0f) {
-				pt.timeRemaining--;
+				pt.DecrementTime (1);
 				timeDistorted = 0.0f;
 			}
 		}

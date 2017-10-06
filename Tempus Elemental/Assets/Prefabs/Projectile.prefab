@@ -128,7 +128,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 867df487e13dccc40b36c775590224e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 3
+  damage: 5
   aim: {x: 0, y: 0}
   speed: 4
   currP: 

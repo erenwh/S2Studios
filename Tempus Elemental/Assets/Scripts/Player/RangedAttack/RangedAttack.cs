@@ -5,7 +5,7 @@ using UnityEngine;
 public class RangedAttack : MonoBehaviour {
 	//public float ProjectileForce = 150f;                           // the speed of the projectile
     public GameObject fireball;
-	public string playerNum;
+	//public string playerNum;
 	public float delay = 0.5f;								// ranged attack delay
 	public int costToThrow = 1;								// how much time does it take to throw an attack
 	public float timepassed;
@@ -62,7 +62,7 @@ public class RangedAttack : MonoBehaviour {
 	}
 
 	void fire(float time) {
-        gameObject.GetComponent<PlayerTime>().timeRemaining -= costToThrow;
+		gameObject.GetComponent<PlayerTime>().DecrementTime(costToThrow);
 
 		GameObject newFireball = Instantiate(fireball, transform.position, Quaternion.Euler(0, 0, Vector2.SignedAngle(Vector2.down, aimDirc)));
 		//Debug.Log (newFireball.GetComponent<ProjectileScript> ());

@@ -56,7 +56,7 @@ public class PowerupController : MonoBehaviour {
 
         if (ptype == 0) // if powerup type is add time 
         {
-            touchedPlayer.GetComponent<PlayerTime>().timeRemaining += time2add;           // add time
+			touchedPlayer.GetComponent<PlayerTime>().AddTime(time2add);           // add time
         }
         else            // if different powerup type
         {
