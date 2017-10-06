@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class TimeSlowDown : MonoBehaviour {
 
+	public float transparency;						//how transparent is the clock
 	private GameObject callingPlayer;				//keep track of the player who called it
 	private float speedDecrementFactor = 0.75f;		//slow other players/attacks that enter the distortion by 50% at default
 
@@ -15,6 +16,10 @@ public class TimeSlowDown : MonoBehaviour {
 	public void AssignPlayer (GameObject player, float factor) {
 		callingPlayer = player;
 		speedDecrementFactor = factor;
+		SpriteRenderer[] srs = GetComponentsInChildren<SpriteRenderer> ();
+		foreach (SpriteRenderer sr in srs) {
+			sr.color = new Color(player.GetComponent<PlayerColor> ().color.r, player.GetComponent<PlayerColor> ().color.g, player.GetComponent<PlayerColor> ().color.b, transparency);
+		}
 	}
 
 	/// <summary>
