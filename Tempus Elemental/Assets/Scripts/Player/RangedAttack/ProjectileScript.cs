@@ -6,6 +6,7 @@ public class ProjectileScript : MonoBehaviour {
 	public int damage;
 	public Vector2 aim;
 	public float speed = 5f;
+    public string currP;
 
 	private Rigidbody2D rb2d;
 
@@ -20,13 +21,26 @@ public class ProjectileScript : MonoBehaviour {
 		aim = a;
 	}
 
-	void OnTriggerEnter2D (Collider2D other) {
-        if (other.gameObject != gameObject)
+    public void setPlayer(string tag)
+    {
+        currP = tag;
+    }
+
+    void OnTriggerEnter2D (Collider2D other) {
+
+        if (!other.CompareTag(currP))
         {
             other.SendMessage("TakeDamage", damage, SendMessageOptions.DontRequireReceiver);
             other.GetComponent<PlayerTime>().timeRemaining -= damage;
             Destroy(gameObject);
         }
+
+        /*if (other.gameObject != gameObject)
+        {
+            other.SendMessage("TakeDamage", damage, SendMessageOptions.DontRequireReceiver);
+            other.GetComponent<PlayerTime>().timeRemaining -= damage;
+            Destroy(gameObject);
+        }*/
 	}
 	void FixedUpdate() 
 	{

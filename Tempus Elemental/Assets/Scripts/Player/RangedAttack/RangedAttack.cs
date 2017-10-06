@@ -63,9 +63,10 @@ public class RangedAttack : MonoBehaviour {
 		//Debug.Log (newFireball.GetComponent<ProjectileScript> ());
 //		Debug.Log(aimDirc);
 		newFireball.GetComponent<ProjectileScript> ().setAim(aimDirc);
-//		Debug.Log (newFireball.GetComponent<ProjectileScript> ().direction);
-//        newFireball.GetComponent<Rigidbody2D>().velocity = aimDirc * 50;
-		//GameObject newFireball = Instantiate(fireball, transform.position, transform.rotation);
-		//newFireball.GetComponent<Rigidbody2D>().AddRelativeForce(new Vector2(0f, -ProjectileForce));
-	}
+        newFireball.GetComponent<ProjectileScript>().setPlayer(gameObject.tag);
+        //		Debug.Log (newFireball.GetComponent<ProjectileScript> ().direction);
+        //        newFireball.GetComponent<Rigidbody2D>().velocity = aimDirc * 50;
+        //GameObject newFireball = Instantiate(fireball, transform.position, transform.rotation);
+        //newFireball.GetComponent<Rigidbody2D>().AddRelativeForce(new Vector2(0f, -ProjectileForce));
+    }
 }
