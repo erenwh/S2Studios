@@ -79,9 +79,10 @@ GameObject:
   - component: {fileID: 58116628563692054}
   - component: {fileID: 114992581191780018}
   - component: {fileID: 114890355552487964}
+  - component: {fileID: 114354829194110490}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -159,7 +160,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1412594545588478}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.3720351, y: -2.0236166, z: 0}
+  m_LocalPosition: {x: -1.92, y: -1.17, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 224053422276427540}
@@ -200,7 +201,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.2
+  m_Radius: 0.22
 --- !u!60 &60683995051414108
 PolygonCollider2D:
   m_ObjectHideFlags: 1
@@ -297,7 +298,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 21300000, guid: 43f393f59f49ac341b87101938b5e544, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -305,6 +306,21 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114354829194110490
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1412594545588478}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8047e74f3d053ed4dad4909b3a89cf02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  distortions:
+  - {fileID: 1503169536051292, guid: 57ad04af19841d146ba53e7a042e33f1, type: 2}
+  slowDownFactor: 0.75
+  distortionType: 0
 --- !u!114 &114438414919212842
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -345,7 +361,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 224693083146548012}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 30
+  m_MaxValue: 90
   m_WholeNumbers: 1
   m_Value: 0
   m_OnValueChanged:
@@ -395,6 +411,7 @@ MonoBehaviour:
   rotationSpeed: 30
   charging: 0
   circleOffsetCoefficient: 0.18
+  lastDirection: {x: 0, y: 0}
 --- !u!114 &114789800082031028
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -475,8 +492,8 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: c2b16bcd30e1e40448c78b667801ef52, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -489,15 +506,16 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1412594545588478}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b0235fb708c851148970f0949c935a12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   fireball: {fileID: 1027716303461822, guid: aa00f6fc1b86ab045ba3b9f37b01da39, type: 2}
-  playerNum: 
+  playerNum: 1
   delay: 1
   timepassed: 0
+  aimDirc: {x: 0, y: 0}
 --- !u!212 &212096129990206330
 SpriteRenderer:
   m_ObjectHideFlags: 1
