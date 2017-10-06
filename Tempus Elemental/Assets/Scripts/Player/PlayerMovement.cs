@@ -9,9 +9,8 @@ public class PlayerMovement : MonoBehaviour {
 	public float rotationSpeed = 30.0f;	//how quickly the player faces the direction they are moving
 	public bool charging = false;
 	public float circleOffsetCoefficient = .18f;
+	public Vector2 lastDirection;
 
-
-	private Vector2 lastDirection;
 	private CircleCollider2D cc2d;
 	private Rigidbody2D rb2d;
 

@@ -27,7 +27,13 @@ public class ProjectileScript : MonoBehaviour {
     }
 
     void OnTriggerEnter2D (Collider2D other) {
-
+		if (!other.CompareTag ("Player1") && !other.CompareTag ("Player2") && !other.CompareTag ("Player3")
+		   && !other.CompareTag ("Player4")) {
+			if (other.CompareTag ("Walls")) {
+				Destroy(gameObject);
+			}
+			return;
+		}
         if (!other.CompareTag(currP))
         {
             other.SendMessage("TakeDamage", damage, SendMessageOptions.DontRequireReceiver);

@@ -288,7 +288,7 @@ GameObject:
   - component: {fileID: 131435462}
   - component: {fileID: 131435479}
   - component: {fileID: 131435480}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Wall-Collision
   m_TagString: Walls
   m_Icon: {fileID: 0}

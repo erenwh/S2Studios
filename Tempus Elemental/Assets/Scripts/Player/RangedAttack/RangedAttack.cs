@@ -43,9 +43,10 @@ public class RangedAttack : MonoBehaviour {
             else {
                 // change direction while aming, player cannot move
 				aimDirc = new Vector2(Input.GetAxis("Horizontal" + gameObject.tag), Input.GetAxis("Vertical" + gameObject.tag)).normalized;
-				if (Mathf.Abs (aimDirc.x) < Mathf.Epsilon && Mathf.Abs (aimDirc.y) < Mathf.Epsilon) 
-				{
+				if (Mathf.Abs (aimDirc.x) < Mathf.Epsilon && Mathf.Abs (aimDirc.y) < Mathf.Epsilon) {
 					aimDirc = pm.FacingDirection ();
+				} else {
+					pm.lastDirection = aimDirc;
 				}
 			}
 		} else if (timepassed >= delay && Input.GetButtonUp ("Fire" + gameObject.tag)) {
