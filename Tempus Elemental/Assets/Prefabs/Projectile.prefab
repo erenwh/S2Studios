@@ -129,6 +129,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 0
+  aim: {x: 0, y: 0}
+  speed: 4
 --- !u!212 &212331881261654882
 SpriteRenderer:
   m_ObjectHideFlags: 1
