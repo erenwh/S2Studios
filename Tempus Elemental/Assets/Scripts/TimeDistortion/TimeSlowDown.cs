@@ -32,7 +32,9 @@ public class TimeSlowDown : MonoBehaviour {
 		if ((coll.CompareTag("Player1") || coll.CompareTag("Player2") || coll.CompareTag("Player3") || coll.CompareTag("Player4")) && coll.gameObject != callingPlayer) {
 			coll.gameObject.GetComponent<PlayerMovement> ().speed *= speedDecrementFactor;
 		}
-		//TODO: Also slow down attack projectiles, or anything else that thematically makes sense.
+		if (coll.CompareTag ("Fire")) {
+			coll.gameObject.GetComponent<ProjectileScript> ().speed *= speedDecrementFactor;
+		}
 	}
 
 	/// <summary>
@@ -43,19 +45,26 @@ public class TimeSlowDown : MonoBehaviour {
 		if ((coll.CompareTag("Player1") || coll.CompareTag("Player2") || coll.CompareTag("Player3") || coll.CompareTag("Player4")) && coll.gameObject != callingPlayer) {
 			coll.gameObject.GetComponent<PlayerMovement> ().speed /= speedDecrementFactor;
 		}
-		//TODO: Also restore attack projectile speed, or anything else that thematically makes sense.
+		if (coll.CompareTag ("Fire")) {
+			coll.gameObject.GetComponent<ProjectileScript> ().speed /= speedDecrementFactor;
+		}
 	}
 
 	/// <summary>
 	/// Return everything inside to its original speed when distortion is deactivated.
 	/// </summary>
 	void OnDestroy () {
-		GameObject[] players = GameObject.FindGameObjectsWithTag ("Player");
-		foreach (GameObject player in players) {
-			if (player.GetComponent<Collider2D>().IsTouching(GetComponent<Collider2D>()) && player != callingPlayer) {
+		for(int i = 1; i < 5; i++) {
+			GameObject player = GameObject.FindGameObjectWithTag ("Player" + i.ToString ());
+			if (player != null && player.GetComponent<Collider2D>().IsTouching(GetComponent<Collider2D>()) && player != callingPlayer) {
 				player.GetComponent<PlayerMovement> ().speed /= speedDecrementFactor;
 			}
 		}
-		//TODO: Also finds and restore attack projectile speed, or anything else that thematically makes sense.
+		GameObject[] projectiles = GameObject.FindGameObjectsWithTag ("Fire");
+		foreach (GameObject projectile in projectiles) {
+			if (projectile.GetComponent<Collider2D>().IsTouching(GetComponent<Collider2D>())) {
+				projectile.GetComponent<ProjectileScript> ().speed /= speedDecrementFactor;
+			}
+		}
 	}
 }

@@ -319,7 +319,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   distortions:
   - {fileID: 1503169536051292, guid: 57ad04af19841d146ba53e7a042e33f1, type: 2}
-  slowDownFactor: 0.75
+  timeUsedPerSecond: 0.75
+  slowDownFactor: 0.5
   distortionType: 0
 --- !u!114 &114438414919212842
 MonoBehaviour:
