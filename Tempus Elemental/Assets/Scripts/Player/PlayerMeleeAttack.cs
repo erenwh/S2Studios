@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class PlayerMeleeAttack : MonoBehaviour {
 
-    public int damage = 1; //damage default to remove 1 seconds of time from player
-    public float timeBtwnAttacks = 2.33f;
+    public int damage = 1; 						//damage default to remove 1 seconds of time from player
+    public float timeBtwnAttacks = 0.33f;		//even with button spam, don't allow buttonSpammers to attack too quickly
     //private int thisTime;
     private Collider2D playerAttacked;
     private bool hasAttacked = false;
@@ -23,12 +23,14 @@ public class PlayerMeleeAttack : MonoBehaviour {
             return;
         }
 
+		delay += Time.deltaTime;
+
         if (Input.GetButton("Fire" + gameObject.tag) && !hasAttacked)
         {
             Attack();
         }
 
-        if (Input.GetButtonUp("Fire" + gameObject.tag))
+		if (Input.GetButtonUp("Fire" + gameObject.tag) && delay >= timeBtwnAttacks)
         {
             hasAttacked = false;
         }
@@ -37,6 +39,7 @@ public class PlayerMeleeAttack : MonoBehaviour {
     void Attack()
     {
         hasAttacked = true;
+		delay = 0.0f;
         if (playerAttacked.CompareTag("Player1") || playerAttacked.CompareTag("Player2") || playerAttacked.CompareTag("Player3") || playerAttacked.CompareTag("Player4"))
         {
 			PlayerTime.TransferTime (damage, playerAttacked.gameObject, gameObject);
