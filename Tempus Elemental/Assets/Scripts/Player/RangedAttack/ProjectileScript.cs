@@ -16,7 +16,7 @@ public class ProjectileScript : MonoBehaviour {
 
 	public void setAim(Vector2 a)
 	{
-		Debug.Log (a);
+		
 		aim = a;
 	}
 
