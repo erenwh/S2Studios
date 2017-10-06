@@ -16,9 +16,11 @@ public class PlayerMeleeAttack : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		if (playerAttacked == null)
+			return;
         if (Input.GetButtonDown("Fire" + gameObject.tag))
         {
-            if (playerAttacked.CompareTag("Player1") || playerAttacked.CompareTag("Player2") || playerAttacked.CompareTag("Player3") || playerAttacked.CompareTag("Player4"))
+            if ( playerAttacked.CompareTag("Player1") || playerAttacked.CompareTag("Player2") || playerAttacked.CompareTag("Player3") || playerAttacked.CompareTag("Player4"))
             {
                 playerAttacked.gameObject.GetComponent<PlayerTime>().timeRemaining -= damage;
                 gameObject.GetComponent<PlayerTime>().timeRemaining += damage;
