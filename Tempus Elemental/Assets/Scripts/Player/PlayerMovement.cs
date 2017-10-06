@@ -7,13 +7,16 @@ public class PlayerMovement : MonoBehaviour {
     public float speed;					//how quickly the player moves
 	public float rotationSpeed = 30.0f;	//how quickly the player faces the direction they are moving
 	public bool charging = false;
+    public float circleOffsetCoefficient = .18f;
 
+    private CircleCollider2D cc2d;
     private Rigidbody2D rb2d;
 
     void Start()
     {
 		charging = false;
         rb2d = GetComponent<Rigidbody2D>();
+        cc2d = GetComponent<CircleCollider2D>();
     }
 		
     private void FixedUpdate()
@@ -27,6 +30,7 @@ public class PlayerMovement : MonoBehaviour {
 			Vector2 movement = new Vector2 (moveHorizontal, moveVertical).normalized;
 
 			rb2d.velocity = movement * speed;
+<<<<<<< HEAD
 
 			// move right
 			if (moveHorizontal > .01f) {
@@ -51,6 +55,9 @@ public class PlayerMovement : MonoBehaviour {
 			//moveing the transform position
 			transform.Translate (moveHorizontal * speed * Time.deltaTime, moveVertical * speed * Time.deltaTime,
 				0f, Space.World);
+=======
+            cc2d.offset = movement * circleOffsetCoefficient;
+>>>>>>> 7d0543d97c9ae05a42191c0ad3e6a90968bf1910
 			//(Parr's rotation suggestion) <- delete this comment if you like it :)
 			//Angular Movement
 //		if (Mathf.Abs (moveHorizontal) > 0.1 || Mathf.Abs (moveVertical) > 0.1) {

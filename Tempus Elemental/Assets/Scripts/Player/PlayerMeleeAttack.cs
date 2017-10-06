@@ -6,6 +6,8 @@ public class PlayerMeleeAttack : MonoBehaviour {
 
     public int damage = 5; //damage default to remove 2 seconds of time from player
     private int thisTime;
+    private bool isAttacking = false;
+    private Collider2D playerAttacked;
 
 	// Use this for initialization
 	void Start () {
@@ -16,7 +18,11 @@ public class PlayerMeleeAttack : MonoBehaviour {
 	void Update () {
         if (Input.GetButtonDown("Fire" + gameObject.tag))
         {
-
+            if (playerAttacked.CompareTag("Player1") || playerAttacked.CompareTag("Player2") || playerAttacked.CompareTag("Player3") || playerAttacked.CompareTag("Player4"))
+            {
+                playerAttacked.gameObject.GetComponent<PlayerTime>().timeRemaining -= damage;
+                gameObject.GetComponent<PlayerTime>().timeRemaining += damage;
+            }
         }
     }
 
@@ -24,10 +30,7 @@ public class PlayerMeleeAttack : MonoBehaviour {
     {
         // controller.AssignPlayer(coll.gameObject);
         // controller.ActivatePowerup(ptype, powerupLength, speedMultiplier, amountTimeAdd);
-        if (coll.CompareTag("Player1") || coll.CompareTag("Player2") || coll.CompareTag("Player3") || coll.CompareTag("Player4"))
-        {
-            coll.gameObject.GetComponent<PlayerTime>().timeRemaining -= damage;
-            //gameObject.GetComponent<PlayerTime>().timeRemaining += damage;
-        }
+        isAttacking = true;
+        playerAttacked = coll;
     }
 }

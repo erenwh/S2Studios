@@ -8,7 +8,7 @@ public class Powerup : MonoBehaviour {
     public float powerupLength;
     public float speedMultiplier;
     public int amountTimeAdd;
-    public float duration = 5f;            // the duration of powerup on map
+    public float duration = 7f;            // the duration of powerup on map
 
     private PowerupController controller;
 

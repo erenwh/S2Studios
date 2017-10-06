@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class PlayerTime : MonoBehaviour {
 
-	public int startingTime = 45; // changed from 30 to 45 to allow for more room to use time as a currency before dying
+	public int startingTime; // changing to nothing so we may keep changing it as needed
 	public int timeRemaining;
 	public Slider timeIndicator;
 
