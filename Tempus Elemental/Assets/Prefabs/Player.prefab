@@ -494,7 +494,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0235fb708c851148970f0949c935a12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ProjectileForce: 150
   fireball: {fileID: 1027716303461822, guid: aa00f6fc1b86ab045ba3b9f37b01da39, type: 2}
   playerNum: 
   delay: 1
