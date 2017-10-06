@@ -41,6 +41,7 @@ public class RangedAttack : MonoBehaviour {
 				//aimDirc = new Vector2(Input.GetAxis("Horizontal" + gameObject.tag), Input.GetAxis("Vertical" + gameObject.tag)).normalized;
 			} 
             else {
+
                 // change direction while aming, player cannot move
 				aimDirc = new Vector2(Input.GetAxis("Horizontal" + gameObject.tag), Input.GetAxis("Vertical" + gameObject.tag)).normalized;
 				if (Mathf.Abs (aimDirc.x) < Mathf.Epsilon && Mathf.Abs (aimDirc.y) < Mathf.Epsilon) {
@@ -48,6 +49,7 @@ public class RangedAttack : MonoBehaviour {
 				} else {
 					pm.lastDirection = aimDirc;
 				}
+
 			}
 		} else if (timepassed >= delay && Input.GetButtonUp ("Fire" + gameObject.tag)) {
             fire(timepassed);
@@ -60,6 +62,7 @@ public class RangedAttack : MonoBehaviour {
 
 	void fire(float time) {
         gameObject.GetComponent<PlayerTime>().timeRemaining -= (int) time + 1;
+
 		GameObject newFireball = Instantiate(fireball, transform.position, Quaternion.Euler(0, 0, Vector2.SignedAngle(Vector2.down, aimDirc)));
 		//Debug.Log (newFireball.GetComponent<ProjectileScript> ());
 //		Debug.Log(aimDirc);
