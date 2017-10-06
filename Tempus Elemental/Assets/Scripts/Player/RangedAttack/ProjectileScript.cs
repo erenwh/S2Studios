@@ -21,10 +21,12 @@ public class ProjectileScript : MonoBehaviour {
 	}
 
 	void OnTriggerEnter2D (Collider2D other) {
-		if (!other.CompareTag ("Player1")) {
-			other.SendMessage ("TakeDamage", damage, SendMessageOptions.DontRequireReceiver);
-			Destroy (gameObject);
-		}
+        if (other.gameObject != gameObject)
+        {
+            other.SendMessage("TakeDamage", damage, SendMessageOptions.DontRequireReceiver);
+            other.GetComponent<PlayerTime>().timeRemaining -= damage;
+            Destroy(gameObject);
+        }
 	}
 	void FixedUpdate() 
 	{
