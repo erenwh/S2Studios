@@ -39,8 +39,7 @@ public class PlayerMeleeAttack : MonoBehaviour {
         hasAttacked = true;
         if (playerAttacked.CompareTag("Player1") || playerAttacked.CompareTag("Player2") || playerAttacked.CompareTag("Player3") || playerAttacked.CompareTag("Player4"))
         {
-            playerAttacked.gameObject.GetComponent<PlayerTime>().timeRemaining -= damage;
-            gameObject.GetComponent<PlayerTime>().timeRemaining += damage;
+			PlayerTime.TransferTime (damage, playerAttacked.gameObject, gameObject);
         }
     }
 

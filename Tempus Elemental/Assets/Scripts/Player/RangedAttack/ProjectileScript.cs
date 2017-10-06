@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class ProjectileScript : MonoBehaviour {
-	public int damage;
+	public int damage = 8;
 	public Vector2 aim;
 	public float speed = 5f;
     public string currP;
@@ -36,8 +36,9 @@ public class ProjectileScript : MonoBehaviour {
 		}
         if (!other.CompareTag(currP))
         {
-            other.SendMessage("TakeDamage", damage, SendMessageOptions.DontRequireReceiver);
-            other.GetComponent<PlayerTime>().timeRemaining -= damage;
+            //other.SendMessage("TakeDamage", damage, SendMessageOptions.DontRequireReceiver);
+           	//other.GetComponent<PlayerTime>().timeRemaining -= damage;
+			PlayerTime.TransferTime(damage, other.gameObject, GameObject.FindGameObjectWithTag(currP));
             Destroy(gameObject);
         }
 

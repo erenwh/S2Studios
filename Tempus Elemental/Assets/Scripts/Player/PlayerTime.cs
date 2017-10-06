@@ -9,16 +9,27 @@ public class PlayerTime : MonoBehaviour {
 	public int timeRemaining;
 	public Slider timeIndicator;
 
+	/// <summary>
+	/// Takes a specified amount of time from a player and gives it to another player.
+	/// </summary>
+	/// <param name="amount">Amount of time transfered (int).</param>
+	/// <param name="playerFrom">The player losing time.</param>
+	/// <param name="playerTo">The player gaining time (The attacking player).</param>
+	public static void TransferTime (int amount, GameObject playerFrom, GameObject playerTo) {
+		if (playerFrom != null) {
+			playerFrom.GetComponent<PlayerTime> ().timeRemaining -= amount;
+			playerFrom.GetComponent<PlayerTime> ().timeIndicator.value = playerFrom.GetComponent<PlayerTime> ().timeRemaining;
+		}
+		if (playerTo != null) {
+			playerTo.GetComponent<PlayerTime> ().timeRemaining += amount;
+			playerTo.GetComponent<PlayerTime> ().timeIndicator.value = playerTo.GetComponent<PlayerTime> ().timeRemaining;
+		}
+	}
+
 	// Use this for initialization
 	void Start () {
-
 		//Assuming player's begin immediately after spawning
 		BeginCountdown();
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
 	}
 
 	/// <summary>

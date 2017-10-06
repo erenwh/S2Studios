@@ -7,6 +7,7 @@ public class RangedAttack : MonoBehaviour {
     public GameObject fireball;
 	public string playerNum;
 	public float delay = 0.5f;								// ranged attack delay
+	public int costToThrow = 1;								// how much time does it take to throw an attack
 	public float timepassed;
 	private bool waitToCharging = false;
 	public Vector2 aimDirc;
@@ -61,7 +62,7 @@ public class RangedAttack : MonoBehaviour {
 	}
 
 	void fire(float time) {
-        gameObject.GetComponent<PlayerTime>().timeRemaining -= (int) time + 1;
+        gameObject.GetComponent<PlayerTime>().timeRemaining -= costToThrow;
 
 		GameObject newFireball = Instantiate(fireball, transform.position, Quaternion.Euler(0, 0, Vector2.SignedAngle(Vector2.down, aimDirc)));
 		//Debug.Log (newFireball.GetComponent<ProjectileScript> ());
