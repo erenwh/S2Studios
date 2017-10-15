@@ -1,13 +1,12 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class PlayerAnimation : MonoBehaviour {
 
-	Animator animator;
+	private Animator animator;
+    private bool change = false;
+    private States state = States.idle;
 
-    bool change = false;
-    States state = States.idle;
+    PlayerMovement playerMovement;
 
     enum States
     {
@@ -20,6 +19,7 @@ public class PlayerAnimation : MonoBehaviour {
 	void Start () 
     {
 		animator = GetComponent<Animator>();
+        playerMovement = GetComponent<PlayerMovement>();
 	}
 	
 	// Update is called once per frame
@@ -41,16 +41,16 @@ public class PlayerAnimation : MonoBehaviour {
 
     States CalculateNextState() 
     {
-		float h = Input.GetAxis("Horizontal" + gameObject.tag);
-		float v = Input.GetAxis("Vertical" + gameObject.tag);
-
+		Vector2 movement = Utils.GetPlayerMovement(tag);
+        Vector2 facingDirection = playerMovement.FacingDirection();
         bool isAttacking = Input.GetButton("Fire" + gameObject.tag);
 
 
-        if (isAttacking) {
-			if (Mathf.Abs(h) > Mathf.Epsilon)
+        if (isAttacking) 
+        {
+            if (Mathf.Abs(facingDirection.x) > Mathf.Epsilon)
 			{
-				if (Mathf.Sign(h) > 0)
+				if (Mathf.Sign(facingDirection.x) > 0)
 				{
                     return States.attackRight;
 				}
@@ -60,9 +60,9 @@ public class PlayerAnimation : MonoBehaviour {
 				}
 			}
 
-			if (Mathf.Abs(v) > Mathf.Epsilon)
+			if (Mathf.Abs(facingDirection.y) > Mathf.Epsilon)
 			{
-				if (Mathf.Sign(v) > 0)
+				if (Mathf.Sign(facingDirection.y) > 0)
 				{
                     return States.attackUp;
 				}
@@ -75,15 +75,15 @@ public class PlayerAnimation : MonoBehaviour {
 
 
 		// check for movement
-		if (Mathf.Abs(h) < Mathf.Epsilon && Mathf.Abs(v) < Mathf.Epsilon)
+		if (!Utils.IsPlayerMoving(tag))
 		{
 			return States.idle;
 			
 		}
 
-		if (Mathf.Abs(h) > Mathf.Epsilon)
+		if (Mathf.Abs(movement.x) > Mathf.Epsilon)
 		{
-			if (Mathf.Sign(h) > 0)
+			if (Mathf.Sign(movement.x) > 0)
 			{
 				return States.movingRight;
 			}
@@ -93,9 +93,9 @@ public class PlayerAnimation : MonoBehaviour {
 			}
 		}
 
-		if (Mathf.Abs(v) > Mathf.Epsilon)
+		if (Mathf.Abs(movement.y) > Mathf.Epsilon)
 		{
-			if (Mathf.Sign(v) > 0)
+			if (Mathf.Sign(movement.y) > 0)
 			{
 				return States.movingUp;
 			}

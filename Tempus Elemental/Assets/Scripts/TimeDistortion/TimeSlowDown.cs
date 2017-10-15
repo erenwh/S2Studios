@@ -4,15 +4,9 @@ using UnityEngine;
 
 public class TimeSlowDown : MonoBehaviour {
 
+	public float transparency;						//how transparent is the clock
 	private GameObject callingPlayer;				//keep track of the player who called it
 	private float speedDecrementFactor = 0.75f;		//slow other players/attacks that enter the distortion by 50% at default
-	public float timeUsedPerSecond = 0.75f;			//how much extra time is used per second of use (rounded down)?
-
-	// Use this for initialization
-	void Start () {
-		//TODO: Have TimeDistortion script on player instantiate and call this function, rather than in here
-		AssignPlayer (GameObject.FindGameObjectWithTag("Player"), 0.75f);
-	}
 
 	/// <summary>
 	/// The Player calls this function whenever he instantiates a time "slow down" distortion. This will make sure that only the calling player isn't by the slow down, and follows them around the map.
@@ -22,6 +16,10 @@ public class TimeSlowDown : MonoBehaviour {
 	public void AssignPlayer (GameObject player, float factor) {
 		callingPlayer = player;
 		speedDecrementFactor = factor;
+		SpriteRenderer[] srs = GetComponentsInChildren<SpriteRenderer> ();
+		foreach (SpriteRenderer sr in srs) {
+			sr.color = new Color(player.GetComponent<PlayerColor> ().color.r, player.GetComponent<PlayerColor> ().color.g, player.GetComponent<PlayerColor> ().color.b, transparency);
+		}
 	}
 
 	/// <summary>
@@ -36,10 +34,12 @@ public class TimeSlowDown : MonoBehaviour {
 	/// </summary>
 	/// <param name="coll">Coll.</param>
 	void OnTriggerEnter2D (Collider2D coll) {
-		if (coll.CompareTag("Player") && coll.gameObject != callingPlayer) {
+		if ((coll.CompareTag("Player1") || coll.CompareTag("Player2") || coll.CompareTag("Player3") || coll.CompareTag("Player4")) && coll.gameObject != callingPlayer) {
 			coll.gameObject.GetComponent<PlayerMovement> ().speed *= speedDecrementFactor;
 		}
-		//TODO: Also slow down attack projectiles, or anything else that thematically makes sense.
+		if (coll.CompareTag ("Fire")) {
+			coll.gameObject.GetComponent<ProjectileScript> ().speed *= speedDecrementFactor;
+		}
 	}
 
 	/// <summary>
@@ -47,22 +47,29 @@ public class TimeSlowDown : MonoBehaviour {
 	/// </summary>
 	/// <param name="coll">Coll.</param>
 	void OnTriggerExit2D (Collider2D coll) {
-		if (coll.CompareTag("Player") && coll.gameObject != callingPlayer) {
+		if ((coll.CompareTag("Player1") || coll.CompareTag("Player2") || coll.CompareTag("Player3") || coll.CompareTag("Player4")) && coll.gameObject != callingPlayer) {
 			coll.gameObject.GetComponent<PlayerMovement> ().speed /= speedDecrementFactor;
 		}
-		//TODO: Also restore attack projectile speed, or anything else that thematically makes sense.
+		if (coll.CompareTag ("Fire")) {
+			coll.gameObject.GetComponent<ProjectileScript> ().speed /= speedDecrementFactor;
+		}
 	}
 
 	/// <summary>
 	/// Return everything inside to its original speed when distortion is deactivated.
 	/// </summary>
 	void OnDestroy () {
-		GameObject[] players = GameObject.FindGameObjectsWithTag ("Player");
-		foreach (GameObject player in players) {
-			if (player.GetComponent<Collider2D>().IsTouching(GetComponent<Collider2D>()) && player != callingPlayer) {
+		for(int i = 1; i < 5; i++) {
+			GameObject player = GameObject.FindGameObjectWithTag ("Player" + i.ToString ());
+			if (player != null && player.GetComponent<Collider2D>().IsTouching(GetComponent<Collider2D>()) && player != callingPlayer) {
 				player.GetComponent<PlayerMovement> ().speed /= speedDecrementFactor;
 			}
 		}
-		//TODO: Also finds and restore attack projectile speed, or anything else that thematically makes sense.
+		GameObject[] projectiles = GameObject.FindGameObjectsWithTag ("Fire");
+		foreach (GameObject projectile in projectiles) {
+			if (projectile.GetComponent<Collider2D>().IsTouching(GetComponent<Collider2D>())) {
+				projectile.GetComponent<ProjectileScript> ().speed /= speedDecrementFactor;
+			}
+		}
 	}
 }
