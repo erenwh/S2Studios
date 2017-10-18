@@ -14,10 +14,11 @@ public class PlayerMovement : MonoBehaviour
 	private Vector2 lastDirection;
 
 	public int sameDirectionKeyCount = 0;
-	public string lastDirectionKey;
+	public float lastDirectionKey;
+	public int horOrVer = -1;
 	public bool dash = false;
 	public float dashTime = 0;
-	public int dashVel;
+	public float dashVel;
 	public float delay;
 
 	public float dashCooler = 0.5f;
@@ -58,21 +59,22 @@ public class PlayerMovement : MonoBehaviour
 
 	public void Dash ()
 	{
-		
 		if (Input.GetButtonDown ("Horizontal" + gameObject.tag)) {
-			if (lastDirectionKey == "Horizontal" + gameObject.tag) {
+			if (lastDirectionKey == Input.GetAxis ("Horizontal" + gameObject.tag) && horOrVer == 0) {
 				sameDirectionKeyCount++;
 			} else {
-				lastDirectionKey = "Horizontal" + gameObject.tag;
+				lastDirectionKey = Input.GetAxis ("Horizontal" + gameObject.tag);
 				sameDirectionKeyCount = 0;
+				horOrVer = 0;
 			}
 		}
 		if (Input.GetButtonDown ("Vertical" + gameObject.tag)) {
-			if (lastDirectionKey == "Vertical" + gameObject.tag) {
+			if (lastDirectionKey == Input.GetAxis ("Vertical" + gameObject.tag) && horOrVer == 1) {
 				sameDirectionKeyCount++;
 			} else {
-				lastDirectionKey = "Vertical" + gameObject.tag;
+				lastDirectionKey = Input.GetAxis ("Vertical" + gameObject.tag);
 				sameDirectionKeyCount = 0;
+				horOrVer = 1;
 			}
 
 		}
@@ -91,13 +93,14 @@ public class PlayerMovement : MonoBehaviour
 			delay = 0;
 			sameDirectionKeyCount = 0;
 		}
-		if ((sameDirectionKeyCount == 2)) { // dash
+		if ((sameDirectionKeyCount == 2) && (delay < .5)) { // dash
 			dash = true;
-			dashVel = 15;
+			dashVel = 6f;
 			sameDirectionKeyCount = 0;
+			horOrVer = -1;
 			//Dash
 		}
-		if ((sameDirectionKeyCount == 2) && (delay >= .5)) { // dash end
+		if (delay >= .5) { // dash end
 			dashVel = 0;
 			sameDirectionKeyCount = 0;
 			delay = 0;
