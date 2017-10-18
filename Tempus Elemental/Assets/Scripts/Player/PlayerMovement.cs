@@ -16,8 +16,13 @@ public class PlayerMovement : MonoBehaviour
 	public int sameDirectionKeyCount = 0;
 	public string lastDirectionKey;
 	public bool dash = false;
-	public float delay = 0;
-	public int dashVel = 0;
+	public float dashTime = 0;
+	public int dashVel;
+	public float delay;
+
+	public float dashCooler = 0.5f;
+	public int ButtonCount = 0;
+
 
 	void Start ()
 	{
@@ -44,23 +49,16 @@ public class PlayerMovement : MonoBehaviour
 			if (Utils.IsPlayerMoving (tag)) {
 				lastDirection = movement;
 			}
-			if(!dash) rb2d.velocity = movement * speed;
-			else rb2d.velocity = movement * (speed+dashVel);
+
+			rb2d.velocity = movement * (speed + dashVel);
+
 			cc2d.offset = lastDirection * circleOffsetCoefficient;	
 		} 
 	}
 
 	public void Dash ()
 	{
-		if (Input.GetButtonDown ("Distort" + gameObject.tag)) {
-			dashVel = 10;
-			dash = true;
-		}
-		if (Input.GetButtonUp ("Distort" + gameObject.tag)) {
-			dashVel = 0;
-			dash = false;
-		}
-		/*
+		
 		if (Input.GetButtonDown ("Horizontal" + gameObject.tag)) {
 			if (lastDirectionKey == "Horizontal" + gameObject.tag) {
 				sameDirectionKeyCount++;
@@ -73,7 +71,7 @@ public class PlayerMovement : MonoBehaviour
 			if (lastDirectionKey == "Vertical" + gameObject.tag) {
 				sameDirectionKeyCount++;
 			} else {
-				lastDirection = "Vertical" + gameObject.tag;
+				lastDirectionKey = "Vertical" + gameObject.tag;
 				sameDirectionKeyCount = 0;
 			}
 
@@ -95,7 +93,7 @@ public class PlayerMovement : MonoBehaviour
 		}
 		if ((sameDirectionKeyCount == 2)) { // dash
 			dash = true;
-			dashVel = 50;
+			dashVel = 15;
 			sameDirectionKeyCount = 0;
 			//Dash
 		}
@@ -103,8 +101,8 @@ public class PlayerMovement : MonoBehaviour
 			dashVel = 0;
 			sameDirectionKeyCount = 0;
 			delay = 0;
-			lastDerectionKey = "";
 			dash = false;
-		}*/
+		}
+
 	}
 }
