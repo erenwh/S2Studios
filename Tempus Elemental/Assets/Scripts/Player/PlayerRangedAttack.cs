@@ -62,8 +62,8 @@ public class PlayerRangedAttack : MonoBehaviour {
     {
 		gameObject.GetComponent<PlayerTime>().DecrementTime(costToThrow);
 		GameObject newFireball = Instantiate(fireball, transform.position, Quaternion.Euler(0, 0, Vector2.SignedAngle(Vector2.down, aimDirc)));
-		newFireball.GetComponent<ProjectileScript> ().setAim(aimDirc);
-        newFireball.GetComponent<ProjectileScript>().setPlayer(gameObject.tag);
+		newFireball.GetComponent<Projectile> ().setAim(aimDirc);
+        newFireball.GetComponent<Projectile>().setPlayer(gameObject.tag);
 		newFireball.GetComponentInChildren<SpriteRenderer> ().color = GetComponent<PlayerColor> ().color;
     }
 }

@@ -1,27 +1,31 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class GameController : MonoBehaviour {
+// This is the permanent source of information for our game modes
+public class GameController : MonoBehaviour 
+{
 
-	//constants
+    // Singleton access point for class
+    // Note that the implementation is different from traditional singleton
+    // pattern, instead of limiting the access to constructor, we are 
+    // checking and setting the instance in the Awake function
+    public static GameController Instance 
+    {
+        get;
+        private set;
+    }
 
-	//references
-
-	//variables
-
-	// This is the permanent source of information for our game modes
-	void Awake() {
+	
+	void Awake() 
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        if (Instance != this) {
+            Debug.LogError("Breach of singleton pattern, " +
+                           "we have two game controller objects!");
+        }
 		DontDestroyOnLoad(transform.gameObject);
 	}
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 }

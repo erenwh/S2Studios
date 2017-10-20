@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4684655640566004}
   - component: {fileID: 50941434463364342}
   - component: {fileID: 61521079062098752}
-  - component: {fileID: 114050425923239602}
+  - component: {fileID: 114683123001585330}
   m_Layer: 0
   m_Name: Projectile
   m_TagString: Fire
@@ -117,7 +117,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.23235185, y: 0.0786854}
   m_EdgeRadius: 0
---- !u!114 &114050425923239602
+--- !u!114 &114683123001585330
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -125,12 +125,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1027716303461822}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 867df487e13dccc40b36c775590224e6, type: 3}
+  m_Script: {fileID: 11500000, guid: 35c2b8b78785d448b9e33f092a6e73d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 5
   aim: {x: 0, y: 0}
-  speed: 4
+  speed: 5
   currP: 
 --- !u!212 &212331881261654882
 SpriteRenderer:

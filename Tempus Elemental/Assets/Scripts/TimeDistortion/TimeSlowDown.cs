@@ -38,7 +38,7 @@ public class TimeSlowDown : MonoBehaviour {
 			coll.gameObject.GetComponent<PlayerMovement> ().speed *= speedDecrementFactor;
 		}
 		if (coll.CompareTag ("Fire")) {
-			coll.gameObject.GetComponent<ProjectileScript> ().speed *= speedDecrementFactor;
+			coll.gameObject.GetComponent<Projectile> ().speed *= speedDecrementFactor;
 		}
 	}
 
@@ -51,7 +51,7 @@ public class TimeSlowDown : MonoBehaviour {
 			coll.gameObject.GetComponent<PlayerMovement> ().speed /= speedDecrementFactor;
 		}
 		if (coll.CompareTag ("Fire")) {
-			coll.gameObject.GetComponent<ProjectileScript> ().speed /= speedDecrementFactor;
+			coll.gameObject.GetComponent<Projectile> ().speed /= speedDecrementFactor;
 		}
 	}
 
@@ -68,7 +68,7 @@ public class TimeSlowDown : MonoBehaviour {
 		GameObject[] projectiles = GameObject.FindGameObjectsWithTag ("Fire");
 		foreach (GameObject projectile in projectiles) {
 			if (projectile.GetComponent<Collider2D>().IsTouching(GetComponent<Collider2D>())) {
-				projectile.GetComponent<ProjectileScript> ().speed /= speedDecrementFactor;
+				projectile.GetComponent<Projectile> ().speed /= speedDecrementFactor;
 			}
 		}
 	}

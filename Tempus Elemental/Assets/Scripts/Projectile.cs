@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ProjectileScript : MonoBehaviour {
+public class Projectile : MonoBehaviour {
 	public int damage = 8;
 	public Vector2 aim;
 	public float speed = 5f;
