@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Projectile : MonoBehaviour {
+public class Projectile : MonoBehaviour 
+{
 	public int damage = 8;
 	public Vector2 aim;
 	public float speed = 5f;
@@ -26,14 +27,15 @@ public class Projectile : MonoBehaviour {
         currP = tag;
     }
 
-    void OnTriggerEnter2D (Collider2D other) {
-		if (!other.CompareTag ("Player1") && !other.CompareTag ("Player2") && !other.CompareTag ("Player3")
-		   && !other.CompareTag ("Player4")) {
-			if (other.CompareTag ("Walls")) {
+    void OnTriggerEnter2D (Collider2D other) 
+    {
+        if (Utils.DetermineObjectType(other) != Utils.ObjectType.Player) 
+        {
+            if (Utils.DetermineObjectType(other) == Utils.ObjectType.Wall) {
 				Destroy(gameObject);
 			}
 			return;
-		}
+		} 
         if (!other.CompareTag(currP))
         {
             //other.SendMessage("TakeDamage", damage, SendMessageOptions.DontRequireReceiver);

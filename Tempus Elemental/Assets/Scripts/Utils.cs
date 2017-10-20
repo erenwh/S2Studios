@@ -3,6 +3,8 @@
 public static class Utils 
 {
 
+    public enum ObjectType { Other, Player, Projectile, PowerUp, Distortion, Wall};
+
     public static Vector2 GetPlayerMovement(string playerTag) 
     {
 		float h = Input.GetAxis("Horizontal" + playerTag);
@@ -19,5 +21,30 @@ public static class Utils
             return true;
 		}
         return false;
+    }
+
+    public static ObjectType DetermineObjectType(Collider2D col) {
+        return DetermineObjectType(col.gameObject);
+    }
+
+	public static ObjectType DetermineObjectType(GameObject obj) 
+    {
+        if (obj.tag.StartsWith("Player", System.StringComparison.CurrentCulture)) 
+        {
+            return ObjectType.Player;
+        }
+        if (obj.tag.StartsWith("Wall", System.StringComparison.CurrentCulture)) 
+        {
+            return ObjectType.Wall;
+        }
+        if (obj.tag.StartsWith("Projectile", System.StringComparison.CurrentCulture)) 
+        {
+            return ObjectType.Projectile;
+        }
+		if (obj.tag.StartsWith("Powerup", System.StringComparison.CurrentCulture))
+		{
+            return ObjectType.PowerUp;
+		}
+        return ObjectType.Other;
     }
 }

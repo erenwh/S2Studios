@@ -1,9 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class PowerupController : MonoBehaviour {
-
+public class PowerupController : MonoBehaviour 
+{
     private GameObject touchedPlayer;       // keep track of the player who touched it
     private int ptype;                      // powerup type | 0: add time, 1: speed up player
     private bool powerupActive;             // powerup is active
@@ -13,12 +11,8 @@ public class PowerupController : MonoBehaviour {
 
     private float powerupLengthCounter;     // count how long it has been active
 
-	// Use this for initialization
-	void Start () {
-    }
-
-    // Update is called once per frame
-    void Update () {
+    void Update () 
+    {
         if (powerupActive)
         {
             if (flag == 0)

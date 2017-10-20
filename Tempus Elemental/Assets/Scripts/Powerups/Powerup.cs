@@ -1,9 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class Powerup : MonoBehaviour {
-
+public class Powerup : MonoBehaviour 
+{
     public int ptype;
     public float powerupLength;
     public float speedMultiplier;
@@ -29,9 +27,7 @@ public class Powerup : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D coll)
     {
-        // controller.AssignPlayer(coll.gameObject);
-        // controller.ActivatePowerup(ptype, powerupLength, speedMultiplier, amountTimeAdd);
-        if (coll.CompareTag("Player1") || coll.CompareTag("Player2") || coll.CompareTag("Player3") || coll.CompareTag("Player4"))
+        if (Utils.DetermineObjectType(coll) == Utils.ObjectType.Player)
         {
             controller.AssignPlayer(coll.gameObject);
             controller.ActivatePowerup(ptype, powerupLength, speedMultiplier, amountTimeAdd);

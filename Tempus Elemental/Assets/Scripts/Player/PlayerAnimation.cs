@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 
-public class PlayerAnimation : MonoBehaviour {
+public class PlayerAnimation : MonoBehaviour 
+{
 
 	private Animator animator;
     private bool change = false;
@@ -15,14 +16,12 @@ public class PlayerAnimation : MonoBehaviour {
         attackUp, attackRight, attackDown, attackLeft
     }
 
-	// Use this for initialization
 	void Start () 
     {
 		animator = GetComponent<Animator>();
         playerMovement = GetComponent<PlayerMovement>();
 	}
 	
-	// Update is called once per frame
 	void Update () 
     {
         change = true;

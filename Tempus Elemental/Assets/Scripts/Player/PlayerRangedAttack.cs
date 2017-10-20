@@ -1,24 +1,21 @@
 ﻿using UnityEngine;
 
-public class PlayerRangedAttack : MonoBehaviour {
-    
+public class PlayerRangedAttack : MonoBehaviour 
+{    
     public GameObject fireball;
 	public float delay = 0.5f;								// ranged attack delay
-	public int costToThrow = 1;								// how much time does it take to throw an attack
-	private float timepassed;
+	public int costToThrow = 1;                             // how much time does it take to throw an attack
+    private float timepassed = 0f;
 	private bool waitToCharging = false;
 	private Vector2 aimDirc;
 	private PlayerMovement pm;
 
 
-    // Use this for initialization
     void Start() 
     {
-		timepassed = 0f;
 		pm = GetComponent<PlayerMovement>();
     }
 
-	// Update is called once per frame
 	void Update() 
     {
 		if (Input.GetButton ("Fire" + gameObject.tag)) 
@@ -43,7 +40,8 @@ public class PlayerRangedAttack : MonoBehaviour {
 		} 
         else if (Input.GetButtonUp ("Fire" + gameObject.tag)) 
         {
-			if (timepassed >= delay) {
+			if (timepassed >= delay) 
+            {
             	Fire();
 			}
             waitToCharging = false;

@@ -261,7 +261,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1412594545588478}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e6e9a4a862d56ec4b937b8a511a2723d, type: 3}
   m_Name: 
@@ -422,10 +422,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 3
-  rotationSpeed: 30
   charging: 0
   circleOffsetCoefficient: 0.18
-  lastDirection: {x: 0, y: 0}
+  sameDirectionKeyCount: 0
+  lastDirectionKey: 0
+  horOrVer: -1
+  dash: 0
+  dashTime: 0
+  dashVel: 0
+  delay: 0
+  dashCooler: 0.5
+  ButtonCount: 0
 --- !u!114 &114789800082031028
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -528,8 +535,6 @@ MonoBehaviour:
   fireball: {fileID: 1027716303461822, guid: aa00f6fc1b86ab045ba3b9f37b01da39, type: 2}
   delay: 1
   costToThrow: 1
-  timepassed: 0
-  aimDirc: {x: 0, y: 0}
 --- !u!212 &212096129990206330
 SpriteRenderer:
   m_ObjectHideFlags: 1

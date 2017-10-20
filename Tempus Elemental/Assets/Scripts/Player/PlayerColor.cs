@@ -1,22 +1,23 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class PlayerColor : MonoBehaviour {
-
-	//variables
+public class PlayerColor : MonoBehaviour 
+{
 	public Color color;
-
-	// Use this for initialization
-	void Start () {
+    	
+	void Start () 
+    {
 		//assign color
-		if (CompareTag ("Player1")) {
+		if (CompareTag ("Player1")) 
+        {
 			color = Color.blue;
-		} else if (CompareTag ("Player2")) {
+		} else if (CompareTag ("Player2")) 
+        {
 			color = Color.red;
-		}else if (CompareTag ("Player3")) {
+		}else if (CompareTag ("Player3")) 
+        {
 			color = Color.green;
-		}else if (CompareTag ("Player4")) {
+		}else if (CompareTag ("Player4")) 
+        {
 			color = Color.yellow;
 		}
 
