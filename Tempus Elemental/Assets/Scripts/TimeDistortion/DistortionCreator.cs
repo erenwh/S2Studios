@@ -6,6 +6,8 @@ public class DistortionCreator : MonoBehaviour {
 
 	//constants
 	const int SLOWDOWN = 0;
+	const int SPEEDUP = 1;
+	const int FREEZE = 2;
 
 	//references
 	public GameObject[] distortions;			//all the different time distortion prefabs that a player can make
