@@ -3,6 +3,8 @@
 // This is the permanent source of information for our game modes
 public class GameController : MonoBehaviour 
 {
+    //Used to keep track of number players selected in menu
+    public static int numPlayers = 4;
 
     // Singleton access point for class
     // Note that the implementation is different from traditional singleton

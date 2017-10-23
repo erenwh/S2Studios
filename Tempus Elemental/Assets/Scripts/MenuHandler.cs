@@ -24,5 +24,11 @@ public class MenuHandler : MonoBehaviour
     public void SelectPlayer(int index)
     {
         selectedAmountPlayers.text = numPlayers[index];
+        GameController.numPlayers = 4 - index;
+    }
+
+    public void changeScenes()
+    {
+        Application.LoadLevel("Main");
     }
 }
