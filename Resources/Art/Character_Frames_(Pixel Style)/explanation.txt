@@ -1,0 +1,9 @@
+the pixel style allows for a more flexible and humorous
+visual representation of the gameplay. I feel this is a better
+direction because it not only saves time and effort on player art,
+it also allows for higher quality visuals when more time can be
+spent on easilly modifiable and adjustable frame sets, using a
+low poly but still visually clear style.
+Inspirations:
+Game & Watch
+Paper Mario
