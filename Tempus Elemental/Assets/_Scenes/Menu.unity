@@ -2326,8 +2326,8 @@ GameObject:
   - component: {fileID: 1578823573}
   - component: {fileID: 1578823572}
   m_Layer: 0
-  m_Name: GameController
-  m_TagString: GameController
+  m_Name: Game
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2340,9 +2340,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1578823571}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4677dc9e8c834494187653d5ed1c8ae2, type: 3}
+  m_Script: {fileID: 11500000, guid: 178e5a18e4e014bd1b4b0598569d2bec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  numPlayers: 4
 --- !u!4 &1578823573
 Transform:
   m_ObjectHideFlags: 0

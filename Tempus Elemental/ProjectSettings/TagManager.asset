@@ -8,8 +8,8 @@ TagManager:
   - Walls
   - Player1
   - Player2
-  - Player3
   - Player4
+  - Player3
   layers:
   - Default
   - TransparentFX
