@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class PlayerTime : MonoBehaviour {
@@ -94,7 +95,12 @@ public class PlayerTime : MonoBehaviour {
 				//Call Death animation & play sfx
 				//let game controller know
 				Destroy(gameObject);
-			}
+                Game.Instance.numPlayers--;
+                if (Game.Instance.numPlayers == 0)
+                {
+                    SceneManager.LoadScene("Menu");
+                }
+            }
 		}
 	}
 }
