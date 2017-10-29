@@ -13,17 +13,23 @@ public class PlayerMovement : MonoBehaviour
 	private Rigidbody2D rb2d;
 	private Vector2 lastDirection;
 
+	public float dashSpeed = 6f;
+	public float dashTime;
+	public bool dashing;
+
+	public float dashCD = 3f;
+	public bool dashOnCD;
+
+	/*
 	public int sameDirectionKeyCount = 0;
 	public float lastDirectionKey;
 	public int horOrVer = -1;
 	public bool dash = false;
 	public float dashTime = 0;
 	public float dashVel;
-	public float delay;
+	public float delay;*/
 
-	public float dashCooler = 0.5f;
 	public int ButtonCount = 0;
-
 
 	void Start ()
 	{
@@ -40,32 +46,65 @@ public class PlayerMovement : MonoBehaviour
 
 	private void FixedUpdate ()
 	{
+		
 		Dash ();
+
 		if (charging) {
 			rb2d.velocity = Vector2.zero;
 		} else {
-			
-			Vector2 movement = Utils.GetPlayerMovement (tag);
-		
-			if (Utils.IsPlayerMoving (tag)) {
-				lastDirection = movement;
+			if (dashing) {
+				
+
+				Vector2 movement = Utils.GetPlayerMovement (tag);
+
+				if (Utils.IsPlayerMoving (tag)) {
+					lastDirection = movement;
+				}
+
+				rb2d.velocity = movement * (speed + dashSpeed);
+
+				cc2d.offset = lastDirection * circleOffsetCoefficient;	
+			} else if (!dashing) {
+				Vector2 movement = Utils.GetPlayerMovement (tag);
+
+				if (Utils.IsPlayerMoving (tag)) {
+					lastDirection = movement;
+				}
+
+				rb2d.velocity = movement * speed;
+
+				cc2d.offset = lastDirection * circleOffsetCoefficient;
 			}
+			
 
-			rb2d.velocity = movement * (speed + dashVel);
-
-			cc2d.offset = lastDirection * circleOffsetCoefficient;	
 		} 
 	}
 
 	public void Dash ()
 	{
-		if (Input.GetButtonDown ("Horizontal" + gameObject.tag)) {
+		if (Input.GetButtonDown ("Distort" + gameObject.tag)) {
+			dashing = true;
+		}
+		if (Input.GetButtonUp ("Distort" + gameObject.tag)) {
+			dashing = false;
+		}
+		if (dashing) {
+			dashTime += Time.deltaTime;
+			dashOnCD = true;
+		}
+		if (dashTime >= .5) {
+			dashing = false;
+			dashTime = 0;
+		}
+
+
+		/*if (Input.GetButtonDown ("Horizontal" + gameObject.tag)) {
 			if (lastDirectionKey == Input.GetAxis ("Horizontal" + gameObject.tag) && horOrVer == 0) {
 				sameDirectionKeyCount++;
 			} else {
 				lastDirectionKey = Input.GetAxis ("Horizontal" + gameObject.tag);
 				sameDirectionKeyCount = 0;
-				horOrVer = 0;
+				horOrVer = 0;  //horizontal
 			}
 		}
 		if (Input.GetButtonDown ("Vertical" + gameObject.tag)) {
@@ -78,6 +117,7 @@ public class PlayerMovement : MonoBehaviour
 			}
 
 		}
+
 		if (Input.GetButtonUp ("Horizontal" + gameObject.tag)) {
 			dashVel = 0;
 			//rb2d.velocity = new Vector2 (0, 0);
@@ -105,7 +145,7 @@ public class PlayerMovement : MonoBehaviour
 			sameDirectionKeyCount = 0;
 			delay = 0;
 			dash = false;
-		}
+		}*/
 
 	}
 }
