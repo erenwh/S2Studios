@@ -43,6 +43,10 @@ public class DistortionCreator : MonoBehaviour {
 				createdDistortion = Instantiate (distortions [SLOWDOWN], transform);
 				createdDistortion.GetComponent<TimeSlowDown> ().AssignPlayer (gameObject, slowDownFactor);
 				break;
+			case SPEEDUP:
+				break;
+			case FREEZE:
+				break;
 			}
 			//TODO: Add additional distortion types for later Sprints
 		}
