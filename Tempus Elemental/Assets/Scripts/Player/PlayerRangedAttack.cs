@@ -10,6 +10,8 @@ public class PlayerRangedAttack : MonoBehaviour
 	private Vector2 aimDirc;
 	private PlayerMovement pm;
 
+	public bool da = gameObject.GetComponent<PlayerMovement>().dashing; 
+
 
     void Start() 
     {
