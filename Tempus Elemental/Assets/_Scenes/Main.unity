@@ -2223,8 +2223,6 @@ MonoBehaviour:
   - {fileID: 1412619592639186, guid: 42425612da3924b4b97414bce2176626, type: 2}
   - {fileID: 1922498717170742, guid: c4fa9d65fb045f9439a478179dc4d22d, type: 2}
   - {fileID: 1772906808505630, guid: b1e0cefaee199db47b0f826149c46282, type: 2}
-  - {fileID: 1043988033234434, guid: 3d6136f127e588344b8e361664f81951, type: 2}
-  - {fileID: 1869078314933344, guid: 0be288d7fbcad74488d12bce12eea940, type: 2}
   - {fileID: 1412594545588478, guid: 7d4f45117b4f025479076c7ae86f3376, type: 2}
   spawnValues: {x: 5, y: 5, z: 0}
   spawnWait: 0
