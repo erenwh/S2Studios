@@ -4,6 +4,14 @@ using UnityEngine;
 
 public class SpawnObject : MonoBehaviour {
 
+    public enum ObjectType
+    {
+        PowerUp1,
+        PowerUp2,
+        PowerUp3,
+        Player,
+    }
+
     public GameObject[] pups;       // powerup array
     public Vector3 spawnValues;
     public float spawnWait;         // some amount to wait
@@ -34,5 +42,39 @@ public class SpawnObject : MonoBehaviour {
 
             yield return new WaitForSeconds(spawnWait);
         }
+    }
+
+    public GameObject Spawn(ObjectType type, Vector2 pos)
+    {
+        var prefab = pups[(int)type];
+        var objSize = prefab.GetComponent<Renderer>().bounds.size;
+        var mapSize = GameObject.FindWithTag("Map").GetComponent<Renderer>().bounds.size;
+        var colliders = GameObject.FindWithTag("Walls").GetComponents<BoxCollider2D>();
+        bool shouldRepeat = false;
+        // find a safe place
+        while (true) {
+			var randx = Random.Range(0, mapSize.x);
+			var randy = Random.Range(0, mapSize.y);
+			randx -= mapSize.x / 2;
+			randy -= mapSize.y / 2;
+
+            var randBounds = new Bounds(new Vector3(randx, randy), objSize);
+
+			foreach (var coll in colliders)
+			{
+				if (coll.bounds.Intersects(randBounds))
+				{
+                    shouldRepeat = true;
+                    break;
+				}
+			}
+
+            if (shouldRepeat) {
+                shouldRepeat = false;
+                continue;
+            }
+
+            return Instantiate(prefab, new Vector3(randx, randy), gameObject.transform.rotation);
+		}
     }
 }

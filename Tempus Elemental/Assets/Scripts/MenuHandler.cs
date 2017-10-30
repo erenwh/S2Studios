@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -9,13 +8,11 @@ public class MenuHandler : MonoBehaviour
     public Dropdown selectPlayerDropdown;
     public Text selectedAmountPlayers;
 
-    List<string> numPlayers = new List<string>() { "4 players selected", "3 players selected", "2 players selected" };
-
-	// Use this for initialization
-	void Start ()
-    {
-
-	}
+    private List<string> numPlayers = 
+        new List<string>() { 
+        "4 players selected", 
+        "3 players selected", 
+        "2 players selected" };
 	
 	public void OnGameSetup()
     {

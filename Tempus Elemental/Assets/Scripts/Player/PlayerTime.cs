@@ -10,12 +10,7 @@ public class PlayerTime : MonoBehaviour {
 	public Slider timeIndicator;
 	public Text timeText;
 
-	/// <summary>
-	/// Takes a specified amount of time from a player and gives it to another player.
-	/// </summary>
-	/// <param name="amount">Amount of time transfered (int).</param>
-	/// <param name="playerFrom">The player losing time.</param>
-	/// <param name="playerTo">The player gaining time (The attacking player).</param>
+	// Takes a specified amount of time from a player and gives it to another player.
 	public static void TransferTime (int amount, GameObject playerFrom, GameObject playerTo) {
 		if (playerFrom != null) {
 			playerFrom.GetComponent<PlayerTime> ().timeRemaining -= amount;
@@ -29,20 +24,15 @@ public class PlayerTime : MonoBehaviour {
 		}
 	}
 
-	/// <summary>
-	/// Decrements the timeRemaining of this player.
-	/// </summary>
-	/// <param name="timeLost">How much time will this player lose? (int).</param>
+	// Decrements the timeRemaining of this player.
 	public void DecrementTime (int timeLost) {
 		timeRemaining -= timeLost;
 		timeIndicator.value = timeRemaining;
 		timeText.text = timeRemaining.ToString ();
 	}
 
-	/// <summary>
-	/// Adds to the timeRemaining of this player.
-	/// </summary>
-	/// <param name="timeGained">Time gained.</param>
+	// Adds to the timeRemaining of this player.
+	
 	public void AddTime (int timeGained) {
 		timeRemaining += timeGained;
 		timeIndicator.value = timeRemaining;
@@ -75,32 +65,35 @@ public class PlayerTime : MonoBehaviour {
         }
 	}
 
-	/// <summary>
-	/// Has the player's time start its 1 per second decrement, and resets the initial time to whatever it should start with. 
-	/// </summary>
+    public bool IsPlayerAlive() {
+        if (timeRemaining < 1) {
+            return false;
+        }
+        return true;
+    }
+
+	
+	// Has the player's time start its 1 per second decrement, and resets the initial time to whatever it should start with. 
 	void BeginCountdown () {
 		timeRemaining = startingTime;
 		StartCoroutine("DecrementOverTime");
 	}
 
-	/// <summary>
-	/// Decrements the timeRemaining by 1 every second, calls relevant death methods upon going under 1 second of timeRemaining.
-	/// </summary>
-	/// <returns>The time.</returns>
+	// Decrements the timeRemaining by 1 every second, calls relevant death methods upon going under 1 second of timeRemaining.
 	IEnumerator DecrementOverTime () {
 		while (true) {
 			yield return new WaitForSeconds (1f);
 			DecrementTime (1);
-			if (timeRemaining < 1) {
+			//if (timeRemaining < 1) {
 				//Call Death animation & play sfx
 				//let game controller know
-				Destroy(gameObject);
-                Game.Instance.numPlayers--;
-                if (Game.Instance.numPlayers == 0)
-                {
-                    SceneManager.LoadScene("Menu");
-                }
-            }
+				//Destroy(gameObject);
+                //Game.Instance.numPlayers--;
+                //if (Game.Instance.numPlayers == 0)
+                //{
+                //    SceneManager.LoadScene("Menu");
+                //}
+            //}
 		}
 	}
 }

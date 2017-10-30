@@ -10,6 +10,9 @@ TagManager:
   - Player2
   - Player4
   - Player3
+  - VictoryMessage
+  - VictoryMessageTxt
+  - Map
   layers:
   - Default
   - TransparentFX
