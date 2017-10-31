@@ -75,6 +75,7 @@ public class MenuHandler : MonoBehaviour
         {
             selectedMap.sprite = mageCityMap;
             selectedMap.color = Color.gray;
+            
         }
         else if (selectedMap.sprite == mageCityMap)
         {

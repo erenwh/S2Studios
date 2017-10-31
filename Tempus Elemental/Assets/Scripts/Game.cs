@@ -5,6 +5,8 @@ public class Game : MonoBehaviour
 {
     //Used to keep track of number players selected in menu
     public int numPlayers = 4;
+    //references to maps from Main scene to use in Menu scene
+    public GameObject map1, map2;
 
     public GameController GameController
     {
