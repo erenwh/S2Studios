@@ -2227,8 +2227,10 @@ MonoBehaviour:
   - {fileID: 114254666280343000, guid: e05636b08049bbe4285ca5368948aaa5, type: 2}
   - {fileID: 114798265181320856, guid: 2e4b8b6c47e6caf428daf2a99568d454, type: 2}
   - {fileID: 114023818021056810, guid: 98d55a9aa477a114a8d28299ade98482, type: 2}
-  numGameModes: 3
   selectedMap: {fileID: 1887805638}
+  dummyMap: {fileID: 21300000, guid: 61d436c22e79e4dd1a0062c7b859c747, type: 3}
+  mageCityMap: {fileID: 21300000, guid: 1b884353f48b23f48a696fe8bd1e68f2, type: 3}
+  numGameModes: 3
 --- !u!4 &1422248588
 Transform:
   m_ObjectHideFlags: 0
@@ -3131,14 +3133,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 1b884353f48b23f48a696fe8bd1e68f2, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
