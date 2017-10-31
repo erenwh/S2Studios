@@ -6,6 +6,8 @@ using System.Collections.Generic;
 public abstract class GameController : MonoBehaviour 
 {
 
+    public int numPlayers = 0;
+
     private bool isFinishedState = false;
 
     abstract public bool VictoryCondition();
