@@ -15,11 +15,13 @@ public class MenuHandler : MonoBehaviour
     public Text selectedAmountPlayers;
 	public Text selectedGameModeText;
 	public GameController[] gameControllers;
-
-	//variables
-	public int numGameModes = 3;
-	private int selectedGameMode = 0;
     public Image selectedMap;
+    public Sprite dummyMap;
+    public Sprite mageCityMap;
+
+    //variables
+    public int numGameModes = 3;
+	private int selectedGameMode = 0;
 
     private List<string> numPlayers = 
         new List<string>() { 
@@ -69,7 +71,16 @@ public class MenuHandler : MonoBehaviour
 
     public void ChangeMap ()
     {
-        selectedMap.color = Color.magenta;
+        if (selectedMap.sprite == dummyMap)
+        {
+            selectedMap.sprite = mageCityMap;
+            selectedMap.color = Color.gray;
+        }
+        else if (selectedMap.sprite == mageCityMap)
+        {
+            selectedMap.sprite = dummyMap;
+            selectedMap.color = Color.magenta;
+        }
     }
 
     public void SelectPlayer(int index)
