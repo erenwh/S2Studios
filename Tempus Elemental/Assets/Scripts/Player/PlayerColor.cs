@@ -3,8 +3,10 @@
 public class PlayerColor : MonoBehaviour 
 {
 	public Color color;
+
 	public float t;
 	private bool updatelock = false;
+
 	void Start () 
     {
 		//assign color
@@ -21,6 +23,7 @@ public class PlayerColor : MonoBehaviour
         {
 			color = Color.yellow;
 		}
+
 		GetComponent<SpriteRenderer> ().color = color;
 	}
 	void Update() {
@@ -49,8 +52,6 @@ public class PlayerColor : MonoBehaviour
 		time = 0;
 		updatelock = false;
 
-
-
+		GetComponent<SpriteRenderer> ().color = color;
 	}
-
 }

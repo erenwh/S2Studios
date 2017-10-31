@@ -221,7 +221,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   color: {r: 0, g: 0, b: 0, a: 0}
-  t: 0
 --- !u!114 &60927514
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -365,7 +364,6 @@ MonoBehaviour:
   startingTime: 90
   timeIndicator: {fileID: 808886505}
   timeText: {fileID: 657676003}
-  color: {r: 0, g: 0, b: 0, a: 0}
 --- !u!50 &60927523
 Rigidbody2D:
   serializedVersion: 4
@@ -2054,46 +2052,6 @@ Prefab:
         type: 2}
       propertyPath: m_Enabled
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 212096129990206330, guid: 7d4f45117b4f025479076c7ae86f3376,
-        type: 2}
-      propertyPath: m_Color.a
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 212096129990206330, guid: 7d4f45117b4f025479076c7ae86f3376,
-        type: 2}
-      propertyPath: m_Color.b
-      value: 0.7607844
-      objectReference: {fileID: 0}
-    - target: {fileID: 114204873116486256, guid: 7d4f45117b4f025479076c7ae86f3376,
-        type: 2}
-      propertyPath: color.r
-      value: 0.7607844
-      objectReference: {fileID: 0}
-    - target: {fileID: 114204873116486256, guid: 7d4f45117b4f025479076c7ae86f3376,
-        type: 2}
-      propertyPath: color.g
-      value: 0.7607844
-      objectReference: {fileID: 0}
-    - target: {fileID: 114204873116486256, guid: 7d4f45117b4f025479076c7ae86f3376,
-        type: 2}
-      propertyPath: color.b
-      value: 0.7607844
-      objectReference: {fileID: 0}
-    - target: {fileID: 114204873116486256, guid: 7d4f45117b4f025479076c7ae86f3376,
-        type: 2}
-      propertyPath: color.a
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 212096129990206330, guid: 7d4f45117b4f025479076c7ae86f3376,
-        type: 2}
-      propertyPath: m_Color.r
-      value: 0.7607844
-      objectReference: {fileID: 0}
-    - target: {fileID: 212096129990206330, guid: 7d4f45117b4f025479076c7ae86f3376,
-        type: 2}
-      propertyPath: m_Color.g
-      value: 0.7607844
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7d4f45117b4f025479076c7ae86f3376, type: 2}
