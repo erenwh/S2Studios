@@ -24,7 +24,7 @@ public class DistortionCreator : MonoBehaviour {
 	private GameObject createdDistortion;		//the current distortion created by the player
 	private float timeDistorted;				//how long the player has been distorting for
 
-	private float multiplier = 1;					//the distortion multiplier that affects the distortion when multiple powerups are picked up
+	private float multiplier = 1;				//the distortion multiplier that affects the distortion when multiple powerups are picked up
 
 	// Use this for initialization
 	void Start () {
@@ -49,7 +49,8 @@ public class DistortionCreator : MonoBehaviour {
 				}
 				break;
 			case FREEZE:
-				// not sure how the freeze time distortion would become more powerful when stacked
+				// Brian: not sure how the freeze time distortion would become more powerful when stacked 
+				// Parr: We could make the Radius bigger?
 				break;
 			}
 		}
@@ -58,35 +59,43 @@ public class DistortionCreator : MonoBehaviour {
 	void resetMultiplier() {
 		multiplier = 1;
 	}
-	
+
+	// check and then start a distortion
+	public void Distort () {
+		if (distorting) {
+			return;
+		}
+		distorting = true;
+		timeDistorted = 0.0f;
+		switch (distortionType) {
+		case SLOWDOWN:
+			createdDistortion = Instantiate (distortions [SLOWDOWN], transform);
+			createdDistortion.GetComponent<TimeSlowDown> ().AssignPlayer (gameObject, slowDownFactor);
+			break;
+		case SPEEDUP:
+			break;
+		case FREEZE:
+			break;
+		}
+		//TODO: Add additional distortion types for later Sprints
+	}
+
+	// end the running distortion
+	public void EndDistortion () {
+		if (!distorting) {
+			return;
+		}
+		distorting = false;
+		Destroy (createdDistortion);
+	}
+
 	// Update is called once per frame
 	void Update () {
+		//creating and ending distortions are now in PlayerMovement to account for the dash mechanic
 
-		//check what previous type the distortion is and then increase the multiplier
-
-
-		//create distortion
 		//call the applyMultiplier function in here somewhere
 		if (!distorting && Input.GetButtonDown("Distort" + gameObject.tag)) {
-			distorting = true;
-			timeDistorted = 0.0f;
-			switch (distortionType) {
-			case SLOWDOWN:
-				createdDistortion = Instantiate (distortions [SLOWDOWN], transform);
-				createdDistortion.GetComponent<TimeSlowDown> ().AssignPlayer (gameObject, slowDownFactor);
-				break;
-			case SPEEDUP:
-				break;
-			case FREEZE:
-				break;
-			}
-			//TODO: Add additional distortion types for later Sprints
-		}
 
-		//destroy distortion
-		if (distorting && Input.GetButtonUp ("Distort" + gameObject.tag)) {
-			distorting = false;
-			Destroy (createdDistortion);
 		}
 
 		//cost to distort
