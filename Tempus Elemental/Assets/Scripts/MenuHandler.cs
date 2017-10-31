@@ -19,6 +19,16 @@ public class MenuHandler : MonoBehaviour
 		//Debug.Log ("Hi Eli");
 	}
 
+	//right arrow selecting the game mode
+	public void NextGameMode () {
+		
+	}
+
+	//left arrow selecting the game mode
+	public void PrevGameMode () {
+		
+	}
+
     public void SelectPlayer(int index)
     {
         selectedAmountPlayers.text = numPlayers[index];
