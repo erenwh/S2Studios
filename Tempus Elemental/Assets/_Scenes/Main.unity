@@ -221,6 +221,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   color: {r: 0, g: 0, b: 0, a: 0}
+  t: 0
 --- !u!114 &60927514
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -362,6 +363,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startingTime: 90
+  timeRemaining: 0
   timeIndicator: {fileID: 808886505}
   timeText: {fileID: 657676003}
 --- !u!50 &60927523
@@ -401,11 +403,8 @@ MonoBehaviour:
   charging: 0
   circleOffsetCoefficient: 0.18
   dashSpeed: 6
-  dashTime: 0
-  dashing: 0
-  dashCD: 3
-  dashOnCD: 0
-  ButtonCount: 0
+  dashTime: 0.25
+  dashCost: 1
 --- !u!212 &60927525
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -650,6 +649,11 @@ Prefab:
         type: 2}
       propertyPath: m_Enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114693782493322696, guid: 7d4f45117b4f025479076c7ae86f3376,
+        type: 2}
+      propertyPath: dashTime
+      value: 0.25
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7d4f45117b4f025479076c7ae86f3376, type: 2}
@@ -2053,6 +2057,11 @@ Prefab:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114693782493322696, guid: 7d4f45117b4f025479076c7ae86f3376,
+        type: 2}
+      propertyPath: dashTime
+      value: 0.25
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7d4f45117b4f025479076c7ae86f3376, type: 2}
   m_IsPrefabParent: 0
@@ -2348,6 +2357,11 @@ Prefab:
         type: 2}
       propertyPath: m_Enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114693782493322696, guid: 7d4f45117b4f025479076c7ae86f3376,
+        type: 2}
+      propertyPath: dashTime
+      value: 0.25
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7d4f45117b4f025479076c7ae86f3376, type: 2}
