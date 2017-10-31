@@ -9,7 +9,13 @@ public class PlayerTime : MonoBehaviour {
 	private int timeRemaining;			// how much time does this player have left?
 	public Slider timeIndicator;
 	public Text timeText;
+	public Color color;
 
+	public int TimeRemaining {
+		get {
+			return this.timeRemaining;
+		}
+	}
 	// Takes a specified amount of time from a player and gives it to another player.
 	public static void TransferTime (int amount, GameObject playerFrom, GameObject playerTo) {
 		if (playerFrom != null) {
@@ -63,7 +69,9 @@ public class PlayerTime : MonoBehaviour {
                 Debug.LogError("GameController's number of players is invalid. Less than four but not 2 or 3.");
             }
         }
+
 	}
+
 
     public bool IsPlayerAlive() {
         if (timeRemaining < 1) {
@@ -96,4 +104,6 @@ public class PlayerTime : MonoBehaviour {
             //}
 		}
 	}
+
+
 }

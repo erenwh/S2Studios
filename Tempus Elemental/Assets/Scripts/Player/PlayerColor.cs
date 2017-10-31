@@ -3,7 +3,7 @@
 public class PlayerColor : MonoBehaviour 
 {
 	public Color color;
-    	
+	public float t;
 	void Start () 
     {
 		//assign color
@@ -20,7 +20,14 @@ public class PlayerColor : MonoBehaviour
         {
 			color = Color.yellow;
 		}
-
 		GetComponent<SpriteRenderer> ().color = color;
 	}
+	void Update() {
+		float time = (float)GetComponent<PlayerTime> ().TimeRemaining / 90.0f;
+		t = time;
+		color.a = time;
+		GetComponent<SpriteRenderer> ().color = color;
+
+	}
+
 }
