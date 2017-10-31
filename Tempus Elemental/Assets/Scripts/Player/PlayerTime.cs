@@ -6,10 +6,14 @@ using UnityEngine.UI;
 public class PlayerTime : MonoBehaviour {
 
 	public int startingTime; 			// changing to nothing so we may keep changing it as needed
-	private int timeRemaining;			// how much time does this player have left?
+	public int timeRemaining;			// how much time does this player have left?
 	public Slider timeIndicator;
 	public Text timeText;
-
+	public int TimeRemaining {
+		get {
+			return this.timeRemaining;
+		}
+	}
 	// Takes a specified amount of time from a player and gives it to another player.
 	public static void TransferTime (int amount, GameObject playerFrom, GameObject playerTo) {
 		if (playerFrom != null) {
