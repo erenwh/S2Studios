@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System.Collections;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -12,31 +13,22 @@ public class PlayerMovement : MonoBehaviour
 	private CircleCollider2D cc2d;
 	private Rigidbody2D rb2d;
 	private Vector2 lastDirection;
+	private DistortionCreator dc;
 
-	public float dashSpeed = 6f;
-	public float dashTime;
-	public bool dashing;
+	public float dashSpeed = 6f;			//how much faster do you move when dashing?
+	public float dashTime = 0.25f;			//how long do you dash?
+	public int dashCost = 1;				//how much time do you lose for dashing?
 
-	public float dashCD = 3f;
-	public bool dashOnCD;
-
-	/*
-	public int sameDirectionKeyCount = 0;
-	public float lastDirectionKey;
-	public int horOrVer = -1;
-	public bool dash = false;
-	public float dashTime = 0;
-	public float dashVel;
-	public float delay;*/
-
-	public int ButtonCount = 0;
+	private bool dashing;
+	private bool dashDown = false;
+	private float dashDownTime = 0.0f;
 
 	void Start ()
 	{
 		charging = false;
 		rb2d = GetComponent<Rigidbody2D> ();
 		cc2d = GetComponent<CircleCollider2D> ();
-
+		dc = GetComponent<DistortionCreator> ();
 	}
 
 	public Vector2 FacingDirection ()
@@ -44,108 +36,60 @@ public class PlayerMovement : MonoBehaviour
 		return lastDirection;
 	}
 
+	void Update () {
+		if (!charging && !dashing) {
+			Dash ();
+		}
+	}
+
 	private void FixedUpdate ()
 	{
-		
-		Dash ();
-
 		if (charging) {
 			rb2d.velocity = Vector2.zero;
 		} else {
-			if (dashing) {
-				
-
+			if (!dashing) {
 				Vector2 movement = Utils.GetPlayerMovement (tag);
-
 				if (Utils.IsPlayerMoving (tag)) {
 					lastDirection = movement;
 				}
-
-				rb2d.velocity = movement * (speed + dashSpeed);
-
-				cc2d.offset = lastDirection * circleOffsetCoefficient;	
-			} else if (!dashing) {
-				Vector2 movement = Utils.GetPlayerMovement (tag);
-
-				if (Utils.IsPlayerMoving (tag)) {
-					lastDirection = movement;
-				}
-
 				rb2d.velocity = movement * speed;
-
 				cc2d.offset = lastDirection * circleOffsetCoefficient;
 			}
-			
-
 		} 
 	}
-
-	public void Dash ()
+		
+	// Performs the dash. Continue the player's momentum for a specified amount of time. Costs a second to perform.
+	IEnumerator PerformDash () {
+		dashing = true;
+		Vector2 movement = Utils.GetPlayerMovement (tag);
+		rb2d.velocity = movement * (speed + dashSpeed);
+		dashDownTime = 0.0f;	//shouldn't need, just assuring that it is 0
+		GetComponent<PlayerTime> ().DecrementTime(dashCost);
+		yield return new WaitForSeconds (dashTime);
+		dashing = false;
+	}
+		
+	// Calculate if we should use a dash or a time distortion right now.
+	void Dash ()
 	{
 		if (Input.GetButtonDown ("Distort" + gameObject.tag)) {
-			dashing = true;
+			dashDown = true;
+			dashDownTime = 0.0f;
 		}
 		if (Input.GetButtonUp ("Distort" + gameObject.tag)) {
-			dashing = false;
-		}
-		if (dashing) {
-			dashTime += Time.deltaTime;
-			dashOnCD = true;
-		}
-		if (dashTime >= .5) {
-			dashing = false;
-			dashTime = 0;
-		}
-
-
-		/*if (Input.GetButtonDown ("Horizontal" + gameObject.tag)) {
-			if (lastDirectionKey == Input.GetAxis ("Horizontal" + gameObject.tag) && horOrVer == 0) {
-				sameDirectionKeyCount++;
+			dashDown = false;
+			if (dashDownTime < 0.5f) {
+				StartCoroutine ("PerformDash");
 			} else {
-				lastDirectionKey = Input.GetAxis ("Horizontal" + gameObject.tag);
-				sameDirectionKeyCount = 0;
-				horOrVer = 0;  //horizontal
+				dc.EndDistortion();
 			}
+			dashDownTime = 0.0f;
 		}
-		if (Input.GetButtonDown ("Vertical" + gameObject.tag)) {
-			if (lastDirectionKey == Input.GetAxis ("Vertical" + gameObject.tag) && horOrVer == 1) {
-				sameDirectionKeyCount++;
-			} else {
-				lastDirectionKey = Input.GetAxis ("Vertical" + gameObject.tag);
-				sameDirectionKeyCount = 0;
-				horOrVer = 1;
-			}
-
+		if (dashDown) {
+			dashDownTime += Time.deltaTime;
 		}
-
-		if (Input.GetButtonUp ("Horizontal" + gameObject.tag)) {
-			dashVel = 0;
-			//rb2d.velocity = new Vector2 (0, 0);
+		if (dashDownTime >= 0.5f) {
+			dc.Distort();
 		}
-		if (Input.GetButtonUp ("Vertical" + gameObject.tag)) {
-			dashVel = 0;
-			//rb2d.velocity = new Vector2 (0, 0);
-		}
-		if ((sameDirectionKeyCount == 1) && (delay < .5)) {
-			delay += Time.deltaTime;
-		}
-		if ((sameDirectionKeyCount == 1) && (delay >= .5)) { //reset
-			delay = 0;
-			sameDirectionKeyCount = 0;
-		}
-		if ((sameDirectionKeyCount == 2) && (delay < .5)) { // dash
-			dash = true;
-			dashVel = 6f;
-			sameDirectionKeyCount = 0;
-			horOrVer = -1;
-			//Dash
-		}
-		if (delay >= .5) { // dash end
-			dashVel = 0;
-			sameDirectionKeyCount = 0;
-			delay = 0;
-			dash = false;
-		}*/
-
 	}
 }
