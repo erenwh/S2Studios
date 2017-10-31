@@ -64,7 +64,7 @@ public class MenuHandler : MonoBehaviour
 
     public void ChangeMap ()
     {
-        selectedMap.color = new Color32(255,255,255,100);
+        selectedMap.color = Color.magenta;
     }
 
     public void SelectPlayer(int index)
