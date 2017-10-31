@@ -2182,6 +2182,7 @@ MonoBehaviour:
   selectPlayerDropdown: {fileID: 194626475}
   selectedAmountPlayers: {fileID: 714233948}
   selectedGameModeText: {fileID: 1183422408}
+  gameControllers: []
   numGameModes: 3
   selectedMap: {fileID: 1887805638}
 --- !u!4 &1422248588
@@ -2272,7 +2273,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1432639298}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1422248587}
+        m_MethodName: ChangeMap
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1432639298
