@@ -29,7 +29,7 @@ public class PlayerColor : MonoBehaviour
 	void Update() {
 		// player's color transparency based on player remaining health
 		if (!updatelock) {
-			float time = (float)GetComponent<PlayerTime> ().TimeRemaining / 45.0f;
+			float time = (float)GetComponent<PlayerTime> ().TimeRemaining / 90.0f + 0.4f;
 			t = time;
 			color.a = time;
 			GetComponent<SpriteRenderer> ().color = color;
