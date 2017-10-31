@@ -6,7 +6,7 @@ public class Game : MonoBehaviour
     //Used to keep track of number players selected in menu
     public int numPlayers = 4;
 
-    public GameController gameController
+    public GameController GameController
     {
         get;
         set;
@@ -29,11 +29,21 @@ public class Game : MonoBehaviour
         {
             Instance = this;
         }
-        if (Instance != this) {
+        if (Instance != this) 
+        {
             Debug.LogError("Breach of singleton pattern, " +
                            "we have two game controller objects!");
         }
 		DontDestroyOnLoad(transform.gameObject);
 	}
+
+    void Update()
+    {
+        if (!GameController || !GameController.isStarted) {
+            return;
+        }
+
+        GameController.Update();
+    }
 
 }

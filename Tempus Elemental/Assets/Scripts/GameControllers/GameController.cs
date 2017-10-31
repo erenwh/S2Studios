@@ -5,6 +5,7 @@ using System.Collections.Generic;
 
 public abstract class GameController : MonoBehaviour 
 {
+    public bool isStarted = false;
 
     public int numPlayers = 0;
 
@@ -39,9 +40,10 @@ public abstract class GameController : MonoBehaviour
     {
         SpawnPlayers();
         SpawnObjects();
+        isStarted = true;
     }
 
-    void Update() 
+    public void Update() 
     {
         if (isFinishedState && Input.anyKey) {
             BackToMenu();
