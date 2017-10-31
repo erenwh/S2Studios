@@ -67,22 +67,22 @@ public class TDMController : GameController {
 	void Update () {
 
         //destory player when they run out of time
-		if (!((PlayerTime)player4.GetComponent(typeof(PlayerTime))).IsPlayerAlive())
+		if (!(player4.GetComponent<PlayerTime>()).IsPlayerAlive())
         {
             Destroy(player4);
             alivePlayers[3] = false;
         }
-        else if (!((PlayerTime)player3.GetComponent(typeof(PlayerTime))).IsPlayerAlive())
+        else if (!(player3.GetComponent<PlayerTime>()).IsPlayerAlive())
         {
             Destroy(player3);
             alivePlayers[2] = false;
         }
-        else if (!((PlayerTime)player2.GetComponent(typeof(PlayerTime))).IsPlayerAlive())
+        else if (!(player2.GetComponent<PlayerTime>()).IsPlayerAlive())
         {
             Destroy(player2);
             alivePlayers[1] = false;
         }
-        else if (!((PlayerTime)player1.GetComponent(typeof(PlayerTime))).IsPlayerAlive())
+        else if (!(player1.GetComponent<PlayerTime>()).IsPlayerAlive())
         {
             Destroy(player1);
             alivePlayers[0] = false;
