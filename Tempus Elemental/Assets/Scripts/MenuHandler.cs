@@ -18,7 +18,7 @@ public class MenuHandler : MonoBehaviour
 	//variables
 	public int numGameModes = 3;
 	private int selectedGameMode = 0;
-
+    public Image selectedMap;
 
     private List<string> numPlayers = 
         new List<string>() { 
@@ -61,6 +61,11 @@ public class MenuHandler : MonoBehaviour
 			break;
 		}
 	}
+
+    public void ChangeMap ()
+    {
+        selectedMap.color = new Color32(255,255,255,100);
+    }
 
     public void SelectPlayer(int index)
     {
