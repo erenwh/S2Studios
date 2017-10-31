@@ -6,11 +6,9 @@ using UnityEngine.UI;
 public class PlayerTime : MonoBehaviour {
 
 	public int startingTime; 			// changing to nothing so we may keep changing it as needed
-	private int timeRemaining;			// how much time does this player have left?
+	public int timeRemaining;			// how much time does this player have left?
 	public Slider timeIndicator;
 	public Text timeText;
-	public Color color;
-
 	public int TimeRemaining {
 		get {
 			return this.timeRemaining;
@@ -69,9 +67,7 @@ public class PlayerTime : MonoBehaviour {
                 Debug.LogError("GameController's number of players is invalid. Less than four but not 2 or 3.");
             }
         }
-
 	}
-
 
     public bool IsPlayerAlive() {
         if (timeRemaining < 1) {
@@ -104,6 +100,4 @@ public class PlayerTime : MonoBehaviour {
             //}
 		}
 	}
-
-
 }
