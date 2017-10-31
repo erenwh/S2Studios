@@ -14,6 +14,7 @@ public class MenuHandler : MonoBehaviour
     public Dropdown selectPlayerDropdown;
     public Text selectedAmountPlayers;
 	public Text selectedGameModeText;
+	public GameController[] gameControllers;
 
 	//variables
 	public int numGameModes = 3;
@@ -37,6 +38,8 @@ public class MenuHandler : MonoBehaviour
 		if (selectedGameMode >= numGameModes) {
 			selectedGameMode = 0;
 		}
+		SetGameModeText ();
+		Game.Instance.GameController = gameControllers [selectedGameMode];
 	}
 
 	//left arrow selecting the game mode
@@ -45,6 +48,8 @@ public class MenuHandler : MonoBehaviour
 		if (selectedGameMode < 0) {
 			selectedGameMode = numGameModes - 1;
 		}
+		SetGameModeText ();
+		Game.Instance.GameController = gameControllers [selectedGameMode];
 	}
 
 	//sets the text in the menu so that the player knows
