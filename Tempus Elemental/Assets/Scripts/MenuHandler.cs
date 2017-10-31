@@ -7,6 +7,7 @@ public class MenuHandler : MonoBehaviour
 {
     public Dropdown selectPlayerDropdown;
     public Text selectedAmountPlayers;
+    public Image selectedMap;
 
     private List<string> numPlayers = 
         new List<string>() { 
@@ -28,6 +29,11 @@ public class MenuHandler : MonoBehaviour
 	public void PrevGameMode () {
 		
 	}
+
+    public void ChangeMap ()
+    {
+        selectedMap.color = new Color32(255,255,255,100);
+    }
 
     public void SelectPlayer(int index)
     {
