@@ -23,7 +23,7 @@ public class PlayerColor : MonoBehaviour
 		GetComponent<SpriteRenderer> ().color = color;
 	}
 	void Update() {
-		float time = (float)GetComponent<PlayerTime> ().TimeRemaining / 90.0f;
+		float time = (float)GetComponent<PlayerTime> ().TimeRemaining / 45.0f;
 		t = time;
 		color.a = time;
 		GetComponent<SpriteRenderer> ().color = color;
