@@ -75,12 +75,13 @@ public class MenuHandler : MonoBehaviour
         {
             selectedMap.sprite = mageCityMap;
             selectedMap.color = Color.gray;
-            
+            Game.Instance.mapSelected = 1;
         }
         else if (selectedMap.sprite == mageCityMap)
         {
             selectedMap.sprite = dummyMap;
             selectedMap.color = Color.magenta;
+            Game.Instance.mapSelected = 2;
         }
     }
 

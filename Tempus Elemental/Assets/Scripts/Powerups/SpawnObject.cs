@@ -22,9 +22,15 @@ public class SpawnObject : MonoBehaviour {
     public int startWait;           // initial
     private int randpup;           	// random number to decide which powerup 
 
+    private GameObject map1, map2;
+
 	// Use this for initialization
 	void Start () {
-        StartCoroutine(Spawner()); 
+        StartCoroutine(Spawner());
+
+        map1 = GameObject.Find("DummyMap");
+        map2 = GameObject.Find("DummyMap2");
+        Utils.SwitchMap(map1, map2);
 	}
 	
 	// Update is called once per frame 

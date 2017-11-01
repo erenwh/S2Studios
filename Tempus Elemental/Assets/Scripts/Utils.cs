@@ -47,4 +47,23 @@ public static class Utils
 		}
         return ObjectType.Other;
     }
+
+    public static void SwitchMap(GameObject map1, GameObject map2)
+    {
+        if (Game.Instance.mapSelected == 1)
+        {
+            map1.SetActive(true);
+            map2.SetActive(false);
+        }
+        else if (Game.Instance.mapSelected == 2)
+        {
+            map1.SetActive(false);
+            map2.SetActive(true);
+        }
+        else //default to one in error case
+        {
+            map1.SetActive(true);
+            map2.SetActive(false);
+        }
+    }
 }

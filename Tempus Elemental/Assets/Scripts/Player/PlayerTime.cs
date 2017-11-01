@@ -87,7 +87,7 @@ public class PlayerTime : MonoBehaviour {
 	IEnumerator DecrementOverTime () {
 		while (true) {
 			yield return new WaitForSeconds (1f);
-			DecrementTime (1);
+			if (timeRemaining >= 0) DecrementTime (1); //fix to prevent numbers going negative
 			//if (timeRemaining < 1) {
 				//Call Death animation & play sfx
 				//let game controller know
