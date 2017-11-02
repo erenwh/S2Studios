@@ -19,6 +19,7 @@ public class DistortionCreator : MonoBehaviour {
 	public float slowDownFactor = 0.5f;		//how much should other players be slowed down by a slow down time distortion
 	public int distortionType = 0;				//based on the constants, what kind of time distortion can the player currently make (default SLOWDOWN)
 	public float speedUpFactor = 2f;		//how much faster should the player become after using speedup time distortion
+	public float freezeRadius = 0.5f;		//how big is the freeze time distortion
 
 	private bool distorting = false;			//is the player currently performing a time distortion
 	private GameObject createdDistortion;		//the current distortion created by the player
@@ -51,6 +52,9 @@ public class DistortionCreator : MonoBehaviour {
 			case FREEZE:
 				// Brian: not sure how the freeze time distortion would become more powerful when stacked 
 				// Parr: We could make the Radius bigger?
+				for (int i = 0; i < multiplier - 1; i++) {
+					freezeRadius += freezeRadius;
+				}
 				break;
 			}
 		}
@@ -77,6 +81,8 @@ public class DistortionCreator : MonoBehaviour {
 			createdDistortion.GetComponent<TimeSpeedUp> ().AssignPlayer (gameObject, speedUpFactor);
 			break;
 		case FREEZE:
+			createdDistortion = Instantiate (distortions [FREEZE], transform);
+			createdDistortion.GetComponent<TimeFreeze> ().AssignPlayer (gameObject, freezeRadius);
 			break;
 		}
 		//TODO: Add additional distortion types for later Sprints

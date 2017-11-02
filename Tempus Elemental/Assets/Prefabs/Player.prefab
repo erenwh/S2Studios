@@ -323,6 +323,7 @@ MonoBehaviour:
   distortions:
   - {fileID: 1503169536051292, guid: 57ad04af19841d146ba53e7a042e33f1, type: 2}
   - {fileID: 1489354691523706, guid: a7f98e922fb7ef346998e7272800e199, type: 2}
+  - {fileID: 1101663128922924, guid: 46e50612816f45942a55a05e69e46bcb, type: 2}
   timeUsedPerSecond: 0.75
   slowDownFactor: 0.5
   distortionType: 0
