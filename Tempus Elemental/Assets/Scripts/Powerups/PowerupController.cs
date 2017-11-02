@@ -8,7 +8,6 @@ public class PowerupController : MonoBehaviour
     private float speedMultiplier;          // movement speed multiplier
     private float ogspeed;
     private int ogdamage;
-    private int flag = 0;
 
     private float powerupLengthCounter;     // count how long it has been active
 

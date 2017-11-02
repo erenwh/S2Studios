@@ -13,6 +13,7 @@ TagManager:
   - VictoryMessage
   - VictoryMessageTxt
   - Map
+  - Powerup
   layers:
   - Default
   - TransparentFX
