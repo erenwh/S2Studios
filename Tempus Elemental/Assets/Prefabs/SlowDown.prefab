@@ -39,7 +39,7 @@ GameObject:
   - component: {fileID: 95449148371848646}
   - component: {fileID: 58775289661686974}
   - component: {fileID: 114739257982968464}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: SlowDown
   m_TagString: Untagged
   m_Icon: {fileID: 0}
