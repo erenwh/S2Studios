@@ -3,18 +3,18 @@
 public class PlayerMeleeAttack : MonoBehaviour 
 {
 
-    public int damage = 1; 						//damage default to remove 1 seconds of time from player
+    public int damage = 5; 						//damage default to remove 5 seconds of time from player
     public float timeBtwnAttacks = 0.33f;		//even with button spam, don't allow buttonSpammers to attack too quickly
     private Collider2D playerAttacked;
     private bool hasAttacked = false;
     private float delay;
 
-	void Start () 
+	void Start ()
     {
         hasAttacked = false;
 	}
 
-    void Update() 
+    void Update()
     {
         if (playerAttacked == null)
         {
@@ -31,13 +31,14 @@ public class PlayerMeleeAttack : MonoBehaviour
 
 		if (Input.GetButtonUp("Fire" + gameObject.tag) && delay >= timeBtwnAttacks)
         {
+			// delay gets set to 0 here to indicate that an attack has ended and can start again.
+			delay = 0.0f;
             hasAttacked = false;
         }
     }
 
     void Attack()
     {
-		delay = 0.0f;
         if (Utils.DetermineObjectType(playerAttacked) == Utils.ObjectType.Player)
         {
 			PlayerTime.TransferTime (damage, playerAttacked.gameObject, gameObject);
