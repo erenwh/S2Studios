@@ -266,6 +266,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startingTime: 90
+  timeRemaining: 0
   timeIndicator: {fileID: 114438414919212842}
   timeText: {fileID: 0}
 --- !u!114 &114226360536914630
@@ -280,6 +281,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   color: {r: 0, g: 0, b: 0, a: 0}
+  t: 0
 --- !u!114 &114275955826050042
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -320,9 +322,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   distortions:
   - {fileID: 1503169536051292, guid: 57ad04af19841d146ba53e7a042e33f1, type: 2}
+  - {fileID: 1489354691523706, guid: a7f98e922fb7ef346998e7272800e199, type: 2}
   timeUsedPerSecond: 0.75
   slowDownFactor: 0.5
   distortionType: 0
+  speedUpFactor: 2
 --- !u!114 &114438414919212842
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -412,15 +416,9 @@ MonoBehaviour:
   speed: 3
   charging: 0
   circleOffsetCoefficient: 0.18
-  sameDirectionKeyCount: 0
-  lastDirectionKey: 0
-  horOrVer: -1
-  dash: 0
-  dashTime: 0
-  dashVel: 0
-  delay: 0
-  dashCooler: 0.5
-  ButtonCount: 0
+  dashSpeed: 6
+  dashTime: 0.25
+  dashCost: 1
 --- !u!114 &114789800082031028
 MonoBehaviour:
   m_ObjectHideFlags: 1

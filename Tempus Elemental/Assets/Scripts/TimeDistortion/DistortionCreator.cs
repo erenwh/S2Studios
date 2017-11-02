@@ -16,9 +16,9 @@ public class DistortionCreator : MonoBehaviour {
 
 	//variables
 	public float timeUsedPerSecond = 0.75f;		//how much extra time is used per second of use (rounded down)?
-	public float slowDownFactor = 0.75f;		//how much should other players be slowed down by a slow down time distortion
+	public float slowDownFactor = 0.5f;		//how much should other players be slowed down by a slow down time distortion
 	public int distortionType = 0;				//based on the constants, what kind of time distortion can the player currently make (default SLOWDOWN)
-	private float speedUpFactor = 1.25f;		//how much faster should the player become after using speedup time distortion
+	public float speedUpFactor = 2f;		//how much faster should the player become after using speedup time distortion
 
 	private bool distorting = false;			//is the player currently performing a time distortion
 	private GameObject createdDistortion;		//the current distortion created by the player
@@ -73,6 +73,8 @@ public class DistortionCreator : MonoBehaviour {
 			createdDistortion.GetComponent<TimeSlowDown> ().AssignPlayer (gameObject, slowDownFactor);
 			break;
 		case SPEEDUP:
+			createdDistortion = Instantiate (distortions [SPEEDUP], transform);
+			createdDistortion.GetComponent<TimeSpeedUp> ().AssignPlayer (gameObject, speedUpFactor);
 			break;
 		case FREEZE:
 			break;
