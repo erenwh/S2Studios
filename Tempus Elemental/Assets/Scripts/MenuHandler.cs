@@ -28,8 +28,9 @@ public class MenuHandler : MonoBehaviour
         "4 players selected", 
         "3 players selected", 
         "2 players selected" };
-	
-	public void OnGameSetup()
+    
+
+    public void OnGameSetup()
     {
 		//Debug.Log ("Hi Eli");
 	}
@@ -89,10 +90,14 @@ public class MenuHandler : MonoBehaviour
     {
         selectedAmountPlayers.text = numPlayers[index];
         Game.Instance.numPlayers = 4 - index;
+        Debug.Log("index " + (4 - index));
     }
 
     public void changeScenes()
     {
+        if (Game.Instance.GameController == null) {
+            Game.Instance.GameController = gameControllers[0];
+        }
         SceneManager.LoadScene("Main");
     }
 }

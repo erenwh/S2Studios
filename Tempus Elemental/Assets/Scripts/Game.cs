@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 
 // This is the permanent source of information for our game modes
 public class Game : MonoBehaviour 
@@ -37,6 +38,7 @@ public class Game : MonoBehaviour
                            "we have two game controller objects!");
         }
 		DontDestroyOnLoad(transform.gameObject);
+        SceneManager.sceneLoaded += OnLevelFinishedLoading;
 	}
 
     void Update()
@@ -47,5 +49,14 @@ public class Game : MonoBehaviour
 
         GameController.Update();
     }
+
+
+	void OnLevelFinishedLoading(Scene scene, LoadSceneMode mode)
+	{        
+        if (scene.name == "Main")
+        {
+            this.GameController.OnStart();
+        }		
+	}
 
 }

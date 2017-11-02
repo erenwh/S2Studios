@@ -49,24 +49,24 @@ public class PlayerTime : MonoBehaviour {
 		BeginCountdown();
 
         //Destroy Players if GameController has less than 4
-        if (Game.Instance.numPlayers < 4)
-        {
-            GameObject player4 = GameObject.Find("Player4");
-            GameObject player3 = GameObject.Find("Player3");
-            if (Game.Instance.numPlayers == 2)
-            {
-                Destroy(player3);
-                Destroy(player4);
-            }
-            else if (Game.Instance.numPlayers == 3)
-            {
-                Destroy(player4);
-            }
-            else
-            {
-                Debug.LogError("GameController's number of players is invalid. Less than four but not 2 or 3.");
-            }
-        }
+        //if (Game.Instance.numPlayers < 4)
+        //{
+        //    GameObject player4 = GameObject.Find("Player4");
+        //    GameObject player3 = GameObject.Find("Player3");
+        //    if (Game.Instance.numPlayers == 2)
+        //    {
+        //        Destroy(player3);
+        //        Destroy(player4);
+        //    }
+        //    else if (Game.Instance.numPlayers == 3)
+        //    {
+        //        Destroy(player4);
+        //    }
+        //    else
+        //    {
+        //        Debug.LogError("GameController's number of players is invalid. Less than four but not 2 or 3.");
+        //    }
+        //}
 	}
 
     public bool IsPlayerAlive() {
