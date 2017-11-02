@@ -50,6 +50,7 @@ public static class Utils
 
     public static void SwitchMap(GameObject map1, GameObject map2)
     {
+        if (map1 == null || map2 == null) return;
         if (Game.Instance.mapSelected == 1)
         {
             map1.SetActive(true);

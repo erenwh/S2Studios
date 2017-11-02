@@ -16,12 +16,12 @@ public class PlayerTime : MonoBehaviour {
 	}
 	// Takes a specified amount of time from a player and gives it to another player.
 	public static void TransferTime (int amount, GameObject playerFrom, GameObject playerTo) {
-		if (playerFrom != null) {
+		if (playerFrom != null && playerFrom.GetComponent<PlayerTime>().timeRemaining > 0) {
 			playerFrom.GetComponent<PlayerTime> ().timeRemaining -= amount;
 			playerFrom.GetComponent<PlayerTime> ().timeIndicator.value = playerFrom.GetComponent<PlayerTime> ().timeRemaining;
 			playerFrom.GetComponent<PlayerTime> ().timeText.text = playerFrom.GetComponent<PlayerTime> ().timeRemaining.ToString ();
 		}
-		if (playerTo != null) {
+		if (playerTo != null && playerFrom.GetComponent<PlayerTime>().timeRemaining > 0) {
 			playerTo.GetComponent<PlayerTime> ().timeRemaining += amount;
 			playerTo.GetComponent<PlayerTime> ().timeIndicator.value = playerTo.GetComponent<PlayerTime> ().timeRemaining;
 			playerTo.GetComponent<PlayerTime> ().timeText.text = playerTo.GetComponent<PlayerTime> ().timeRemaining.ToString ();
@@ -87,7 +87,7 @@ public class PlayerTime : MonoBehaviour {
 	IEnumerator DecrementOverTime () {
 		while (true) {
 			yield return new WaitForSeconds (1f);
-			if (timeRemaining >= 0) DecrementTime (1); //fix to prevent numbers going negative
+			if (timeRemaining > 0) DecrementTime (1); //fix to prevent numbers going negative
 			//if (timeRemaining < 1) {
 				//Call Death animation & play sfx
 				//let game controller know
