@@ -44,6 +44,8 @@ public class FFAController : GameController { // inherits from GameController
             if (player.GetComponent<PlayerTime>().IsPlayerAlive()) {
                 winnerName = player.tag; // if only one player is alive, then it will be the only string to copy.
                 numOfPlayersAlive++;
+            } else {
+                Destroy(player);
             }
         }
 
