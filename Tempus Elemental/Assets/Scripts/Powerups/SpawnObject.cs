@@ -53,7 +53,7 @@ public class SpawnObject : MonoBehaviour {
         spawnWait = Random.Range(spawnLeastWait, spawnMostWait); 
 	}
     
-    IEnumerator Spawner ()
+    public IEnumerator Spawner ()
     {
         yield return new WaitForSeconds(startWait); // wait time
 		if (testMode == 0) {
