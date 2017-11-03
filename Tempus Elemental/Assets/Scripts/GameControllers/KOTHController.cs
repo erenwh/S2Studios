@@ -68,10 +68,20 @@ public class KOTHController : GameController
 
 		foreach (var player in playersInTheZone)
 		{            
-			player.GetComponent<PlayerTime>().AddTime(exchangeRate);
+			if (player != null) {
+				player.GetComponent<PlayerTime> ().AddTime (exchangeRate);
+			}
 		}
 
-		List<GameObject> playersNotInTheZone = (List<GameObject>)players.Except(playersInTheZone);
+		//bug workaround
+		List<GameObject> playersNotInTheZone = new List<GameObject>();
+		foreach (var player in players) {
+			playersNotInTheZone.Add (player);
+		}
+		foreach (var player in playersInTheZone) {
+			playersNotInTheZone.Remove (player);
+		}
+
 		foreach (var player in playersNotInTheZone)
 		{
 			player.GetComponent<PlayerTime>().DecrementTime(exchangeRate);
@@ -80,12 +90,12 @@ public class KOTHController : GameController
 
     public void PlayerEnteredZone(GameObject player) 
     {
-        playersInTheZone.Remove(player);
+        playersInTheZone.Add(player);
     }
 
     public void PlayerLeftZone(GameObject player) 
     {
-        playersInTheZone.Add(player);
+        playersInTheZone.Remove(player);
     }
 
 	protected override string VictoryText()
