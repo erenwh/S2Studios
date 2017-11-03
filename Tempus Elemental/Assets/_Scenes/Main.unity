@@ -1784,11 +1784,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77f639185532a954bb24e03df883fcf1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  powerups: []
+  powerups:
+  - {fileID: 1922498717170742, guid: c4fa9d65fb045f9439a478179dc4d22d, type: 2}
   spawnValues: {x: 5, y: 5, z: 0}
   spawnWait: 0
-  spawnMostWait: 5
-  spawnLeastWait: 3
+  spawnMostWait: 1
+  spawnLeastWait: 0
   startWait: 1
 --- !u!1 &591909829
 GameObject:

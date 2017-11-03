@@ -23,9 +23,12 @@ public class PlayerMovement : MonoBehaviour
 	private bool dashDown = false;
 	private float dashDownTime = 0.0f;
 
+    public bool frozen = false;
+
 	void Start ()
 	{
-		charging = false;
+        frozen = false;
+        charging = false;
 		rb2d = GetComponent<Rigidbody2D> ();
 		cc2d = GetComponent<CircleCollider2D> ();
 		dc = GetComponent<DistortionCreator> ();
@@ -40,6 +43,9 @@ public class PlayerMovement : MonoBehaviour
 		if (!charging && !dashing) {
 			Dash ();
 		}
+        if (frozen && dashing) {
+            //rb2d.velocity = Vector2.zero;
+        }
 	}
 
 	private void FixedUpdate ()
@@ -52,7 +58,14 @@ public class PlayerMovement : MonoBehaviour
 				if (Utils.IsPlayerMoving (tag)) {
 					lastDirection = movement;
 				}
-				rb2d.velocity = movement * speed;
+                if (frozen)
+                {
+                    rb2d.velocity = Vector2.zero;
+                }
+                else
+                {
+                    rb2d.velocity = movement * speed;
+                }
 				cc2d.offset = lastDirection * circleOffsetCoefficient;
 			}
 		} 
@@ -78,7 +91,7 @@ public class PlayerMovement : MonoBehaviour
 		}
 		if (Input.GetButtonUp ("Distort" + gameObject.tag)) {
 			dashDown = false;
-			if (dashDownTime < 0.5f) {
+			if (dashDownTime < 0.5f && !frozen) {
 				StartCoroutine ("PerformDash");
 			} else {
 				dc.EndDistortion();

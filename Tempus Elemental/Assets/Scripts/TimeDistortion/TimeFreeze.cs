@@ -20,8 +20,9 @@ public class TimeFreeze : MonoBehaviour {
 		callingPlayer = player;
 		caughtObjects.Add (callingPlayer);
 		caughtSpeeds.Add (callingPlayer.GetComponent<PlayerMovement> ().speed);
-		callingPlayer.GetComponent<PlayerMovement> ().speed = 0;
-		transform.localScale = new Vector3 (radius, radius, 1);
+		//callingPlayer.GetComponent<PlayerMovement> ().speed = 0;
+        callingPlayer.GetComponent<PlayerMovement>().frozen = true;
+        transform.localScale = new Vector3 (radius, radius, 1);
 		SpriteRenderer[] srs = GetComponentsInChildren<SpriteRenderer> ();
 		foreach (SpriteRenderer sr in srs) {
 			sr.color = new Color(player.GetComponent<PlayerColor> ().color.r, player.GetComponent<PlayerColor> ().color.g, player.GetComponent<PlayerColor> ().color.b, transparency);
@@ -38,7 +39,8 @@ public class TimeFreeze : MonoBehaviour {
 		if ((coll.CompareTag("Player1") || coll.CompareTag("Player2") || coll.CompareTag("Player3") || coll.CompareTag("Player4")) && coll.gameObject != callingPlayer && !coll.isTrigger) {
 			caughtObjects.Add (coll.gameObject);
 			caughtSpeeds.Add (coll.gameObject.GetComponent<PlayerMovement> ().speed);
-			coll.gameObject.GetComponent<PlayerMovement> ().speed = 0;
+            coll.gameObject.GetComponent<PlayerMovement>().frozen = true;
+			//coll.gameObject.GetComponent<PlayerMovement> ().speed = 0;
 		}
 		if (coll.CompareTag ("Fire")) {
 			caughtObjects.Add (coll.gameObject);
@@ -54,7 +56,8 @@ public class TimeFreeze : MonoBehaviour {
 				if (caughtObjects [i].CompareTag ("Fire")) {
 					caughtObjects [i].GetComponent<Projectile> ().speed = caughtSpeeds [i];
 				} else {
-					caughtObjects [i].GetComponent<PlayerMovement> ().speed = caughtSpeeds [i];				//there's going to be a bug if they deactivate their speedup/slowdown while frozen...
+					//caughtObjects [i].GetComponent<PlayerMovement> ().speed = caughtSpeeds [i];				//there's going to be a bug if they deactivate their speedup/slowdown while frozen...
+                    caughtObjects[i].GetComponent<PlayerMovement>().frozen = false;
 				}
 			}
 		}

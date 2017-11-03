@@ -56,7 +56,7 @@ public class SpawnObject : MonoBehaviour {
         yield return new WaitForSeconds(startWait); // wait time
         while (true)
         {
-			randomPowerup = Random.Range(0, 5);
+			randomPowerup = Random.Range(0, powerups.Length);
             // randomPowerup = 0; // grab the time powerup for now but later change to picking a random powerup
             Vector3 spawnPosition = new Vector3(Random.Range(-spawnValues.x, spawnValues.x), Random.Range(-spawnValues.y, spawnValues.y) , 1);   // grab the spawn position with random vals
             Instantiate(powerups[randomPowerup], spawnPosition + transform.TransformPoint(0,0,0), gameObject.transform.rotation);                         // spawn the object
