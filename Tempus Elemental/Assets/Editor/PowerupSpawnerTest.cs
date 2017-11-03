@@ -17,8 +17,15 @@ public class NewPlayModeTest {
 	public IEnumerator _Instantiates_GameObject_From_Prefab() {
         // Use the Assert class to test conditions.
         // yield to skip a frame
+		Vector3 spawnValues = new Vector3(1,1,1);
         var powerupSpawner = new GameObject().AddComponent<SpawnObject>();
-        var powerupPrefab = GameObject.FindWithTag("Powerup");
+		var powerupPrefab = Resources.Load ("Tests/powerup");
+		powerupSpawner.Construct (spawnValues, 0, 0, 0, 1, 0, 1);
+		//powerupSpawner.StartCoroutine (powerupSpawner.Spawner);
+
+		yield return null;
+
+        var spawnedPowerup = GameObject.FindWithTag("Powerup");
         var prefabOfSpawnedPowerup = PrefabUtility.GetPrefabParent(powerupPrefab);
         Assert.AreEqual(powerupPrefab, prefabOfSpawnedPowerup);
 		yield return null;
