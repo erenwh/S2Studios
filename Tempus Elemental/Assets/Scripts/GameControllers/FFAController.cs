@@ -49,6 +49,6 @@ public class FFAController : GameController { // inherits from GameController
             return " WINNER! : " + players[0].tag;
         }
 
-        return " Y'all Lame!";
+        return " Y'all Lame!";		//but... why? :'(
     }
 }

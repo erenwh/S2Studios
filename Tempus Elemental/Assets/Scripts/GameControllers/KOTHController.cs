@@ -8,11 +8,6 @@ public class KOTHController : GameController {
 	void Start () {
 		
 	}
-	
-	// Update is called once per frame
-	//void Update () {
-		
-	//}
 
 	public override bool VictoryCondition () {
 		return false;
