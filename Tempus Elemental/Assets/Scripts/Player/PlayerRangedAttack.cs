@@ -2,6 +2,12 @@
 
 public class PlayerRangedAttack : MonoBehaviour 
 {    
+	//constants
+	private const int DOWN = 0;
+	private const int LEFT = 1;
+	private const int UP = 2;
+	private const int RIGHT = 3;
+
     public GameObject fireball;
 	public float delay = 0.5f;								// ranged attack delay
 	public int costToThrow = 1;                             // how much time does it take to throw an attack
@@ -9,6 +15,7 @@ public class PlayerRangedAttack : MonoBehaviour
 	private bool waitToCharging = false;
 	private Vector2 aimDirc;
 	private PlayerMovement pm;
+	private Animator an;
 
 	//public bool da = gameObject.GetComponent<PlayerMovement>().dashing; 
 
@@ -16,10 +23,20 @@ public class PlayerRangedAttack : MonoBehaviour
     void Start() 
     {
 		pm = GetComponent<PlayerMovement>();
+		an = GetComponent<Animator> ();
     }
 
 	void Update() 
     {
+		
+		transform.rotation = Quaternion.identity;
+
+		//always keep the most recent aim direction up to date
+		if (Utils.IsPlayerMoving(tag)) 
+		{
+			aimDirc = Utils.GetPlayerMovement(tag);
+		} 
+
 		if (Input.GetButton ("Fire" + gameObject.tag)) 
         {
 			if (!waitToCharging) 
@@ -32,12 +49,8 @@ public class PlayerRangedAttack : MonoBehaviour
 			} 
             else 
             {
-                // change direction while aiming, player cannot move
-                aimDirc = Utils.GetPlayerMovement(tag);
-                if (!Utils.IsPlayerMoving(tag)) 
-                {
-					aimDirc = pm.FacingDirection ();
-				} 
+				// change direction while aiming, player cannot move
+				AimDir ();
 			}
 		} 
         else if (Input.GetButtonUp ("Fire" + gameObject.tag)) 
@@ -55,6 +68,25 @@ public class PlayerRangedAttack : MonoBehaviour
 		if (waitToCharging) 
         {
 			timepassed += Time.deltaTime;
+		}
+	}
+
+	//allow the player to animate in the direction that they are aiming
+	void AimDir () {
+		//get the z rotation from the aimDirc
+		float angle = Mathf.Atan2(aimDirc.y, aimDirc.x) * Mathf.Rad2Deg;
+		if (angle >= -45f && angle <= 45f) {	//RIGHT
+			an.SetInteger ("lastFacing", RIGHT);
+			transform.rotation = Quaternion.AngleAxis (angle, Vector3.forward);
+		} else if (angle > -135f && angle < -45f) {	//DOWN
+			an.SetInteger ("lastFacing", DOWN);
+			transform.rotation = Quaternion.AngleAxis (angle + 90, Vector3.forward);
+		} else if (angle > 45f && angle < 135f) {		//UP
+			an.SetInteger ("lastFacing", UP);
+			transform.rotation = Quaternion.AngleAxis (angle - 90, Vector3.forward);
+		} else {	//LEFT
+			an.SetInteger ("lastFacing", LEFT);
+			transform.rotation = Quaternion.AngleAxis (angle + 180, Vector3.forward);
 		}
 	}
 

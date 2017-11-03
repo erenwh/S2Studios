@@ -48,9 +48,9 @@ public class PlayerAnimation : MonoBehaviour
 		Vector2 movement = Utils.GetPlayerMovement(tag);
         Vector2 facingDirection = playerMovement.FacingDirection();
         bool isAttacking = Input.GetButton("Fire" + gameObject.tag);
+		bool justAttacked = Input.GetButtonDown("Fire" + gameObject.tag);
 
-
-        if (isAttacking) 
+        if (justAttacked) 
         {
             if (Mathf.Abs(facingDirection.x) > Mathf.Epsilon)
 			{
@@ -81,6 +81,32 @@ public class PlayerAnimation : MonoBehaviour
 			}   
         }
 
+		if (isAttacking && !justAttacked) 
+		{
+			if (Mathf.Abs(facingDirection.x) > Mathf.Epsilon)
+			{
+				if (Mathf.Sign(facingDirection.x) > 0)
+				{
+					return States.attackRight;
+				}
+				else
+				{
+					return States.attackLeft;
+				}
+			}
+
+			if (Mathf.Abs(facingDirection.y) > Mathf.Epsilon)
+			{
+				if (Mathf.Sign(facingDirection.y) > 0)
+				{
+					return States.attackUp;
+				}
+				else
+				{
+					return States.attackDown;
+				}
+			}   
+		}
 
 		// check for movement
 		if (!Utils.IsPlayerMoving(tag))
