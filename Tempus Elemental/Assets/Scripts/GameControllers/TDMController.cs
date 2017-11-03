@@ -32,6 +32,7 @@ public class TDMController : GameController {
 
     public override bool VictoryCondition()
     {
+        Debug.Log("In TDM");
         //destory player when they run out of time
         int i = 0;
         foreach (var player in players)
