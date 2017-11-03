@@ -2,6 +2,11 @@
 
 public class PlayerAnimation : MonoBehaviour 
 {
+	//constants
+	private const int DOWN = 0;
+	private const int LEFT = 1;
+	private const int UP = 2;
+	private const int RIGHT = 3;
 
 	private Animator animator;
     private bool change = false;
@@ -51,10 +56,12 @@ public class PlayerAnimation : MonoBehaviour
 			{
 				if (Mathf.Sign(facingDirection.x) > 0)
 				{
+					animator.SetInteger ("lastFacing", RIGHT);
                     return States.attackRight;
 				}
 				else
 				{
+					animator.SetInteger ("lastFacing", LEFT);
                     return States.attackLeft;
 				}
 			}
@@ -63,10 +70,12 @@ public class PlayerAnimation : MonoBehaviour
 			{
 				if (Mathf.Sign(facingDirection.y) > 0)
 				{
+					animator.SetInteger ("lastFacing", UP);
                     return States.attackUp;
 				}
 				else
 				{
+					animator.SetInteger ("lastFacing", DOWN);
                     return States.attackDown;
 				}
 			}   
@@ -84,10 +93,12 @@ public class PlayerAnimation : MonoBehaviour
 		{
 			if (Mathf.Sign(movement.x) > 0)
 			{
+				animator.SetInteger ("lastFacing", RIGHT);
 				return States.movingRight;
 			}
 			else
 			{
+				animator.SetInteger ("lastFacing", LEFT);
 				return States.movingLeft;
 			}
 		}
@@ -96,10 +107,12 @@ public class PlayerAnimation : MonoBehaviour
 		{
 			if (Mathf.Sign(movement.y) > 0)
 			{
+				animator.SetInteger ("lastFacing", UP);
 				return States.movingUp;
 			}
 			else
 			{
+				animator.SetInteger ("lastFacing", DOWN);
 				return States.movingDown;
 			}
 		}
