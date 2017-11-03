@@ -21,6 +21,9 @@ public abstract class GameController : MonoBehaviour
 
     protected List<GameObject> players;
 
+	void Start() {
+		ResetValues();
+	}
 
     private void BackToMenu() 
     {
