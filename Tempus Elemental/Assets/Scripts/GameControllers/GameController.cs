@@ -57,7 +57,7 @@ public abstract class GameController : MonoBehaviour
         isFinishedState = true;
     }
 
-    public void OnStart()
+    virtual public void OnStart()
     {
         // settings the players
         numPlayers = Game.Instance.numPlayers;
@@ -99,7 +99,7 @@ public abstract class GameController : MonoBehaviour
         isStarted = true;
     }
 
-    public void Update() 
+    public void OnUpdate() 
     {
 
         if (isFinishedState) {
@@ -115,8 +115,8 @@ public abstract class GameController : MonoBehaviour
 			ShowVictoryMessage();
 			return;
 		}
-
-        GameLogic();
+			
+		GameLogic ();
     }
 
     public void KillPlayer(GameObject player)

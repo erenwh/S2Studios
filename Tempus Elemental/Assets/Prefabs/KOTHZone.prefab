@@ -72,6 +72,7 @@ GameObject:
   - component: {fileID: 4757591943199670}
   - component: {fileID: 212067568793631510}
   - component: {fileID: 61158195917396006}
+  - component: {fileID: 114853712945269846}
   m_Layer: 0
   m_Name: KOTHZone
   m_TagString: Untagged
@@ -258,6 +259,17 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114853712945269846
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1418613555650522}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27ca0fd2e82a89d4c988b93de10c6135, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &212067568793631510
 SpriteRenderer:
   m_ObjectHideFlags: 1

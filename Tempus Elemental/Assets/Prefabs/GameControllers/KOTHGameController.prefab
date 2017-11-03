@@ -51,3 +51,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 565926520284746578c88b88fcf71e6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  numPlayers: 4
+  isStarted: 0
+  stealTreshold: 1
+  timeStolen: 1
+  zoneLocations:
+  - {x: -0.385, y: -1.932, z: 90}
+  - {x: -5.53, y: -4.47, z: 90}
+  - {x: -5.55, y: 1.52, z: 90}
+  - {x: 4.36, y: 1.93, z: 90}
+  timeBtwnZoneSwitch: 5
+  zone: {fileID: 1418613555650522, guid: d7f48e618c6902444ab2777b8dceb02c, type: 2}

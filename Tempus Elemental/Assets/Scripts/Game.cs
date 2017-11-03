@@ -49,7 +49,7 @@ public class Game : MonoBehaviour
             return;
         }
 
-        GameController.Update();
+        GameController.OnUpdate();
     }
 
 
