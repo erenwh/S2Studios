@@ -1,0 +1,11 @@
+c1
+c2
+c3
+c4
+[these 4 can be the "lastFrame" whenever the user lets go]
+[when the user lets go, the following frames play in this order:]
+f0
+slight-pause-for-effect
+f1
+f2
+f3
