@@ -25,7 +25,7 @@ public class PlayerTime : MonoBehaviour {
 			playerFrom.GetComponent<PlayerTime> ().timeText.text = playerFrom.GetComponent<PlayerTime> ().timeRemaining.ToString ();
 		}
 		if (playerTo != null) {
-			playerTo.GetComponent<PlayerTime> ().timeRemaining += difference;
+			playerTo.GetComponent<PlayerTime> ().timeRemaining += amount;
 			playerTo.GetComponent<PlayerTime> ().timeIndicator.value = playerTo.GetComponent<PlayerTime> ().timeRemaining;
 			playerTo.GetComponent<PlayerTime> ().timeText.text = playerTo.GetComponent<PlayerTime> ().timeRemaining.ToString ();
 		}
