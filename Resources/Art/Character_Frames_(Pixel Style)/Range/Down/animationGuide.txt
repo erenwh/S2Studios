@@ -1,0 +1,11 @@
+c1
+c2
+c3
+c4
+[or until user lets go]
+f0
+f0a
+[repeat for effect]
+f0
+c4
+[end]
