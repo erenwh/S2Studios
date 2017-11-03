@@ -88,16 +88,11 @@ public class PlayerTime : MonoBehaviour {
 		while (true) {
 			yield return new WaitForSeconds (1f);
 			if (timeRemaining > 0) DecrementTime (1); //fix to prevent numbers going negative
-			//if (timeRemaining < 1) {
-				//Call Death animation & play sfx
-				//let game controller know
-				//Destroy(gameObject);
-                //Game.Instance.numPlayers--;
-                //if (Game.Instance.numPlayers == 0)
-                //{
-                //    SceneManager.LoadScene("Menu");
-                //}
-            //}
+			if (timeRemaining < 1) {
+                //Call Death animation & play sfx
+                //let game controller know
+                Game.Instance.GameController.KillPlayer(gameObject);
+            }
 		}
 	}
 }

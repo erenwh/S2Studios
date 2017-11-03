@@ -100,8 +100,10 @@ public class MenuHandler : MonoBehaviour
     public void changeScenes()
     {
         if (Game.Instance.GameController == null) {
+            
             Game.Instance.GameController = gameControllers[selectedGameMode];
         }
+        //Game.Instance.GameController = new FFAController();
         SceneManager.LoadScene("Main");
     }
 }

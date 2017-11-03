@@ -2,8 +2,9 @@
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using System.Collections.Generic;
+using System;
 
-public abstract class GameController : MonoBehaviour 
+public abstract class GameController : MonoBehaviour
 {
 
     public int numPlayers = 0;
@@ -18,6 +19,7 @@ public abstract class GameController : MonoBehaviour
     abstract public void UpdatePoints();
     abstract protected string VictoryText();
 
+    private GameObject victoryMessage;
 
     protected List<GameObject> players;
 
@@ -28,23 +30,42 @@ public abstract class GameController : MonoBehaviour
         Game.Instance.numPlayers = 4;
         Game.Instance.mapSelected = 1;
         Game.Instance.gameModeSelected = 0;
+
+        //Reset global variables for gamecontroller
+        numPlayers = 0;
+        isFinishedState = false;
+        isStarted = false;
+
+        //Return to menu
         SceneManager.LoadScene("Menu");
-        //Destroy(this);
+
+        numPlayers = 0;
+        isFinishedState = false;
+        isStarted = false;
+        Time.timeScale = 1;
     }
 
     private void ShowVictoryMessage() 
     {
         Time.timeScale = 0;
-        //disabling renderer instead of setting inactive so we don't have to store reference
-        GameObject.Find("Victory Background").GetComponent<Renderer>().enabled = true;
-        GameObject.Find("Victory Message Txt").GetComponent<Text>().enabled = true;
-        GameObject.FindWithTag("VictoryMessageTxt").GetComponent<Text>().text = 
+        victoryMessage.SetActive(true);
+        victoryMessage.GetComponentInChildren<Text>().text = 
+
+        ////disabling renderer instead of setting inactive so we don't have to store reference
+        //GameObject.Find("Victory Background").GetComponent<Renderer>().enabled = true;
+        //GameObject.Find("Victory Message Txt").GetComponent<Text>().enabled = true;
+        //GameObject.FindWithTag("VictoryMessageTxt").GetComponent<Text>().text = 
+
             VictoryText() + "\n Press any key to continue!";
         isFinishedState = true;
     }
 
     public void OnStart()
     {
+        //reset bools for gamecontroller
+        isFinishedState = false;
+        isStarted = false;
+
         // settings the players
         numPlayers = Game.Instance.numPlayers;
         players = new List<GameObject>();
@@ -62,17 +83,17 @@ public abstract class GameController : MonoBehaviour
 		    {
                 player = players[3];
                 players.RemoveAt(3);
-		        Destroy(player);
+		        player.SetActive(false);
 
 				player = players[2];
 				players.RemoveAt(2);
-				Destroy(player);
+				player.SetActive(false);
 		    }
 		    else if (Game.Instance.numPlayers == 3)
 		    {
 				player = players[3];
 				players.RemoveAt(3);
-				Destroy(player);
+				player.SetActive(false);
 		    }
 		    else
 		    {
@@ -82,13 +103,24 @@ public abstract class GameController : MonoBehaviour
         Debug.Log(players.Count);
         // 
 
+        victoryMessage = GameObject.FindWithTag("VictoryMessage");
+        victoryMessage.SetActive(false);
         isStarted = true;
     }
 
     public void Update() 
     {
-        //make sure that the game controller only does upate functionality when Main scene is active
-        if (SceneManager.GetActiveScene().name == "Main")
+
+        if (isFinishedState) {
+            if (Input.anyKey) {
+                BackToMenu();    
+            }
+            return;
+        }
+
+		//make sure that the game controller only does upate functionality when Main scene is active
+		//if (SceneManager.GetActiveScene().name == "Main")
+		if (VictoryCondition()) 
         {
             if (isFinishedState && Input.anyKey)
             {
@@ -104,5 +136,11 @@ public abstract class GameController : MonoBehaviour
 
             UpdatePoints();
         }
+    }
+
+    public void KillPlayer(GameObject player)
+    {
+        players.Remove(player);
+        player.SetActive(false);
     }
 }
