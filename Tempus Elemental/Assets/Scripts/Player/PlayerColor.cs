@@ -12,7 +12,7 @@ public class PlayerColor : MonoBehaviour
 		//assign color
 		if (CompareTag ("Player1")) 
         {
-			color = Color.blue;
+			color = new Color (144f/256f, 208f/256f, 1, 1);
 		} else if (CompareTag ("Player2")) 
         {
 			color = Color.red;
