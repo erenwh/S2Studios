@@ -16,13 +16,16 @@ public class PlayerTime : MonoBehaviour {
 	}
 	// Takes a specified amount of time from a player and gives it to another player.
 	public static void TransferTime (int amount, GameObject playerFrom, GameObject playerTo) {
-		if (playerFrom != null && playerFrom.GetComponent<PlayerTime>().timeRemaining > 0) {
-			playerFrom.GetComponent<PlayerTime> ().timeRemaining -= amount;
+        //variable and check to prevent negative values 
+        int difference = playerFrom.GetComponent<PlayerTime>().timeRemaining - amount;
+        if (difference < 0) difference = 0;
+		if (playerFrom != null) {
+			playerFrom.GetComponent<PlayerTime> ().timeRemaining = difference;
 			playerFrom.GetComponent<PlayerTime> ().timeIndicator.value = playerFrom.GetComponent<PlayerTime> ().timeRemaining;
 			playerFrom.GetComponent<PlayerTime> ().timeText.text = playerFrom.GetComponent<PlayerTime> ().timeRemaining.ToString ();
 		}
-		if (playerTo != null && playerFrom.GetComponent<PlayerTime>().timeRemaining > 0) {
-			playerTo.GetComponent<PlayerTime> ().timeRemaining += amount;
+		if (playerTo != null) {
+			playerTo.GetComponent<PlayerTime> ().timeRemaining += difference;
 			playerTo.GetComponent<PlayerTime> ().timeIndicator.value = playerTo.GetComponent<PlayerTime> ().timeRemaining;
 			playerTo.GetComponent<PlayerTime> ().timeText.text = playerTo.GetComponent<PlayerTime> ().timeRemaining.ToString ();
 		}
