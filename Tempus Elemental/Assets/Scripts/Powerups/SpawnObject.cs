@@ -49,10 +49,6 @@ public class SpawnObject : MonoBehaviour {
         map1 = GameObject.Find("DummyMap");
         map2 = GameObject.Find("DummyMap2");
         Utils.SwitchMap(map1, map2);
-
-        //performing actions to turn victory screen initially off
-        GameObject.Find("Victory Background").GetComponent<Renderer>().enabled = false;
-        GameObject.Find("Victory Message Txt").GetComponent<Text>().enabled = false;
     }
 	
 	// Update is called once per frame 
