@@ -103,7 +103,6 @@ public class MenuHandler : MonoBehaviour
             
             Game.Instance.GameController = gameControllers[selectedGameMode];
         }
-        //Game.Instance.GameController = new FFAController();
         SceneManager.LoadScene("Main");
     }
 }

@@ -26,23 +26,21 @@ public abstract class GameController : MonoBehaviour
 
     private void BackToMenu() 
     {
-        //Reset global variables for game
-        Game.Instance.numPlayers = 4;
-        Game.Instance.mapSelected = 1;
-        Game.Instance.gameModeSelected = 0;
-
-        //Reset global variables for gamecontroller
-        numPlayers = 0;
-        isFinishedState = false;
-        isStarted = false;
-
-        //Return to menu
+        ResetValues();
         SceneManager.LoadScene("Menu");
+    }
 
-        numPlayers = 0;
-        isFinishedState = false;
-        isStarted = false;
-        Time.timeScale = 1;
+    private void ResetValues() {
+		//Reset global variables for game
+		Game.Instance.numPlayers = 4;
+		Game.Instance.mapSelected = 1;
+		Game.Instance.gameModeSelected = 0;
+
+		//Reset global variables for gamecontroller
+		numPlayers = 0;
+		isFinishedState = false;
+		isStarted = false;
+		Time.timeScale = 1;
     }
 
     private void ShowVictoryMessage() 

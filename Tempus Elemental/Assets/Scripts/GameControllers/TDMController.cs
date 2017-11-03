@@ -51,7 +51,7 @@ public class TDMController : GameController {
             {
                 player = players[i];
                 players.Remove(players[i]);
-                //Destroy(player);
+                Destroy(player);
                 alivePlayer[i] = false;
             }
             else
