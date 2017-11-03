@@ -45,7 +45,7 @@ public class Game : MonoBehaviour
 
     void Update()
     {
-        if (!GameController || !GameController.isStarted) {
+        if (GameController == null || !GameController.isStarted) {
             return;
         }
 

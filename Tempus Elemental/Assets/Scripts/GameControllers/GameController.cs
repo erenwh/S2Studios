@@ -2,8 +2,9 @@
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using System.Collections.Generic;
+using System;
 
-public abstract class GameController : MonoBehaviour 
+public abstract class GameController : MonoBehaviour
 {
 
     public int numPlayers = 0;
@@ -18,6 +19,7 @@ public abstract class GameController : MonoBehaviour
     abstract public void UpdatePoints();
     abstract protected string VictoryText();
 
+    private GameObject victoryMessage;
 
     protected List<GameObject> players;
 
@@ -25,14 +27,17 @@ public abstract class GameController : MonoBehaviour
     private void BackToMenu() 
     {
         SceneManager.LoadScene("Menu");
-        Destroy(this);
+        numPlayers = 0;
+        isFinishedState = false;
+        isStarted = false;
+        Time.timeScale = 1;
     }
 
     private void ShowVictoryMessage() 
     {
         Time.timeScale = 0;
-        GameObject.FindWithTag("VictoryMessage").SetActive(true);
-        GameObject.FindWithTag("VictoryMessageTxt").GetComponent<Text>().text = 
+        victoryMessage.SetActive(true);
+        victoryMessage.GetComponentInChildren<Text>().text = 
             VictoryText() + "\n Press any key to continue!";
         isFinishedState = true;
     }
@@ -56,17 +61,17 @@ public abstract class GameController : MonoBehaviour
 		    {
                 player = players[3];
                 players.RemoveAt(3);
-		        Destroy(player);
+		        player.SetActive(false);
 
 				player = players[2];
 				players.RemoveAt(2);
-				Destroy(player);
+				player.SetActive(false);
 		    }
 		    else if (Game.Instance.numPlayers == 3)
 		    {
 				player = players[3];
 				players.RemoveAt(3);
-				Destroy(player);
+				player.SetActive(false);
 		    }
 		    else
 		    {
@@ -76,13 +81,17 @@ public abstract class GameController : MonoBehaviour
         Debug.Log(players.Count);
         // 
 
+        victoryMessage = GameObject.FindWithTag("VictoryMessage");
+        victoryMessage.SetActive(false);
         isStarted = true;
     }
 
     public void Update() 
     {
-        if (isFinishedState && Input.anyKey) {
-            BackToMenu();
+        if (isFinishedState) {
+            if (Input.anyKey) {
+                BackToMenu();    
+            }
             return;
         }
 
@@ -93,5 +102,11 @@ public abstract class GameController : MonoBehaviour
         }
 
         UpdatePoints();
+    }
+
+    public void KillPlayer(GameObject player)
+    {
+        players.Remove(player);
+        player.SetActive(false);
     }
 }

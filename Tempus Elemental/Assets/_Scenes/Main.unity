@@ -1832,7 +1832,7 @@ GameObject:
   - component: {fileID: 807004036}
   m_Layer: 5
   m_Name: Victory Message
-  m_TagString: Untagged
+  m_TagString: VictoryMessage
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
