@@ -119,7 +119,7 @@ public abstract class GameController : MonoBehaviour
 		GameLogic ();
     }
 
-    public void KillPlayer(GameObject player)
+    virtual public void KillPlayer(GameObject player)
     {
         players.Remove(player);
         player.SetActive(false);

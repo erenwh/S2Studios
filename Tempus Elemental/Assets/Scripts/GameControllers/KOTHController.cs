@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class KOTHController : GameController 
@@ -11,6 +12,9 @@ public class KOTHController : GameController
 	public float timeBtwnZoneSwitch = 5.0f;		//how much time until the zone goes to a new location
 	private float timeSinceLastZoneSwitch = 0.0f;
 	private GameObject currZone;				//the zone currently in play
+    public float dealTimeTreshold = 1.0f;
+    public int exchangeRate = 5;
+    private float timeSinceLastDeal = 0.0f;
 
 	//references
 	public GameObject zone;
@@ -42,14 +46,37 @@ public class KOTHController : GameController
 			timeSinceLastZoneSwitch = 0.0f;
 			currZone.transform.position = zoneLocations [Random.Range (0, zoneLocations.Length)];
 		}
+
+		CommenceSteal ();
     }
 
 	//called every "stealThreshold" amount of time to take time from players not in the zone and give it to players in the zone
 	void CommenceSteal () {
-		if (playersInTheZone.Count < players.Count) {
-			
+        timeSinceLastDeal += Time.deltaTime;
+        if (timeSinceLastDeal >= dealTimeTreshold) 
+        {
+            timeSinceLastDeal = 0;
+            DealWithPlayerTimes();
+        }
+    }
+
+    private void DealWithPlayerTimes() {
+        // everyone is chilling in the zone or no one is in the zone, not cool
+        if (playersInTheZone.Count == players.Count || playersInTheZone.Count == 0) {
+            return;
+        }
+
+		foreach (var player in playersInTheZone)
+		{            
+			player.GetComponent<PlayerTime>().AddTime(exchangeRate);
 		}
-	}
+
+		List<GameObject> playersNotInTheZone = (List<GameObject>)players.Except(playersInTheZone);
+		foreach (var player in playersNotInTheZone)
+		{
+			player.GetComponent<PlayerTime>().DecrementTime(exchangeRate);
+		}
+    }
 
     public void PlayerEnteredZone(GameObject player) 
     {
@@ -65,4 +92,10 @@ public class KOTHController : GameController
     {
 		return "I like grapes";
 	}
+
+    public override void KillPlayer(GameObject player)
+    {
+        playersInTheZone.Remove(player);
+        base.KillPlayer(player);
+    }
 }
