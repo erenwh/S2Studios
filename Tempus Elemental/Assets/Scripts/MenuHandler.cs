@@ -59,14 +59,17 @@ public class MenuHandler : MonoBehaviour
 		case FREEFORALL:
 			selectedGameModeText.text = "Free For All";
             Game.Instance.GameController = gameControllers[selectedGameMode];
+            Game.Instance.gameModeSelected = 0;
             break;
         case TEAMDEATHMATCH:
             selectedGameModeText.text = "Team Death Match";
             Game.Instance.GameController = gameControllers[selectedGameMode];
+            Game.Instance.gameModeSelected = 1;
             break;
         case KINGOFTHEHILL:
 			selectedGameModeText.text = "King of the Hell";
             Game.Instance.GameController = gameControllers[selectedGameMode];
+            Game.Instance.gameModeSelected = 2;
             break;
 		}
 	}

@@ -10,9 +10,9 @@ public class KOTHController : GameController {
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	//void Update () {
 		
-	}
+	//}
 
 	public override bool VictoryCondition () {
 		return false;

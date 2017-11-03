@@ -8,6 +8,8 @@ public class Game : MonoBehaviour
     public int numPlayers = 4;
     //Used to change map 1 is mageCity and 2 is dummy
     public int mapSelected = 1;
+    //Use to see which game mode was selected in other scripts
+    public int gameModeSelected = 0;
 
     public GameController GameController
     {

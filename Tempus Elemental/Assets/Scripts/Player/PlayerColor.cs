@@ -9,20 +9,44 @@ public class PlayerColor : MonoBehaviour
 
 	void Start () 
     {
-		//assign color
-		if (CompareTag ("Player1")) 
+        if (Game.Instance.gameModeSelected == 1) //do color assignment for team death match
         {
-			color = new Color (144f/256f, 208f/256f, 1, 1);
-		} else if (CompareTag ("Player2")) 
+            if (CompareTag("Player1"))
+            {
+                color = new Color(144f / 256f, 208f / 256f, 1, 1);
+            }
+            else if (CompareTag("Player2"))
+            {
+                color = Color.red;
+            }
+            else if (CompareTag("Player3"))
+            {
+                color = new Color(144f / 256f, 208f / 256f, 1, 1);
+            }
+            else if (CompareTag("Player4"))
+            {
+                color = Color.red;
+            }
+        }
+        else //do normal color assignment
         {
-			color = Color.red;
-		}else if (CompareTag ("Player3")) 
-        {
-			color = Color.green;
-		}else if (CompareTag ("Player4")) 
-        {
-			color = Color.yellow;
-		}
+            if (CompareTag("Player1"))
+            {
+                color = new Color(144f / 256f, 208f / 256f, 1, 1);
+            }
+            else if (CompareTag("Player2"))
+            {
+                color = Color.red;
+            }
+            else if (CompareTag("Player3"))
+            {
+                color = Color.green;
+            }
+            else if (CompareTag("Player4"))
+            {
+                color = Color.yellow;
+            }
+        }
 
 		GetComponent<SpriteRenderer> ().color = color;
 	}
