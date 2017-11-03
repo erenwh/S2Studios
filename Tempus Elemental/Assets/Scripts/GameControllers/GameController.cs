@@ -13,10 +13,8 @@ public abstract class GameController : MonoBehaviour
 
     public bool isStarted = false;
 
-    abstract public bool VictoryCondition();
-    abstract public void SpawnPlayers();
-    abstract public void SpawnObjects();
-    abstract public void UpdatePoints();
+    abstract protected bool VictoryCondition();
+    abstract protected void GameLogic();
     abstract protected string VictoryText();
 
     private GameObject victoryMessage;
@@ -95,8 +93,6 @@ public abstract class GameController : MonoBehaviour
 		        Debug.LogError("GameController's number of players is invalid. Less than four but not 2 or 3.");
 		    }
 		}
-        Debug.Log(players.Count);
-        // 
 
         victoryMessage = GameObject.FindWithTag("VictoryMessage");
         victoryMessage.SetActive(false);
@@ -113,9 +109,6 @@ public abstract class GameController : MonoBehaviour
             return;
         }
 
-		//make sure that the game controller only does upate functionality when Main scene is active
-		//if (SceneManager.GetActiveScene().name == "Main")
-
 		if (VictoryCondition())
 		{
             isFinishedState = true;
@@ -123,7 +116,7 @@ public abstract class GameController : MonoBehaviour
 			return;
 		}
 
-		UpdatePoints();
+        GameLogic();
     }
 
     public void KillPlayer(GameObject player)

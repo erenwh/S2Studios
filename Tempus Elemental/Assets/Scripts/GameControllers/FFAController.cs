@@ -4,36 +4,29 @@ using UnityEngine.SceneManagement;
 using System.Collections;
 using System.Collections.Generic;
 
-public class FFAController : GameController { // inherits from GameController
+public class FFAController : GameController 
+{ // inherits from GameController
 
-    public GameObject playerPrefab;
+    //public override void SpawnPlayers()
+    //{
+    //    //if (sdTag) {
+    //    //    for (int i = 0; i < numPlayers; ++i) {
+    //    //        GameObject newPlayer = Instantiate(playerPrefab);
+    //    //        newPlayer.GetComponent<PlayerTime>().timeRemaining = 20;
+    //    //        newPlayer.tag = "Player" + (i + 1);
+    //    //    }
+    //    //}
 
-    private bool sdTag = false;
-    
-    public override void SpawnObjects()
+    //    //return;
+    //}
+
+
+    protected override void GameLogic() 
     {
-        // Un-needed Function
+        // Nothing here for Free for all   
     }
 
-    public override void SpawnPlayers()
-    {
-        //if (sdTag) {
-        //    for (int i = 0; i < numPlayers; ++i) {
-        //        GameObject newPlayer = Instantiate(playerPrefab);
-        //        newPlayer.GetComponent<PlayerTime>().timeRemaining = 20;
-        //        newPlayer.tag = "Player" + (i + 1);
-        //    }
-        //}
-
-        //return;
-    }
-
-    public override void UpdatePoints()
-    {        
-        // Un-needed Function
-    }
-
-    public override bool VictoryCondition()
+    protected override bool VictoryCondition()
     {
         
         if (players.Count <= 1) {
