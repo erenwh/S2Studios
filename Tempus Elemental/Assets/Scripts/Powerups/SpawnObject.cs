@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SpawnObject : MonoBehaviour {
 
@@ -41,12 +42,18 @@ public class SpawnObject : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+        //performing actions to spawn power-ups
         StartCoroutine(Spawner());
 
+        //performing actions to switch the maps
         map1 = GameObject.Find("DummyMap");
         map2 = GameObject.Find("DummyMap2");
         Utils.SwitchMap(map1, map2);
-	}
+
+        //performing actions to turn victory screen initially off
+        GameObject.Find("Victory Background").GetComponent<Renderer>().enabled = false;
+        GameObject.Find("Victory Message Txt").GetComponent<Text>().enabled = false;
+    }
 	
 	// Update is called once per frame 
 	void Update () {

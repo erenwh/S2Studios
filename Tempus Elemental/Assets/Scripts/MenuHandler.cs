@@ -7,8 +7,8 @@ public class MenuHandler : MonoBehaviour
 {
 	//const
 	private const int FREEFORALL = 0;
-	private const int KINGOFTHEHILL = 1;
-	private const int TEAMDEATHMATCH = 2;
+    private const int TEAMDEATHMATCH = 1;
+    private const int KINGOFTHEHILL = 2;
 
 	//references
     public Dropdown selectPlayerDropdown;
@@ -42,7 +42,6 @@ public class MenuHandler : MonoBehaviour
 			selectedGameMode = 0;
 		}
 		SetGameModeText ();
-		Game.Instance.GameController = gameControllers [selectedGameMode];
 	}
 
 	//left arrow selecting the game mode
@@ -52,7 +51,6 @@ public class MenuHandler : MonoBehaviour
 			selectedGameMode = numGameModes - 1;
 		}
 		SetGameModeText ();
-		Game.Instance.GameController = gameControllers [selectedGameMode];
 	}
 
 	//sets the text in the menu so that the player knows
@@ -60,13 +58,19 @@ public class MenuHandler : MonoBehaviour
 		switch (selectedGameMode) {
 		case FREEFORALL:
 			selectedGameModeText.text = "Free For All";
-			break;
-		case KINGOFTHEHILL:
+            Game.Instance.GameController = gameControllers[selectedGameMode];
+            Game.Instance.gameModeSelected = 0;
+            break;
+        case TEAMDEATHMATCH:
+            selectedGameModeText.text = "Team Death Match";
+            Game.Instance.GameController = gameControllers[selectedGameMode];
+            Game.Instance.gameModeSelected = 1;
+            break;
+        case KINGOFTHEHILL:
 			selectedGameModeText.text = "King of the Hell";
-			break;
-		case TEAMDEATHMATCH:
-			selectedGameModeText.text = "Team Death Match";
-			break;
+            Game.Instance.GameController = gameControllers[selectedGameMode];
+            Game.Instance.gameModeSelected = 2;
+            break;
 		}
 	}
 
@@ -96,7 +100,7 @@ public class MenuHandler : MonoBehaviour
     public void changeScenes()
     {
         if (Game.Instance.GameController == null) {
-            Game.Instance.GameController = gameControllers[0];
+            Game.Instance.GameController = gameControllers[selectedGameMode];
         }
         SceneManager.LoadScene("Main");
     }

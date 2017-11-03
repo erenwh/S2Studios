@@ -9,11 +9,22 @@ public class TDMController : GameController {
     private string winningTeam = "";
 
     //list to check for alive players                  p1    p2    p3    p4
-    private List<bool> alivePlayers = new List<bool> { true, true, true, true };
-    GameObject player4;
-    GameObject player3;
-    GameObject player2;
-    GameObject player1;
+    private List<bool> alivePlayer = new List<bool> { false, false, false, false };
+
+    void Start()
+    {
+        Debug.Log("In TDM start"); //this line does not run
+    }
+
+    private void Awake()
+    {
+        Debug.Log("In TDM awake"); //neither does this one
+    }
+
+    // Update is called once per frame
+    //void Update () {
+
+    //}
 
     public override void SpawnObjects()
     {
@@ -33,28 +44,33 @@ public class TDMController : GameController {
     public override bool VictoryCondition()
     {
         //destory player when they run out of time
-        int i = 0;
-        foreach (var player in players)
+        GameObject player;
+        for (int i = 0; i < players.Count; i++)
         {
-            if (!player.GetComponent<PlayerTime>().IsPlayerAlive())
+            if (!players[i].GetComponent<PlayerTime>().IsPlayerAlive())
             {
+                player = players[i];
+                players.Remove(players[i]);
                 Destroy(player);
-                alivePlayers[i] = false;
+                alivePlayer[i] = false;
             }
-            i++;
+            else
+            {
+                alivePlayer[i] = true;
+            }
         }
 
-        if (!alivePlayers[0] && !alivePlayers[1] && !alivePlayers[2] && !alivePlayers[3])
+        if (!alivePlayer[0] && !alivePlayer[1] && !alivePlayer[2] && !alivePlayer[3])
         {
             winningTeam = "Draw";
             return true;
         }
-        else if (!alivePlayers[0] && !alivePlayers[2])
+        else if (!alivePlayer[0] && !alivePlayer[2])
         {
             winningTeam = "Team 1 Wins!";
             return true;
         }
-        else if (!alivePlayers[1] && !alivePlayers[3])
+        else if (!alivePlayer[1] && !alivePlayer[3])
         {
             winningTeam = "Team 2 Wins!";
             return true;
@@ -65,13 +81,5 @@ public class TDMController : GameController {
     protected override string VictoryText()
     {
         return winningTeam;
-    }
-
-    // Use this for initialization
-    void Start () {
-        player4 = GameObject.Find("Player4");
-        player3 = GameObject.Find("Player3");
-        player2 = GameObject.Find("Player2");
-        player1 = GameObject.Find("Player1");
     }
 }
