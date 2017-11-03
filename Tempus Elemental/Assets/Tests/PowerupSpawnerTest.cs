@@ -3,65 +3,80 @@ using UnityEngine.TestTools;
 using NUnit.Framework;
 using System.Collections;
 using UnityEditor;
+using System;
 
 public class NewPlayModeTest {
 
-	/*public virtual bool Equals(object obj1) {
-		if (!(obj1 is GameObject)) {
-			return false;
-		} else {
-			return true;
+	// Tests to see if the spawned Powerup is of a different prefab from the instantiated Projectile
+	[Test]
+	public void ProjectileVsPowerup() {
+		SetupScene ();
+		var powerupPrefab = GameObject.FindWithTag("Powerup");
+		var spawnedPowerup = GameObject.FindWithTag("Powerup");
+		var spawnedProjectile = GameObject.FindWithTag ("Fire");
+		var prefabOfSpawnedPowerup = PrefabUtility.GetPrefabParent(powerupPrefab);
+		Assert.AreNotEqual(powerupPrefab, spawnedProjectile);
+	}
+
+	// Tests to see if the spawned Powerup is of a different prefab from the instantiated Player
+	[Test]
+	public void PlayerVsPowerup() {
+		SetupScene ();
+		var powerupPrefab = GameObject.FindWithTag("Powerup");
+		var spawnedPowerup = GameObject.FindWithTag("Powerup");
+		var spawnedPlayer = GameObject.FindWithTag ("Player1");
+		var prefabOfSpawnedPowerup = PrefabUtility.GetPrefabParent(powerupPrefab);
+		Assert.AreNotEqual(powerupPrefab, spawnedPlayer);
+	}
+
+	// Tests to see if the spawned Powerup is of a different type from the instantiated Powerup
+	[Test]
+	public void Powerup1VsPowerup2() {
+		SetupScene ();
+		var powerupPrefab = GameObject.FindWithTag("Powerup");
+		var spawnedPowerup = GameObject.Find ("powerup2");
+		var prefabOfSpawnedPowerup = PrefabUtility.GetPrefabParent(powerupPrefab);
+		Assert.AreNotEqual(powerupPrefab, spawnedPowerup);
+	}
+
+	// Tests of the Spawned Powerup is inside the desired spawnValues
+	[Test]
+	public void CheckInsideSpawnValues() {
+		SetupScene ();
+		Vector3 spawnValues = new Vector3(5,5,1);
+		GameObject tester = new GameObject ();
+		tester.transform.position.Set (0, 0, 1);
+		//var powerupSpawner = new GameObject().AddComponent<SpawnObject>();
+		GameObject.Instantiate (Resources.Load("Tests/powerup1"), spawnValues + tester.transform.TransformPoint (0, 0, 0), tester.transform.rotation);
+		Vector3 checker = GameObject.FindWithTag ("Powerup").transform.position;
+		if (checker [0] <= -5 || checker [0] >= 5 || checker [1] <= -5 || checker [1] >= 5) {
+			Assert.Fail ();
 		}
-	}*/
-
-	[Test]
-	public void PlayerPrefabVsPowerupPrefab() {
-		Assert.True(true);
-		//Assert.True(true);
-		Vector3 spawnValues = new Vector3(1,1,1);
-		var powerupSpawner = new GameObject().AddComponent<SpawnObject>();
-		// Use the Assert class to test conditions.
-		var powerupPrefab = Resources.Load ("Tests/Player");
-		powerupSpawner.Construct (spawnValues, 0, 0, 0, 1, 0, 1);
-		powerupSpawner.StartCoroutine (powerupSpawner.Spawner());
-		var spawnType = GameObject.FindWithTag ("Powerup").GetType ();
-		var typeOfTestPrefab = powerupPrefab.GetType ();
-		int test1 = 1;
-		int test2 = 1;
-		Assert.True(true);
-		//Assert.AreEqual (spawnType, typeOfTestPrefab);
+		// Assert.Fail ();
+		Assert.True (true);
 	}
-
+		
+	// Tests of the spawned powerup matches the prefab
 	[Test]
-	public void PlayerPrefabVsProjectilePrefab() {
-		Vector3 spawnValues = new Vector3(1,1,1);
-		var powerupSpawner = new GameObject().AddComponent<SpawnObject>();
-		// Use the Assert class to test conditions.
-		var powerupPrefab = Resources.Load ("Tests/Projectile");
-		powerupSpawner.Construct (spawnValues, 0, 0, 0, 1, 0, 1);
-		powerupSpawner.StartCoroutine (powerupSpawner.Spawner());
-		var spawnType = GameObject.FindWithTag ("Powerup").GetType ();
-		var typeOfTestPrefab = powerupPrefab.GetType ();
-		//Assert.AreEqual (spawnType,typeOfTestPrefab);
-	}
-
-	// A UnityTest behaves like a coroutine in PlayMode
-	// and allows you to yield null to skip a frame in EditMode
-	[UnityTest]
-	public IEnumerator _Instantiates_GameObject_From_Prefab() {
-		Assert.True(true);
-        // Use the Assert class to test conditions.
-        // yield to skip a frame
-		Vector3 spawnValues = new Vector3(1,1,1);
-        var powerupSpawner = new GameObject().AddComponent<SpawnObject>();
-		var powerupPrefab = Resources.Load ("Tests/powerup1");
-		powerupSpawner.Construct (spawnValues, 0, 0, 0, 1, 0, 1);
-		powerupSpawner.StartCoroutine (powerupSpawner.Spawner());
-
+	public void Instantiates_GameObject_From_Prefab() {
+		SetupScene ();
+		var powerupPrefab = GameObject.FindWithTag("Powerup");
         var spawnedPowerup = GameObject.FindWithTag("Powerup");
+		var spawnedPlayer = GameObject.FindWithTag ("Player1");
+		var spawnedProjectile = GameObject.FindWithTag ("Fire");
         var prefabOfSpawnedPowerup = PrefabUtility.GetPrefabParent(powerupPrefab);
-        //Assert.AreEqual(powerupPrefab, prefabOfSpawnedPowerup);
-		//Assert.AreEqual(powerupPrefab, prefabOfSpawnedPowerup);
-		yield return null;
+		Assert.AreEqual(powerupPrefab, spawnedPowerup);
+	}
+
+	// Sets up the scene for testing
+	void SetupScene() {
+		GameObject.Instantiate (Resources.Load<GameObject> ("Tests/DummyMap"));
+		GameObject.Instantiate(Resources.Load<GameObject> ("Tests/Player"));
+		GameObject.Instantiate(Resources.Load<GameObject> ("Tests/Projectile"));
+		GameObject.Instantiate(Resources.Load<GameObject> ("Tests/powerup2"));
+		//Vector3 spawnValues = new Vector3(1,1,1);
+		//var powerupSpawner = new GameObject().AddComponent<SpawnObject>();
+		//powerupSpawner.Construct (spawnValues, 0, 0, 0, 1, 0, 1);
+		//powerupSpawner.StartCoroutine (powerupSpawner.Spawner());
 	}
 }

@@ -30,6 +30,13 @@ public abstract class GameController : MonoBehaviour
         Game.Instance.numPlayers = 4;
         Game.Instance.mapSelected = 1;
         Game.Instance.gameModeSelected = 0;
+
+        //Reset global variables for gamecontroller
+        numPlayers = 0;
+        isFinishedState = false;
+        isStarted = false;
+
+        //Return to menu
         SceneManager.LoadScene("Menu");
 
         numPlayers = 0;
@@ -55,6 +62,10 @@ public abstract class GameController : MonoBehaviour
 
     public void OnStart()
     {
+        //reset bools for gamecontroller
+        isFinishedState = false;
+        isStarted = false;
+
         // settings the players
         numPlayers = Game.Instance.numPlayers;
         players = new List<GameObject>();
