@@ -37,7 +37,6 @@ public class FFAController : GameController { // inherits from GameController
 
     public override bool VictoryCondition()
     {
-        Debug.Log("In FFA");
         int numOfPlayersAlive = 0; // this resets the alive-check each 60th second.
         winnerName = ""; // reset the winner
         foreach(var player in players) // for each player, allocate how many are still alive.

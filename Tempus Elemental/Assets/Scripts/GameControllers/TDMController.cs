@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TDMController : GameController {
 
-    //default with p1 and p3 on teams and p2 and p4 on teams
+    //default with p1 and p2 on teams and p3 and p4 on teams
 
     private string winningTeam = "";
 
@@ -32,17 +32,17 @@ public class TDMController : GameController {
 
     public override bool VictoryCondition()
     {
-        Debug.Log("In TDM");
         //destory player when they run out of time
-        int i = 0;
-        foreach (var player in players)
+        GameObject player;
+        for (int i = 0; i < 4; i++)
         {
-            if (!player.GetComponent<PlayerTime>().IsPlayerAlive())
+            if (!players[i].GetComponent<PlayerTime>().IsPlayerAlive())
             {
+                player = players[i];
+                players.Remove(players[i]);
                 Destroy(player);
                 alivePlayers[i] = false;
             }
-            i++;
         }
 
         if (!alivePlayers[0] && !alivePlayers[1] && !alivePlayers[2] && !alivePlayers[3])
@@ -50,12 +50,12 @@ public class TDMController : GameController {
             winningTeam = "Draw";
             return true;
         }
-        else if (!alivePlayers[0] && !alivePlayers[2])
+        else if (!alivePlayers[0] && !alivePlayers[1])
         {
             winningTeam = "Team 1 Wins!";
             return true;
         }
-        else if (!alivePlayers[1] && !alivePlayers[3])
+        else if (!alivePlayers[2] && !alivePlayers[3])
         {
             winningTeam = "Team 2 Wins!";
             return true;
