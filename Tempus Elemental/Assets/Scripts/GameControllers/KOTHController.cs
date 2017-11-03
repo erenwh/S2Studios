@@ -88,9 +88,13 @@ public class KOTHController : GameController
         playersInTheZone.Add(player);
     }
 
-	protected override string VictoryText () 
-    {
-		return "I like grapes";
+	protected override string VictoryText()
+	{
+		if (players.Count == 1) {
+			return " WINNER! : " + players[0].tag;
+		}
+
+		return " Y'all Like Grapes!";
 	}
 
     public override void KillPlayer(GameObject player)

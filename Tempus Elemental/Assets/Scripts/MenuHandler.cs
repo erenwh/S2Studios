@@ -67,7 +67,7 @@ public class MenuHandler : MonoBehaviour
             Game.Instance.gameModeSelected = 1;
             break;
         case KINGOFTHEHILL:
-			selectedGameModeText.text = "King of the Hell";
+			selectedGameModeText.text = "King of the Hill";
             Game.Instance.GameController = gameControllers[selectedGameMode];
             Game.Instance.gameModeSelected = 2;
             break;
