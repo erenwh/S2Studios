@@ -44,11 +44,6 @@ public class SpawnObject : MonoBehaviour {
 	void Start () {
         //performing actions to spawn power-ups
         StartCoroutine(Spawner());
-
-        //performing actions to switch the maps
-        map1 = GameObject.Find("DummyMap");
-        map2 = GameObject.Find("DummyMap2");
-        Utils.SwitchMap(map1, map2);
     }
 	
 	// Update is called once per frame 

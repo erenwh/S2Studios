@@ -62,6 +62,12 @@ public abstract class GameController : MonoBehaviour
 
     virtual public void OnStart()
     {
+        //performing actions to switch the maps
+        GameObject map1, map2;
+        map1 = GameObject.Find("DummyMap");
+        map2 = GameObject.Find("DummyMap2");
+        Utils.SwitchMap(map1, map2);
+
         // settings the players
         numPlayers = Game.Instance.numPlayers;
         players = new List<GameObject>();
