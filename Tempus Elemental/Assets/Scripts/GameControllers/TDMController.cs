@@ -11,20 +11,6 @@ public class TDMController : GameController {
     //list to check for alive players                  p1    p2    p3    p4
     private List<bool> alivePlayer = new List<bool> { false, false, false, false };
 
-    void Start()
-    {
-        Debug.Log("In TDM start"); //this line does not run
-    }
-
-    private void Awake()
-    {
-        Debug.Log("In TDM awake"); //neither does this one
-    }
-
-    // Update is called once per frame
-    //void Update () {
-
-    //}
 
     public override void SpawnObjects()
     {
@@ -43,39 +29,75 @@ public class TDMController : GameController {
 
     public override bool VictoryCondition()
     {
-        //destory player when they run out of time
-        GameObject player;
-        for (int i = 0; i < players.Count; i++)
+        if (players.Count == 0) 
         {
-            if (!players[i].GetComponent<PlayerTime>().IsPlayerAlive())
+			winningTeam = "Draw";
+			return true;
+        } else if (players.Count == 1)
+		{
+            string theTag = players[0].tag;
+            if ( theTag == "Player1" || theTag == "Player3") 
             {
-                player = players[i];
-                players.Remove(players[i]);
-                Destroy(player);
-                alivePlayer[i] = false;
+				winningTeam = "Team 1 Wins!";
+            } else {
+                winningTeam = "Team 2 Wins!";
             }
-            else
+            return true;
+        } else if (players.Count == 2) 
+        {
+            string tag1 = players[0].tag;
+            string tag2 = players[1].tag;
+            if (tag1 == "Player1" && tag2 == "Player3" ||
+                tag1 == "Player3" && tag2 == "Player1") 
             {
-                alivePlayer[i] = true;
+                winningTeam = "Team 1 Wins!";
+                return true;
+			}
+			else if (tag1 == "Player2" && tag2 == "Player4" ||
+			  tag1 == "Player4" && tag2 == "Player2") 
+            {
+				winningTeam = "Team 2 Wins!";
+				return true;
+            } else 
+            {
+                return false;
             }
         }
 
-        if (!alivePlayer[0] && !alivePlayer[1] && !alivePlayer[2] && !alivePlayer[3])
-        {
-            winningTeam = "Draw";
-            return true;
-        }
-        else if (!alivePlayer[0] && !alivePlayer[2])
-        {
-            winningTeam = "Team 1 Wins!";
-            return true;
-        }
-        else if (!alivePlayer[1] && !alivePlayer[3])
-        {
-            winningTeam = "Team 2 Wins!";
-            return true;
-        }
         return false;
+        ////destory player when they run out of time
+        //GameObject player;
+        //for (int i = 0; i < players.Count; i++)
+        //{
+        //    if (!players[i].GetComponent<PlayerTime>().IsPlayerAlive())
+        //    {
+        //        player = players[i];
+        //        players.Remove(players[i]);
+        //        Destroy(player);
+        //        alivePlayer[i] = false;
+        //    }
+        //    else
+        //    {
+        //        alivePlayer[i] = true;
+        //    }
+        //}
+
+        //if (!alivePlayer[0] && !alivePlayer[1] && !alivePlayer[2] && !alivePlayer[3])
+        //{
+        //    winningTeam = "Draw";
+        //    return true;
+        //}
+        //else if (!alivePlayer[0] && !alivePlayer[2])
+        //{
+        //    winningTeam = "Team 1 Wins!";
+        //    return true;
+        //}
+        //else if (!alivePlayer[1] && !alivePlayer[3])
+        //{
+        //    winningTeam = "Team 2 Wins!";
+        //    return true;
+        //}
+        //return false;
     }
 
     protected override string VictoryText()

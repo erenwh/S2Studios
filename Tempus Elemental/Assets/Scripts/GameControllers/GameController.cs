@@ -26,8 +26,8 @@ public abstract class GameController : MonoBehaviour
 
     private void BackToMenu() 
     {
-        ResetValues();
         SceneManager.LoadScene("Menu");
+        ResetValues();
     }
 
     private void ResetValues() {
@@ -41,6 +41,7 @@ public abstract class GameController : MonoBehaviour
 		isFinishedState = false;
 		isStarted = false;
 		Time.timeScale = 1;
+        victoryMessage = null;
     }
 
     private void ShowVictoryMessage() 
@@ -49,7 +50,7 @@ public abstract class GameController : MonoBehaviour
         victoryMessage.SetActive(true);
         victoryMessage.GetComponentInChildren<Text>().text = 
 
-        ////disabling renderer instead of setting inactive so we don't have to store reference
+        //disabling renderer instead of setting inactive so we don't have to store reference
         //GameObject.Find("Victory Background").GetComponent<Renderer>().enabled = true;
         //GameObject.Find("Victory Message Txt").GetComponent<Text>().enabled = true;
         //GameObject.FindWithTag("VictoryMessageTxt").GetComponent<Text>().text = 
@@ -60,10 +61,6 @@ public abstract class GameController : MonoBehaviour
 
     public void OnStart()
     {
-        //reset bools for gamecontroller
-        isFinishedState = false;
-        isStarted = false;
-
         // settings the players
         numPlayers = Game.Instance.numPlayers;
         players = new List<GameObject>();
@@ -118,22 +115,15 @@ public abstract class GameController : MonoBehaviour
 
 		//make sure that the game controller only does upate functionality when Main scene is active
 		//if (SceneManager.GetActiveScene().name == "Main")
-		if (VictoryCondition()) 
-        {
-            if (isFinishedState && Input.anyKey)
-            {
-                BackToMenu();
-                return;
-            }
 
-            if (VictoryCondition())
-            {
-                ShowVictoryMessage();
-                return;
-            }
+		if (VictoryCondition())
+		{
+            isFinishedState = true;
+			ShowVictoryMessage();
+			return;
+		}
 
-            UpdatePoints();
-        }
+		UpdatePoints();
     }
 
     public void KillPlayer(GameObject player)
