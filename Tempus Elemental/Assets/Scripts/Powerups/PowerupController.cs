@@ -37,8 +37,8 @@ public class PowerupController : MonoBehaviour
     {
         ptype = type;
         powerupLengthCounter = time;
-        speedMultiplier = multiplier;
-        ogspeed = touchedPlayer.GetComponent<PlayerMovement>().speed;               // keep track of speed of player
+        //speedMultiplier = multiplier;
+        //ogspeed = touchedPlayer.GetComponent<PlayerMovement>().speed;               // keep track of speed of player
         ogdamage = touchedPlayer.GetComponent<PlayerMeleeAttack>().damage;
         powerupActive = false;
 

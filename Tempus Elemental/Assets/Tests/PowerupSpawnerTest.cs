@@ -12,9 +12,9 @@ public class NewPlayModeTest {
 	public void ProjectileVsPowerup() {
 		SetupScene ();
 		var powerupPrefab = GameObject.FindWithTag("Powerup");
-		var spawnedPowerup = GameObject.FindWithTag("Powerup");
+		//var spawnedPowerup = GameObject.FindWithTag("Powerup");
 		var spawnedProjectile = GameObject.FindWithTag ("Fire");
-		var prefabOfSpawnedPowerup = PrefabUtility.GetPrefabParent(powerupPrefab);
+		//var prefabOfSpawnedPowerup = PrefabUtility.GetPrefabParent(powerupPrefab);
 		Assert.AreNotEqual(powerupPrefab, spawnedProjectile);
 	}
 
@@ -23,9 +23,9 @@ public class NewPlayModeTest {
 	public void PlayerVsPowerup() {
 		SetupScene ();
 		var powerupPrefab = GameObject.FindWithTag("Powerup");
-		var spawnedPowerup = GameObject.FindWithTag("Powerup");
+		//var spawnedPowerup = GameObject.FindWithTag("Powerup");
 		var spawnedPlayer = GameObject.FindWithTag ("Player1");
-		var prefabOfSpawnedPowerup = PrefabUtility.GetPrefabParent(powerupPrefab);
+		//var prefabOfSpawnedPowerup = PrefabUtility.GetPrefabParent(powerupPrefab);
 		Assert.AreNotEqual(powerupPrefab, spawnedPlayer);
 	}
 
@@ -35,7 +35,7 @@ public class NewPlayModeTest {
 		SetupScene ();
 		var powerupPrefab = GameObject.FindWithTag("Powerup");
 		var spawnedPowerup = GameObject.Find ("powerup2");
-		var prefabOfSpawnedPowerup = PrefabUtility.GetPrefabParent(powerupPrefab);
+		//var prefabOfSpawnedPowerup = PrefabUtility.GetPrefabParent(powerupPrefab);
 		Assert.AreNotEqual(powerupPrefab, spawnedPowerup);
 	}
 
@@ -62,9 +62,9 @@ public class NewPlayModeTest {
 		SetupScene ();
 		var powerupPrefab = GameObject.FindWithTag("Powerup");
         var spawnedPowerup = GameObject.FindWithTag("Powerup");
-		var spawnedPlayer = GameObject.FindWithTag ("Player1");
-		var spawnedProjectile = GameObject.FindWithTag ("Fire");
-        var prefabOfSpawnedPowerup = PrefabUtility.GetPrefabParent(powerupPrefab);
+		//var spawnedPlayer = GameObject.FindWithTag ("Player1");
+		//var spawnedProjectile = GameObject.FindWithTag ("Fire");
+        //var prefabOfSpawnedPowerup = PrefabUtility.GetPrefabParent(powerupPrefab);
 		Assert.AreEqual(powerupPrefab, spawnedPowerup);
 	}
 
