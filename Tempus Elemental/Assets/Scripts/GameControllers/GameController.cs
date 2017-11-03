@@ -26,7 +26,12 @@ public abstract class GameController : MonoBehaviour
 
     private void BackToMenu() 
     {
+        //Reset global variables for game
+        Game.Instance.numPlayers = 4;
+        Game.Instance.mapSelected = 1;
+        Game.Instance.gameModeSelected = 0;
         SceneManager.LoadScene("Menu");
+
         numPlayers = 0;
         isFinishedState = false;
         isStarted = false;
@@ -38,6 +43,12 @@ public abstract class GameController : MonoBehaviour
         Time.timeScale = 0;
         victoryMessage.SetActive(true);
         victoryMessage.GetComponentInChildren<Text>().text = 
+
+        ////disabling renderer instead of setting inactive so we don't have to store reference
+        //GameObject.Find("Victory Background").GetComponent<Renderer>().enabled = true;
+        //GameObject.Find("Victory Message Txt").GetComponent<Text>().enabled = true;
+        //GameObject.FindWithTag("VictoryMessageTxt").GetComponent<Text>().text = 
+
             VictoryText() + "\n Press any key to continue!";
         isFinishedState = true;
     }
@@ -88,6 +99,7 @@ public abstract class GameController : MonoBehaviour
 
     public void Update() 
     {
+
         if (isFinishedState) {
             if (Input.anyKey) {
                 BackToMenu();    
@@ -95,13 +107,24 @@ public abstract class GameController : MonoBehaviour
             return;
         }
 
-        if (VictoryCondition()) 
+		//make sure that the game controller only does upate functionality when Main scene is active
+		//if (SceneManager.GetActiveScene().name == "Main")
+		if (VictoryCondition()) 
         {
-            ShowVictoryMessage();
-            return;
-        }
+            if (isFinishedState && Input.anyKey)
+            {
+                BackToMenu();
+                return;
+            }
 
-        UpdatePoints();
+            if (VictoryCondition())
+            {
+                ShowVictoryMessage();
+                return;
+            }
+
+            UpdatePoints();
+        }
     }
 
     public void KillPlayer(GameObject player)

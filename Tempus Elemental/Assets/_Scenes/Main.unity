@@ -1146,8 +1146,8 @@ GameObject:
   - component: {fileID: 431277595}
   - component: {fileID: 431277594}
   m_Layer: 5
-  m_Name: Victory  Message Txt
-  m_TagString: Untagged
+  m_Name: Victory Message Txt
+  m_TagString: VictoryMessageTxt
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
