@@ -267,6 +267,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   numPlayers: 4
   mapSelected: 1
+  gameModeSelected: 0
 --- !u!4 &1101918857
 Transform:
   m_ObjectHideFlags: 0

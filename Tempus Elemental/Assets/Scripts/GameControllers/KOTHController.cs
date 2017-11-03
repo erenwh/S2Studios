@@ -4,9 +4,7 @@ using UnityEngine;
 
 public class KOTHController : GameController 
 {
-
-	
-	
+    
 	protected override bool VictoryCondition () 
     {
 		return false;
