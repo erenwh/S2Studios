@@ -10,6 +10,8 @@ public class Game : MonoBehaviour
     public int mapSelected = 1;
     //Use to see which game mode was selected in other scripts
     public int gameModeSelected = 0;
+    //Use to change players' starting time (default at 90 sec)
+    public int playersStartingTime = 90;
 
     public GameController GameController
     {

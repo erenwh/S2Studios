@@ -14,7 +14,8 @@ public class MenuHandler : MonoBehaviour
     public Dropdown selectPlayerDropdown;
     public Text selectedAmountPlayers;
 	public Text selectedGameModeText;
-	public GameController[] gameControllers;
+    public Text playerStartingTimeText;
+    public GameController[] gameControllers;
     public Image selectedMap;
     public Sprite dummyMap;
     public Sprite mageCityMap;
@@ -28,7 +29,8 @@ public class MenuHandler : MonoBehaviour
         "4 players selected", 
         "3 players selected", 
         "2 players selected" };
-    
+
+    private const string startingTimeText = "Players' starting time is: ";
 
     public void OnGameSetup()
     {
@@ -104,5 +106,12 @@ public class MenuHandler : MonoBehaviour
             Game.Instance.GameController = gameControllers[selectedGameMode];
         }
         SceneManager.LoadScene("Main");
+    }
+
+    public void ChangePlayerStartingTime(int startingTime)
+    {
+        playerStartingTimeText.text = startingTimeText + startingTime;
+        Game.Instance.playersStartingTime = startingTime;
+        Debug.Log("players' starting time " + startingTime);
     }
 }
