@@ -108,8 +108,9 @@ public class MenuHandler : MonoBehaviour
         SceneManager.LoadScene("Main");
     }
 
-    public void ChangePlayerStartingTime(int startingTime)
+    public void ChangePlayerStartingTime(Slider slider)
     {
+        int startingTime = (int)slider.value;
         playerStartingTimeText.text = startingTimeText + startingTime;
         Game.Instance.playersStartingTime = startingTime;
         Debug.Log("players' starting time " + startingTime);
