@@ -46,9 +46,15 @@ public class PlayerTime : MonoBehaviour {
 		timeText.text = timeRemaining.ToString ();
 	}
 
-	// Use this for initialization
-	void Start () {
-		//Assuming player's begin immediately after spawning
+    private void Awake() //added awake because start didn't update fast enough
+    {
+        //Assign player starting time from slider in settings from game object
+        startingTime = Game.Instance.playersStartingTime;
+    }
+
+    // Use this for initialization
+    void Start () {
+        //Assuming player's begin immediately after spawning
 		BeginCountdown();
 
         //Destroy Players if GameController has less than 4
