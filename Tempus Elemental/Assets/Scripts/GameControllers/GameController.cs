@@ -6,6 +6,8 @@ using System;
 
 public abstract class GameController : MonoBehaviour
 {
+    public int victoryMessageWaitInSeconds = 3;
+    private float victoryMessageWaitInRealTime = 0;
 
     public int numPlayers = 0;
 
@@ -21,9 +23,6 @@ public abstract class GameController : MonoBehaviour
 
     protected List<GameObject> players;
 
-	void Start() {
-		ResetValues();
-	}
 
     private void BackToMenu() 
     {
@@ -43,25 +42,25 @@ public abstract class GameController : MonoBehaviour
 		isStarted = false;
 		Time.timeScale = 1;
         victoryMessage = null;
+        victoryMessageWaitInRealTime = float.PositiveInfinity;
     }
 
     private void ShowVictoryMessage() 
     {
-        Time.timeScale = 0;
         victoryMessage.SetActive(true);
-        victoryMessage.GetComponentInChildren<Text>().text = 
-
-        //disabling renderer instead of setting inactive so we don't have to store reference
-        //GameObject.Find("Victory Background").GetComponent<Renderer>().enabled = true;
-        //GameObject.Find("Victory Message Txt").GetComponent<Text>().enabled = true;
-        //GameObject.FindWithTag("VictoryMessageTxt").GetComponent<Text>().text = 
-
-            VictoryText() + "\n Press any key to continue!";
-        isFinishedState = true;
+		victoryMessage.GetComponentInChildren<Text>().text =
+			VictoryText() + "\n Press any key to continue!";
+		if (victoryMessageWaitInRealTime > Time.realtimeSinceStartup)
+		{
+			victoryMessage.GetComponentInChildren<Text>().text +=
+			    " (in " + Math.Ceiling(victoryMessageWaitInRealTime -
+                Time.realtimeSinceStartup) + " )";
+		}
     }
 
     virtual public void OnStart()
     {
+        victoryMessageWaitInRealTime = float.PositiveInfinity;
         //performing actions to switch the maps
         GameObject map1, map2;
         map1 = GameObject.Find("DummyMap");
@@ -106,13 +105,16 @@ public abstract class GameController : MonoBehaviour
         victoryMessage = GameObject.FindWithTag("VictoryMessage");
         victoryMessage.SetActive(false);
         isStarted = true;
+        isFinishedState = false;
     }
 
     public void OnUpdate() 
     {
+        
 
         if (isFinishedState) {
-            if (Input.anyKey) {
+            ShowVictoryMessage();
+            if (victoryMessageWaitInRealTime < Time.realtimeSinceStartup && Input.anyKey) {
                 BackToMenu();    
             }
             return;
@@ -120,6 +122,8 @@ public abstract class GameController : MonoBehaviour
 
 		if (VictoryCondition())
 		{
+            Time.timeScale = 0;
+            victoryMessageWaitInRealTime = Time.realtimeSinceStartup + victoryMessageWaitInSeconds;
             isFinishedState = true;
 			ShowVictoryMessage();
 			return;
@@ -133,4 +137,5 @@ public abstract class GameController : MonoBehaviour
         players.Remove(player);
         player.SetActive(false);
     }
+
 }
