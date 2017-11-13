@@ -1,25 +1,27 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class DistortionCreator : MonoBehaviour {
 
-	//constants
-	const int SLOWDOWN = 0;
-	const int SPEEDUP = 1;
-	const int FREEZE = 2;
+    //constants
+    const int SLOWDOWN = 0;
+    const int SPEEDUP = 1;
+    const int FREEZE = 2;
 
-	//references
-	public GameObject[] distortions;			//all the different time distortion prefabs that a player can make
+    //references
+    public GameObject[] distortions;			//all the different time distortion prefabs that a player can make
+    public Image[] distortionIndicators;        //all images for each distortion
 
 	private PlayerTime pt;
 
 	//variables
 	public float timeUsedPerSecond = 0.75f;		//how much extra time is used per second of use (rounded down)?
-	public float slowDownFactor = 0.5f;		//how much should other players be slowed down by a slow down time distortion
+	public float slowDownFactor = 0.5f;		    //how much should other players be slowed down by a slow down time distortion
 	public int distortionType = 0;				//based on the constants, what kind of time distortion can the player currently make (default SLOWDOWN)
-	public float speedUpFactor = 2f;		//how much faster should the player become after using speedup time distortion
-	public float freezeRadius = 0.5f;		//how big is the freeze time distortion
+	public float speedUpFactor = 2f;		    //how much faster should the player become after using speedup time distortion
+	public float freezeRadius = 0.5f;		    //how big is the freeze time distortion
 
 	private bool distorting = false;			//is the player currently performing a time distortion
 	private GameObject createdDistortion;		//the current distortion created by the player
