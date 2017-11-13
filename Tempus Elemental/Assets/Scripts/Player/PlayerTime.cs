@@ -9,6 +9,7 @@ public class PlayerTime : MonoBehaviour {
 	public int timeRemaining;			// how much time does this player have left?
 	public Slider timeIndicator;
 	public Text timeText;
+    public Image radialIndicator;
 	public int TimeRemaining {
 		get {
 			return this.timeRemaining;
@@ -23,12 +24,14 @@ public class PlayerTime : MonoBehaviour {
 			playerFrom.GetComponent<PlayerTime> ().timeRemaining = difference;
 			playerFrom.GetComponent<PlayerTime> ().timeIndicator.value = playerFrom.GetComponent<PlayerTime> ().timeRemaining;
 			playerFrom.GetComponent<PlayerTime> ().timeText.text = playerFrom.GetComponent<PlayerTime> ().timeRemaining.ToString ();
+            playerFrom.GetComponent<PlayerTime>().radialIndicator.fillAmount = (float)playerFrom.GetComponent<PlayerTime> ().TimeRemaining / Game.Instance.playersStartingTime;
 		}
 		if (playerTo != null) {
 			playerTo.GetComponent<PlayerTime> ().timeRemaining += amount;
 			playerTo.GetComponent<PlayerTime> ().timeIndicator.value = playerTo.GetComponent<PlayerTime> ().timeRemaining;
 			playerTo.GetComponent<PlayerTime> ().timeText.text = playerTo.GetComponent<PlayerTime> ().timeRemaining.ToString ();
-		}
+            playerTo.GetComponent<PlayerTime>().radialIndicator.fillAmount = (float)playerTo.GetComponent<PlayerTime>().TimeRemaining / Game.Instance.playersStartingTime;
+        }
 	}
 
 	// Decrements the timeRemaining of this player.
@@ -36,6 +39,7 @@ public class PlayerTime : MonoBehaviour {
 		timeRemaining -= timeLost;
 		timeIndicator.value = timeRemaining;
 		timeText.text = timeRemaining.ToString ();
+        radialIndicator.fillAmount = (float)TimeRemaining / Game.Instance.playersStartingTime;
 	}
 
 	// Adds to the timeRemaining of this player.
@@ -53,29 +57,10 @@ public class PlayerTime : MonoBehaviour {
     }
 
     // Use this for initialization
-    void Start () {
+    void Start ()
+    {
         //Assuming player's begin immediately after spawning
 		BeginCountdown();
-
-        //Destroy Players if GameController has less than 4
-        //if (Game.Instance.numPlayers < 4)
-        //{
-        //    GameObject player4 = GameObject.Find("Player4");
-        //    GameObject player3 = GameObject.Find("Player3");
-        //    if (Game.Instance.numPlayers == 2)
-        //    {
-        //        Destroy(player3);
-        //        Destroy(player4);
-        //    }
-        //    else if (Game.Instance.numPlayers == 3)
-        //    {
-        //        Destroy(player4);
-        //    }
-        //    else
-        //    {
-        //        Debug.LogError("GameController's number of players is invalid. Less than four but not 2 or 3.");
-        //    }
-        //}
 	}
 
     public bool IsPlayerAlive() {
