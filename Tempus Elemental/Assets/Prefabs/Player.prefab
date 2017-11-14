@@ -421,9 +421,9 @@ MonoBehaviour:
   speed: 3
   charging: 0
   circleOffsetCoefficient: 0.18
-  dashSpeed: 6
-  dashTime: 0.25
-  dashCost: 1
+  dashSpeed: 5
+  dashTime: 0.1
+  dashCost: 3
   frozen: 0
 --- !u!114 &114789800082031028
 MonoBehaviour:
