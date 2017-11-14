@@ -9,6 +9,7 @@ public class DistortionCreator : MonoBehaviour {
     const int SLOWDOWN = 0;
     const int SPEEDUP = 1;
     const int FREEZE = 2;
+	const int REVERSE = 5;
 
     //references
     public GameObject[] distortions;			//all the different time distortion prefabs that a player can make
@@ -86,6 +87,9 @@ public class DistortionCreator : MonoBehaviour {
 		case FREEZE:
 			createdDistortion = Instantiate (distortions [FREEZE], transform);
 			createdDistortion.GetComponent<TimeFreeze> ().AssignPlayer (gameObject, freezeRadius);
+			break;
+		case REVERSE:
+			createdDistortion = Instantiate (distortions [REVERSE], transform);
 			break;
 		}
 		//TODO: Add additional distortion types for later Sprints
