@@ -20,6 +20,15 @@ public class MenuHandler : MonoBehaviour
     public Sprite dummyMap;
     public Sprite mageCityMap;
 
+    public Text selectControl;
+    
+    private List<string> gameControls = 
+        new List<string>() { 
+        "Keyboard 1", 
+        "Keyboard 2", 
+        "Joystick 1",
+        "Joystick 2" };    
+
     //variables
     public int numGameModes = 3;
 	private int selectedGameMode = 0;
@@ -114,5 +123,31 @@ public class MenuHandler : MonoBehaviour
         playerStartingTimeText.text = startingTimeText + startingTime;
         Game.Instance.playersStartingTime = startingTime;
         Debug.Log("players' starting time " + startingTime);
+    }
+
+    public void PlayerControlSwitch(string tag)
+    {
+        int playerNum = 0;
+        switch (tag)
+        {
+            case "player1":
+                playerNum = 1;
+                break;
+            case "Player2":
+                playerNum = 2;
+                break;
+            case "Player3":
+                playerNum = 3;
+                break;
+            case "Player4":
+                playerNum = 4;
+                break;
+            default:
+                break;
+        }
+
+        selectControl.text = gameControls[playerNum];
+        //Assign playerTag
+        //Utils.ObjectType.Player.playerTag = "player" + playerNum; 
     }
 }
