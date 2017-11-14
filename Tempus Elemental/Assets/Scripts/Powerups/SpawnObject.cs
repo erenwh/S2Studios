@@ -12,6 +12,7 @@ public class SpawnObject : MonoBehaviour {
         PowerUp3,
         PowerUp4,
         PowerUp5,
+		PowerUp6,
         Player,
     }
 
@@ -72,6 +73,42 @@ public class SpawnObject : MonoBehaviour {
 
 				yield return new WaitForSeconds (spawnWait);
 			}
+		}
+		else if (testMode == 3) {
+			while (true) {
+				//randomPowerup = Random.Range (0, powerups.Length);
+				// randomPowerup = 0; // grab the time powerup for now but later change to picking a random powerup
+				Vector3 spawnPosition = new Vector3 (Random.Range (-spawnValues.x, spawnValues.x), Random.Range (-spawnValues.y, spawnValues.y), 1);
+				Instantiate (Resources.Load("Tests/powerup3"), spawnPosition + transform.TransformPoint (0, 0, 0), gameObject.transform.rotation);  
+				yield return new WaitForSeconds (spawnWait);
+			}
+		}
+		else if (testMode == 4) {
+			while (true) {
+				//randomPowerup = Random.Range (0, powerups.Length);
+				 randomPowerup = 0; // grab the time powerup for now but later change to picking a random powerup
+				Vector3 spawnPosition = new Vector3 (Random.Range (-spawnValues.x, spawnValues.x), Random.Range (-spawnValues.y, spawnValues.y), 1);
+				Instantiate (Resources.Load("Tests/powerup4"), spawnPosition + transform.TransformPoint (5, 5, 5), gameObject.transform.rotation);  
+				yield return new WaitForSeconds (spawnWait);
+			}		
+		}
+		else if (testMode == 5) {
+			while (true) {
+				//randomPowerup = Random.Range (0, powerups.Length);
+				// randomPowerup = 0; // grab the time powerup for now but later change to picking a random powerup
+				Vector3 spawnPosition = new Vector3 (Random.Range (-spawnValues.x, spawnValues.x), Random.Range (-spawnValues.y, spawnValues.y), 1);
+				Instantiate (Resources.Load("Tests/powerup5"), spawnPosition + transform.TransformPoint (1, 1, 1), gameObject.transform.rotation);  
+				yield return new WaitForSeconds (spawnWait);
+			}		
+		}
+		else if (testMode == 6) {
+			while (true) {
+				//randomPowerup = Random.Range (0, powerups.Length);
+				 randomPowerup = 0; // grab the time powerup for now but later change to picking a random powerup
+				Vector3 spawnPosition = new Vector3 (Random.Range (-spawnValues.x, spawnValues.x), Random.Range (-spawnValues.y, spawnValues.y), 1);
+				Instantiate (Resources.Load("Tests/powerup6"), spawnPosition + transform.TransformPoint (7, 7, 7), gameObject.transform.rotation);  
+				yield return new WaitForSeconds (spawnWait);
+			}		
 		}
     }
 
