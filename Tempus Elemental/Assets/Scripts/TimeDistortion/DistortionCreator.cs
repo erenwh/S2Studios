@@ -12,7 +12,8 @@ public class DistortionCreator : MonoBehaviour {
 
     //references
     public GameObject[] distortions;			//all the different time distortion prefabs that a player can make
-    public Image[] distortionIndicators;        //all images for each distortion
+    public Image distortionIndicator;           //indicator of current distortion
+    public Sprite[] distortionSprites;          //sprites for each distortion powerup
 
 	private PlayerTime pt;
 
