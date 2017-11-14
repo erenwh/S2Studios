@@ -20,11 +20,12 @@ public abstract class GameController : MonoBehaviour
     abstract protected string VictoryText();
 
     private GameObject victoryMessage;
+    private GameObject inGameMenu;
 
     protected List<GameObject> players;
 
 
-    private void BackToMenu() 
+    public void BackToMenu() 
     {
         SceneManager.LoadScene("Menu");
         ResetValues();
@@ -104,6 +105,8 @@ public abstract class GameController : MonoBehaviour
 
         victoryMessage = GameObject.FindWithTag("VictoryMessage");
         victoryMessage.SetActive(false);
+		inGameMenu = GameObject.FindWithTag("InGameMenu");
+		inGameMenu.SetActive(false);
         isStarted = true;
         isFinishedState = false;
     }
@@ -128,6 +131,11 @@ public abstract class GameController : MonoBehaviour
 			ShowVictoryMessage();
 			return;
 		}
+
+        if (Input.GetButtonDown("Pause"))
+        {
+            inGameMenu.GetComponent<InGameMenuHandler>().ToggleState();
+        }
 			
 		GameLogic ();
     }

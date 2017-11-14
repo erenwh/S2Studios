@@ -15,6 +15,7 @@ TagManager:
   - Map
   - Powerup
   - Game
+  - InGameMenu
   layers:
   - Default
   - TransparentFX
