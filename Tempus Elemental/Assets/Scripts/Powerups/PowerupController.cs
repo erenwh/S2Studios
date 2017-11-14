@@ -45,15 +45,18 @@ public class PowerupController : MonoBehaviour
         if (ptype == 0)
         { // have to change this so that later it changes the distortion instead of the powerup changing the properties
             touchedPlayer.GetComponent<DistortionCreator>().distortionType = 0;
+            touchedPlayer.GetComponent<DistortionCreator>().distortionIndicator.sprite = touchedPlayer.GetComponent<DistortionCreator>().distortionSprites[0];
         }
         else if (ptype == 1) // have to change this so that later it changes the distortion instead of the powerup changing the properties
         {
             // touchedPlayer.GetComponent<PlayerMovement>().speed += speedMultiplier;  // speed up
             touchedPlayer.GetComponent<DistortionCreator>().distortionType = 1;
+            touchedPlayer.GetComponent<DistortionCreator>().distortionIndicator.sprite = touchedPlayer.GetComponent<DistortionCreator>().distortionSprites[1];
         }
         else if (ptype == 2) // have to change this so that later it changes the distortion instead of the powerup changing the properties
         {   // freeze time
             touchedPlayer.GetComponent<DistortionCreator>().distortionType = 2;
+            touchedPlayer.GetComponent<DistortionCreator>().distortionIndicator.sprite = touchedPlayer.GetComponent<DistortionCreator>().distortionSprites[2];
         }
         else if (ptype == 3)
         {
