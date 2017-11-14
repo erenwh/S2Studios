@@ -42,6 +42,6 @@ public class FFAController : GameController
             return " WINNER! : " + players[0].tag;
         }
 
-        return " Y'all Lame!";		//but... why? :'(
+        return " Well don't just sit there."; // motivate the player for being cheeky.
     }
 }

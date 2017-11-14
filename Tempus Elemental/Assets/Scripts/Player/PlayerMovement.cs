@@ -15,8 +15,8 @@ public class PlayerMovement : MonoBehaviour
 	private Vector2 lastDirection;
 	private DistortionCreator dc;
 
-	public float dashSpeed = 6f;			//how much faster do you move when dashing?
-	public float dashTime = 0.25f;			//how long do you dash?
+	public float dashSpeed = 10f;			//how much faster do you move when dashing?
+	public float dashTime = 0.10f;			//how long do you dash?
 	public int dashCost = 1;				//how much time do you lose for dashing?
 
 	private bool dashing;
