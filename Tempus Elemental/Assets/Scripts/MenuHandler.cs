@@ -41,10 +41,6 @@ public class MenuHandler : MonoBehaviour
 
     private const string startingTimeText = "Players' starting time is: ";
 
-    public void OnGameSetup()
-    {
-		//Debug.Log ("Hi Eli");
-	}
 
 	//right arrow selecting the game mode
 	public void NextGameMode () {
@@ -105,7 +101,6 @@ public class MenuHandler : MonoBehaviour
     {
         selectedAmountPlayers.text = numPlayers[index];
         Game.Instance.numPlayers = 4 - index;
-        Debug.Log("index " + (4 - index));
     }
 
     public void changeScenes()
@@ -147,7 +142,5 @@ public class MenuHandler : MonoBehaviour
         }
 
         selectControl.text = gameControls[playerNum];
-        //Assign playerTag
-        //Utils.ObjectType.Player.playerTag = "player" + playerNum; 
     }
 }
