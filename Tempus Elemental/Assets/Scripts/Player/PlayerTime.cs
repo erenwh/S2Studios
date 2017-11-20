@@ -19,26 +19,38 @@ public class PlayerTime : MonoBehaviour {
 	public static void TransferTime (int amount, GameObject playerFrom, GameObject playerTo) {
         //variable and check to prevent negative values 
         int difference = playerFrom.GetComponent<PlayerTime>().timeRemaining - amount;
-        if (difference < 0) difference = 0;
-		if (playerFrom != null) {
-			playerFrom.GetComponent<PlayerTime> ().timeRemaining = difference;
-			playerFrom.GetComponent<PlayerTime> ().timeIndicator.value = playerFrom.GetComponent<PlayerTime> ().timeRemaining;
-			playerFrom.GetComponent<PlayerTime> ().timeText.text = playerFrom.GetComponent<PlayerTime> ().timeRemaining.ToString ();
-            playerFrom.GetComponent<PlayerTime>().radialIndicator.fillAmount = (float)playerFrom.GetComponent<PlayerTime> ().TimeRemaining / Game.Instance.playersStartingTime;
+        if (difference < 0)
+        {
+            difference = 0;
+        }
+		if (playerFrom != null) 
+        {
+            playerFrom.GetComponent<PlayerTime>().DecrementTime(amount);
+			//playerFrom.GetComponent<PlayerTime> ().timeRemaining = difference;
+			//playerFrom.GetComponent<PlayerTime> ().timeIndicator.value = playerFrom.GetComponent<PlayerTime> ().timeRemaining;
+			//playerFrom.GetComponent<PlayerTime> ().timeText.text = playerFrom.GetComponent<PlayerTime> ().timeRemaining.ToString ();
+            //playerFrom.GetComponent<PlayerTime>().radialIndicator.fillAmount = (float)playerFrom.GetComponent<PlayerTime> ().TimeRemaining / Game.Instance.playersStartingTime;
 		}
-		if (playerTo != null) {
-			playerTo.GetComponent<PlayerTime> ().timeRemaining += amount;
-			playerTo.GetComponent<PlayerTime> ().timeIndicator.value = playerTo.GetComponent<PlayerTime> ().timeRemaining;
-			playerTo.GetComponent<PlayerTime> ().timeText.text = playerTo.GetComponent<PlayerTime> ().timeRemaining.ToString ();
-            playerTo.GetComponent<PlayerTime>().radialIndicator.fillAmount = (float)playerTo.GetComponent<PlayerTime>().TimeRemaining / Game.Instance.playersStartingTime;
+		if (playerTo != null) 
+        {
+            playerTo.GetComponent<PlayerTime>().AddTime(amount);
+			//playerTo.GetComponent<PlayerTime> ().timeRemaining += amount;
+			//playerTo.GetComponent<PlayerTime> ().timeIndicator.value = playerTo.GetComponent<PlayerTime> ().timeRemaining;
+			//playerTo.GetComponent<PlayerTime> ().timeText.text = playerTo.GetComponent<PlayerTime> ().timeRemaining.ToString ();
+            //playerTo.GetComponent<PlayerTime>().radialIndicator.fillAmount = (float)playerTo.GetComponent<PlayerTime>().TimeRemaining / Game.Instance.playersStartingTime;
         }
 	}
 
 	// Decrements the timeRemaining of this player.
-	public void DecrementTime (int timeLost) {
+	public void DecrementTime (int timeLost) 
+    {
 		timeRemaining -= timeLost;
+        if (timeRemaining < 0) 
+        {
+            timeRemaining = 0;   
+        }
 		timeIndicator.value = timeRemaining;
-		timeText.text = timeRemaining.ToString ();
+		timeText.text = timeRemaining.ToString();
         radialIndicator.fillAmount = (float)TimeRemaining / Game.Instance.playersStartingTime;
 	}
 

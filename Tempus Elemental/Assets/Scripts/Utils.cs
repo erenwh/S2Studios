@@ -37,7 +37,7 @@ public static class Utils
         {
             return ObjectType.Wall;
         }
-        if (obj.tag.StartsWith("Projectile", System.StringComparison.CurrentCulture)) 
+        if (obj.tag.StartsWith("Fire", System.StringComparison.CurrentCulture)) 
         {
             return ObjectType.Projectile;
         }
