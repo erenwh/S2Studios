@@ -3,13 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class DistortionCreator : MonoBehaviour {
-
-    //constants
-    const int SLOWDOWN = 0;
-    const int SPEEDUP = 1;
-    const int FREEZE = 2;
-	const int REVERSE = 5;
+public class DistortionCreator : MonoBehaviour 
+{
 
     //references
     public GameObject[] distortions;			//all the different time distortion prefabs that a player can make
@@ -21,7 +16,7 @@ public class DistortionCreator : MonoBehaviour {
 	//variables
 	public float timeUsedPerSecond = 0.75f;		//how much extra time is used per second of use (rounded down)?
 	public float slowDownFactor = 0.5f;		    //how much should other players be slowed down by a slow down time distortion
-	public int distortionType = 0;				//based on the constants, what kind of time distortion can the player currently make (default SLOWDOWN)
+    public DistortionType distortionType = DistortionType.SlowDown;				//based on the constants, what kind of time distortion can the player currently make (default SLOWDOWN)
 	public float speedUpFactor = 2f;		    //how much faster should the player become after using speedup time distortion
 	public float freezeRadius = 0.5f;		    //how big is the freeze time distortion
 
@@ -32,9 +27,10 @@ public class DistortionCreator : MonoBehaviour {
 	private float multiplier = 1;				//the distortion multiplier that affects the distortion when multiple powerups are picked up
 
 	// Use this for initialization
-	void Start () {
+	void Start () 
+    {
 		distorting = false;
-		distortionType = SLOWDOWN;
+        distortionType = DistortionType.SpeedUp;
 		timeDistorted = 0.0f;
 		pt = GetComponent<PlayerTime> ();
 		multiplier = 1;
@@ -43,17 +39,17 @@ public class DistortionCreator : MonoBehaviour {
 	void applyMultiplier() {
 		if (multiplier > 1) {
 			switch (distortionType) {
-			case SLOWDOWN:
+                case DistortionType.SlowDown:
 				for (int i = 0; i < multiplier - 1; i++) {
 					slowDownFactor *= slowDownFactor;
 				}
 				break;
-			case SPEEDUP:
+                case DistortionType.SpeedUp:
 				for (int i = 0; i < multiplier - 1; i++) {
 					speedUpFactor *= speedUpFactor;
 				}
 				break;
-			case FREEZE:
+                case DistortionType.Freeze:
 				// Brian: not sure how the freeze time distortion would become more powerful when stacked 
 				// Parr: We could make the Radius bigger?
 				for (int i = 0; i < multiplier - 1; i++) {
@@ -75,28 +71,25 @@ public class DistortionCreator : MonoBehaviour {
 		}
 		distorting = true;
 		timeDistorted = 0.0f;
+        createdDistortion = Instantiate(distortions[(int)distortionType], transform);
 		switch (distortionType) {
-		case SLOWDOWN:
-			createdDistortion = Instantiate (distortions [SLOWDOWN], transform);
-			createdDistortion.GetComponent<TimeSlowDown> ().AssignPlayer (gameObject, slowDownFactor);
-			break;
-		case SPEEDUP:
-			createdDistortion = Instantiate (distortions [SPEEDUP], transform);
-			createdDistortion.GetComponent<TimeSpeedUp> ().AssignPlayer (gameObject, speedUpFactor);
-			break;
-		case FREEZE:
-			createdDistortion = Instantiate (distortions [FREEZE], transform);
+            case DistortionType.SlowDown:
+			    createdDistortion.GetComponent<TimeSlowDown> ().AssignPlayer (gameObject, slowDownFactor);
+			    break;
+            case DistortionType.SpeedUp:			
+			    createdDistortion.GetComponent<TimeSpeedUp> ().AssignPlayer (gameObject, speedUpFactor);
+			    break;
+            case DistortionType.Freeze:			
 			createdDistortion.GetComponent<TimeFreeze> ().AssignPlayer (gameObject, freezeRadius);
-			break;
-		case REVERSE:
-			createdDistortion = Instantiate (distortions [REVERSE], transform);
-			break;
+			    break;
+            case DistortionType.Reverse:			
+			    break;
 		}
-		//TODO: Add additional distortion types for later Sprints
 	}
 
 	// end the running distortion
-	public void EndDistortion () {
+	public void EndDistortion () 
+    {
 		if (!distorting) {
 			return;
 		}
@@ -105,7 +98,8 @@ public class DistortionCreator : MonoBehaviour {
 	}
 
 	// Update is called once per frame
-	void Update () {
+	void Update () 
+    {
 		//creating and ending distortions are now in PlayerMovement to account for the dash mechanic
 
 		//call the applyMultiplier function in here somewhere

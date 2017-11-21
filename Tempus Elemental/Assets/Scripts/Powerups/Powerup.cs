@@ -10,14 +10,15 @@ public class Powerup : MonoBehaviour
 
     private PowerupController controller;
 
-    // Use this for initialization
-    void Start () {
+    void Start () 
+    {
         controller = FindObjectOfType<PowerupController>();
 
     }
 	
 	// Update is called once per frame
-	void Update () {
+	void Update () 
+    {
         duration -= Time.deltaTime;
         if (duration <= 0)
         {
@@ -27,12 +28,12 @@ public class Powerup : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D coll)
     {
-        if (Utils.DetermineObjectType(coll) == Utils.ObjectType.Player)
+        if (Utils.DetermineObjectType(coll) == ObjectType.Player)
         {
             controller.AssignPlayer(coll.gameObject);
             controller.ActivatePowerup(ptype, powerupLength, speedMultiplier, amountTimeAdd);
         }
 
-        gameObject.SetActive(false);
+        Destroy(gameObject);
     }
 }

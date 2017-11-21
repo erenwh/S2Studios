@@ -39,7 +39,7 @@ public class PlayerMeleeAttack : MonoBehaviour
 
     void Attack()
     {
-        if (Utils.DetermineObjectType(playerAttacked) == Utils.ObjectType.Player)
+        if (Utils.DetermineObjectType(playerAttacked) == ObjectType.Player)
         {
 			PlayerTime.TransferTime (damage, playerAttacked.gameObject, gameObject);
         }

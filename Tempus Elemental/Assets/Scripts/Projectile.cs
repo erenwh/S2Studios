@@ -29,9 +29,9 @@ public class Projectile : MonoBehaviour
 
     void OnTriggerEnter2D (Collider2D other) 
     {
-        if (Utils.DetermineObjectType(other) != Utils.ObjectType.Player) 
+        if (Utils.DetermineObjectType(other) != ObjectType.Player) 
         {
-            if (Utils.DetermineObjectType(other) == Utils.ObjectType.Wall) {
+            if (Utils.DetermineObjectType(other) == ObjectType.Wall) {
 				Destroy(gameObject);
 			}
 			return;

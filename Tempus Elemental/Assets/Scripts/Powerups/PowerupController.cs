@@ -43,14 +43,14 @@ public class PowerupController : MonoBehaviour
         powerupActive = false;
 
 		if (ptype == 0) { // have to change this so that later it changes the distortion instead of the powerup changing the properties
-			touchedPlayer.GetComponent<DistortionCreator> ().distortionType = 0;
+            touchedPlayer.GetComponent<DistortionCreator> ().distortionType = DistortionType.SlowDown;
 			touchedPlayer.GetComponent<DistortionCreator> ().distortionIndicator.sprite = touchedPlayer.GetComponent<DistortionCreator> ().distortionSprites [0];
 		} else if (ptype == 1) { // have to change this so that later it changes the distortion instead of the powerup changing the properties
 			// touchedPlayer.GetComponent<PlayerMovement>().speed += speedMultiplier;  // speed up
-			touchedPlayer.GetComponent<DistortionCreator> ().distortionType = 1;
+            touchedPlayer.GetComponent<DistortionCreator> ().distortionType = DistortionType.SpeedUp;
 			touchedPlayer.GetComponent<DistortionCreator> ().distortionIndicator.sprite = touchedPlayer.GetComponent<DistortionCreator> ().distortionSprites [1];
 		} else if (ptype == 2) { // have to change this so that later it changes the distortion instead of the powerup changing the properties// freeze time
-			touchedPlayer.GetComponent<DistortionCreator> ().distortionType = 2;
+            touchedPlayer.GetComponent<DistortionCreator> ().distortionType = DistortionType.Freeze;
 			touchedPlayer.GetComponent<DistortionCreator> ().distortionIndicator.sprite = touchedPlayer.GetComponent<DistortionCreator> ().distortionSprites [2];
 		} else if (ptype == 3) {
 			powerupActive = true;
@@ -58,7 +58,7 @@ public class PowerupController : MonoBehaviour
 		} else if (ptype == 4) {
 			touchedPlayer.GetComponent<PlayerTime> ().AddTime (5);
 		} else if (ptype == 5) {
-			touchedPlayer.GetComponent<DistortionCreator> ().distortionType = 5;
+            touchedPlayer.GetComponent<DistortionCreator> ().distortionType = DistortionType.Reverse;
 		}
     }
 }

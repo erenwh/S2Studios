@@ -17,6 +17,10 @@ public class PlayerTime : MonoBehaviour {
                 return Mathf.RoundToInt(timeRemaining);
             }
         }
+        set
+        {
+            timeRemaining = value;
+        }
     }
 
     // visual cues
