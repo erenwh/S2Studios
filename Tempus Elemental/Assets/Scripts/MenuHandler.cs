@@ -9,6 +9,7 @@ public class MenuHandler : MonoBehaviour
 	private const int FREEFORALL = 0;
     private const int TEAMDEATHMATCH = 1;
     private const int KINGOFTHEHILL = 2;
+	private const int FILLTHEBAR = 3;
 
 	//references
     public Dropdown selectPlayerDropdown;
@@ -30,7 +31,7 @@ public class MenuHandler : MonoBehaviour
         "Joystick 2" };    
 
     //variables
-    public int numGameModes = 3;
+    public int numGameModes = 4;
 	private int selectedGameMode = 0;
 
     private List<string> numPlayers = 
@@ -78,6 +79,11 @@ public class MenuHandler : MonoBehaviour
             Game.Instance.GameController = gameControllers[selectedGameMode];
             Game.Instance.gameModeSelected = 2;
             break;
+		case FILLTHEBAR:
+			selectedGameModeText.text = "Fill the Bar";
+			Game.Instance.GameController = gameControllers[selectedGameMode];
+			Game.Instance.gameModeSelected = 3;
+			break;
 		}
 	}
 
