@@ -1,23 +1,17 @@
 ﻿using UnityEngine;
 
-public class Powerup : MonoBehaviour 
+public class Powerup : MonoBehaviour
 {
-    public int ptype;
+    public PowerUpType powerUpType;
     public float powerupLength;
     public float speedMultiplier;
     public int amountTimeAdd;
+    public int addedDamage;
     public float duration = 7f;            // the duration of powerup on map
 
-    private PowerupController controller;
 
-    void Start () 
-    {
-        controller = FindObjectOfType<PowerupController>();
-
-    }
-	
-	// Update is called once per frame
-	void Update () 
+    // Update is called once per frame
+    void Update()
     {
         duration -= Time.deltaTime;
         if (duration <= 0)
@@ -30,10 +24,36 @@ public class Powerup : MonoBehaviour
     {
         if (Utils.DetermineObjectType(coll) == ObjectType.Player)
         {
-            controller.AssignPlayer(coll.gameObject);
-            controller.ActivatePowerup(ptype, powerupLength, speedMultiplier, amountTimeAdd);
+            activatePowerUpForPlayer(coll.gameObject);
         }
 
         Destroy(gameObject);
+    }
+
+    private void activatePowerUpForPlayer(GameObject player)
+    {
+        DistortionCreator dc = player.GetComponent<DistortionCreator>();
+        switch (powerUpType)
+        {
+            case PowerUpType.SlowDown:
+                dc.DistortionType = DistortionType.SlowDown;
+                break;
+            case PowerUpType.SpeedUp:
+                dc.DistortionType = DistortionType.SpeedUp;
+                break;
+            case PowerUpType.Freeze:
+                dc.DistortionType = DistortionType.Freeze;
+                break;
+            case PowerUpType.Reverse:
+                dc.DistortionType = DistortionType.Reverse;
+                break;
+            case PowerUpType.AddTime:
+                player.GetComponent<PlayerTime>().AddTime(amountTimeAdd);
+                break;
+            case PowerUpType.AddDamage:
+                player.GetComponent<PlayerMeleeAttack>().
+                addDamageForTime(addedDamage, powerupLength);
+                break;
+        }
     }
 }

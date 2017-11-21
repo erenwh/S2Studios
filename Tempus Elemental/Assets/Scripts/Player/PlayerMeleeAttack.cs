@@ -7,15 +7,28 @@ public class PlayerMeleeAttack : MonoBehaviour
     public float timeBtwnAttacks = 0.33f;		//even with button spam, don't allow buttonSpammers to attack too quickly
     private Collider2D playerAttacked;
     private bool hasAttacked = false;
+    private bool isDamageChanged = false;
+    private float damageChangeTime = 0f;
+    private int oldDamage; 
     private float delay;
 
-	void Start ()
+    private void Start()
     {
-        hasAttacked = false;
-	}
+        oldDamage = damage;
+    }
 
     void Update()
     {
+        if (isDamageChanged) 
+        {
+            damageChangeTime -= Time.deltaTime;
+            if (damageChangeTime <= 0) 
+            {
+                damage = oldDamage;
+                isDamageChanged = false;
+            }
+        }
+
         if (playerAttacked == null)
         {
             return;
@@ -46,14 +59,19 @@ public class PlayerMeleeAttack : MonoBehaviour
     }
 
     void OnTriggerEnter2D(Collider2D coll)
-    {
-        // controller.AssignPlayer(coll.gameObject);
-        // controller.ActivatePowerup(ptype, powerupLength, speedMultiplier, amountTimeAdd);
+    {        
         playerAttacked = coll;
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
         playerAttacked = null;
+    }
+
+    public void addDamageForTime(int addedDamage, float time) 
+    {
+        damage += addedDamage;
+        isDamageChanged = true;
+        damageChangeTime = time;
     }
 }

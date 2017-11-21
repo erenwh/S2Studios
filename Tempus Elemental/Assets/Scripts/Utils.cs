@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 
-public enum ObjectType { Other, Player, Projectile, PowerUp, Distortion, Wall };
-public enum DistortionType { SlowDown = 0, SpeedUp, Freeze, Reverse, };
-public enum PowerUpType { SlowDown = 0, SpeedUp, Freeze, Reverse,  };
+public enum ObjectType { Other, Player, Projectile, PowerUp, Distortion, Wall, };
+public enum DistortionType { SlowDown, SpeedUp, Freeze, Reverse, };
+public enum PowerUpType { SlowDown, SpeedUp, Freeze, AddDamage, AddTime, Reverse,  };
 
 public static class Utils 
 {
