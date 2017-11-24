@@ -1,35 +1,21 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
+﻿using UnityEngine;
 
-public class SpawnObject : MonoBehaviour {
-
-    public enum ObjectType
-    {
-        PowerUp1,
-        PowerUp2,
-        PowerUp3,
-        PowerUp4,
-        PowerUp5,
-		PowerUp6,
-        Player,
-    }
+public class SpawnObject : MonoBehaviour
+{
 
     public GameObject[] powerups;       // powerup array
     public Vector3 spawnValues;
-    public float spawnWait;         	// some amount to wait
     public float spawnMostWait;     	// the upper bound for time wait
     public float spawnLeastWait;    	// the lower bound for time wait
-    public int startWait;           	// initial
-    private int randomPowerup;           // random number to decide which powerup 
-	private int testMode = 0;
+    public float startWait;           	// initial
+    public int testMode = 0;
 
-    private GameObject map1, map2;
+    private float spawnWait;            // some amount to wait
 
-	public void Construct(Vector3 _spawnValues, float _spawnWait, float _spawnMostWait, float _spawnLeastWait, int _startWait, int _randomPowerup, int _testMode)
+
+    public void Construct(Vector3 _spawnValues, float _spawnWait, float _spawnMostWait, float _spawnLeastWait, int _startWait, int _randomPowerup, int _testMode)
     {
-		testMode = _testMode;
+        testMode = _testMode;
         for (int i = 0; i < 3; i++)
         {
             spawnValues[i] = _spawnValues[i];
@@ -38,111 +24,67 @@ public class SpawnObject : MonoBehaviour {
         spawnMostWait = _spawnMostWait;
         spawnLeastWait = _spawnLeastWait;
         startWait = _startWait;
-        randomPowerup = _randomPowerup;
     }
 
-	// Use this for initialization
-	void Start () {
-        //performing actions to spawn power-ups
-        StartCoroutine(Spawner());
-    }
-	
-	// Update is called once per frame 
-	void Update () {
-        spawnWait = Random.Range(spawnLeastWait, spawnMostWait); 
-	}
-    
-    public IEnumerator Spawner ()
+    void Start()
     {
-        yield return new WaitForSeconds(startWait); // wait time
-		if (testMode == 0) {
-			while (true) {
-				randomPowerup = Random.Range (0, powerups.Length);
-				// randomPowerup = 0; // grab the time powerup for now but later change to picking a random powerup
-				Vector3 spawnPosition = new Vector3 (Random.Range (-spawnValues.x, spawnValues.x), Random.Range (-spawnValues.y, spawnValues.y), 1);   // grab the spawn position with random vals
-				Instantiate (powerups [randomPowerup], spawnPosition + transform.TransformPoint (0, 0, 0), gameObject.transform.rotation);                         // spawn the object
-
-				yield return new WaitForSeconds (spawnWait);
-			}
-		} else if (testMode == 1) {
-			while (true) {
-				//randomPowerup = Random.Range (0, powerups.Length);
-				// randomPowerup = 0; // grab the time powerup for now but later change to picking a random powerup
-				Vector3 spawnPosition = new Vector3 (Random.Range (-spawnValues.x, spawnValues.x), Random.Range (-spawnValues.y, spawnValues.y), 1);   // grab the spawn position with random vals
-				Instantiate (Resources.Load("Tests/powerup1"), spawnPosition + transform.TransformPoint (0, 0, 0), gameObject.transform.rotation);                         // spawn the object
-
-				yield return new WaitForSeconds (spawnWait);
-			}
-		}
-		else if (testMode == 3) {
-			while (true) {
-				//randomPowerup = Random.Range (0, powerups.Length);
-				// randomPowerup = 0; // grab the time powerup for now but later change to picking a random powerup
-				Vector3 spawnPosition = new Vector3 (Random.Range (-spawnValues.x, spawnValues.x), Random.Range (-spawnValues.y, spawnValues.y), 1);
-				Instantiate (Resources.Load("Tests/powerup3"), spawnPosition + transform.TransformPoint (0, 0, 0), gameObject.transform.rotation);  
-				yield return new WaitForSeconds (spawnWait);
-			}
-		}
-		else if (testMode == 4) {
-			while (true) {
-				//randomPowerup = Random.Range (0, powerups.Length);
-				 randomPowerup = 0; // grab the time powerup for now but later change to picking a random powerup
-				Vector3 spawnPosition = new Vector3 (Random.Range (-spawnValues.x, spawnValues.x), Random.Range (-spawnValues.y, spawnValues.y), 1);
-				Instantiate (Resources.Load("Tests/powerup4"), spawnPosition + transform.TransformPoint (5, 5, 5), gameObject.transform.rotation);  
-				yield return new WaitForSeconds (spawnWait);
-			}		
-		}
-		else if (testMode == 5) {
-			while (true) {
-				//randomPowerup = Random.Range (0, powerups.Length);
-				// randomPowerup = 0; // grab the time powerup for now but later change to picking a random powerup
-				Vector3 spawnPosition = new Vector3 (Random.Range (-spawnValues.x, spawnValues.x), Random.Range (-spawnValues.y, spawnValues.y), 1);
-				Instantiate (Resources.Load("Tests/powerup5"), spawnPosition + transform.TransformPoint (1, 1, 1), gameObject.transform.rotation);  
-				yield return new WaitForSeconds (spawnWait);
-			}		
-		}
-		else if (testMode == 6) {
-			while (true) {
-				//randomPowerup = Random.Range (0, powerups.Length);
-				 randomPowerup = 0; // grab the time powerup for now but later change to picking a random powerup
-				Vector3 spawnPosition = new Vector3 (Random.Range (-spawnValues.x, spawnValues.x), Random.Range (-spawnValues.y, spawnValues.y), 1);
-				Instantiate (Resources.Load("Tests/powerup6"), spawnPosition + transform.TransformPoint (7, 7, 7), gameObject.transform.rotation);  
-				yield return new WaitForSeconds (spawnWait);
-			}		
-		}
+        spawnWait = Random.Range(spawnLeastWait, spawnMostWait);
     }
 
-    public GameObject Spawn(ObjectType type, Vector2 pos)
+    void Update()
     {
-        var prefab = powerups[(int)type];
-        var objSize = prefab.GetComponent<Renderer>().bounds.size;
-        var mapSize = GameObject.FindWithTag("Map").GetComponent<Renderer>().bounds.size;
-        var colliders = GameObject.FindWithTag("Walls").GetComponents<BoxCollider2D>();
-        bool shouldRepeat = false;
-        // find a safe place
-        while (true) {
-			var randx = Random.Range(0, mapSize.x);
-			var randy = Random.Range(0, mapSize.y);
-			randx -= mapSize.x / 2;
-			randy -= mapSize.y / 2;
+        // wait for the initial delay
+        if (startWait > 0)
+        {
+            startWait -= Time.deltaTime;
+            return;
+        }
 
-            var randBounds = new Bounds(new Vector3(randx, randy), objSize);
+        if (spawnWait > 0)
+        {
+            spawnWait -= Time.deltaTime;
+            return;
+        }
 
-			foreach (var coll in colliders)
-			{
-				if (coll.bounds.Intersects(randBounds))
-				{
-                    shouldRepeat = true;
-                    break;
-				}
-			}
+        Spawner();
+        spawnWait = Random.Range(spawnLeastWait, spawnMostWait);
+    }
 
-            if (shouldRepeat) {
-                shouldRepeat = false;
-                continue;
-            }
+    private void Spawner()
+    {
+        if (testMode == 0)
+        {
+            int randomPowerup = Random.Range(0, powerups.Length);
+            // randomPowerup = 0; // grab the time powerup for now but later change to picking a random powerup
+            Vector3 spawnPosition = new Vector3(Random.Range(-spawnValues.x, spawnValues.x), Random.Range(-spawnValues.y, spawnValues.y), 1);   // grab the spawn position with random vals
+            Instantiate(powerups[randomPowerup], spawnPosition + transform.TransformPoint(0, 0, 0), gameObject.transform.rotation);                         // spawn the object
+        }
+        else if (testMode == 1)
+        {            
+            Vector3 spawnPosition = new Vector3(Random.Range(-spawnValues.x, spawnValues.x), Random.Range(-spawnValues.y, spawnValues.y), 1);   // grab the spawn position with random vals
+            Instantiate(Resources.Load("Tests/powerup1"), spawnPosition + transform.TransformPoint(0, 0, 0), gameObject.transform.rotation);                         // spawn the object
 
-            return Instantiate(prefab, new Vector3(randx, randy), gameObject.transform.rotation);
-		}
+        }
+        else if (testMode == 3)
+        {
+            Vector3 spawnPosition = new Vector3(Random.Range(-spawnValues.x, spawnValues.x), Random.Range(-spawnValues.y, spawnValues.y), 1);
+            Instantiate(Resources.Load("Tests/powerup3"), spawnPosition + transform.TransformPoint(0, 0, 0), gameObject.transform.rotation);
+        }
+        else if (testMode == 4)
+        {            
+            Vector3 spawnPosition = new Vector3(Random.Range(-spawnValues.x, spawnValues.x), Random.Range(-spawnValues.y, spawnValues.y), 1);
+            Instantiate(Resources.Load("Tests/powerup4"), spawnPosition + transform.TransformPoint(5, 5, 5), gameObject.transform.rotation);
+        }
+        else if (testMode == 5)
+        {            
+            Vector3 spawnPosition = new Vector3(Random.Range(-spawnValues.x, spawnValues.x), Random.Range(-spawnValues.y, spawnValues.y), 1);
+            Instantiate(Resources.Load("Tests/powerup5"), spawnPosition + transform.TransformPoint(1, 1, 1), gameObject.transform.rotation);
+        }
+        else if (testMode == 6)
+        {            
+            Vector3 spawnPosition = new Vector3(Random.Range(-spawnValues.x, spawnValues.x), Random.Range(-spawnValues.y, spawnValues.y), 1);
+            Instantiate(Resources.Load("Tests/powerup6"), spawnPosition + transform.TransformPoint(7, 7, 7), gameObject.transform.rotation);
+
+        }
     }
 }
