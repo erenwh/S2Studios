@@ -4,23 +4,18 @@ using UnityEngine.SceneManagement;
 using System.Collections;
 using System.Collections.Generic;
 
-public class FFAController : GameController 
-{ // inherits from GameController
+public class FFAController : GameController {
 
-    //public override void SpawnPlayers()
-    //{
-    //    //if (sdTag) {
-    //    //    for (int i = 0; i < numPlayers; ++i) {
-    //    //        GameObject newPlayer = Instantiate(playerPrefab);
-    //    //        newPlayer.GetComponent<PlayerTime>().timeRemaining = 20;
-    //    //        newPlayer.tag = "Player" + (i + 1);
-    //    //    }
-    //    //}
+    protected void SpawnPlayers()
+    {
+            for (int i = 0; i < numPlayers; ++i) {
+                GameObject newPlayer = Instantiate(playerPrefab);
+                newPlayer.GetComponent<PlayerTime>().timeRemaining = 20;
+                newPlayer.tag = "Player" + (i + 1);
+            }
+        }
 
-    //    //return;
-    //}
-
-    protected void suddenDeathReset()
+    protected void SDReset()
     {
         // remove the old players
         // spawn the players set their reset times for sudden death
@@ -48,9 +43,10 @@ public class FFAController : GameController
             return "The Sole Survivor ... " + players[0].tag;
         } else if (players.Count == 0)
         {
-            suddenDeathReset();
+            SDReset();
+            return "Sudden Death Activated.";
         }
 
-        // return "REEEEEE Get off my board normies REEEEEE!"; // motivate the player for forcing a stalemate.
+        return "REEEEEE Get off my board normies REEEEEE!"; // motivate the player for forcing a stalemate.
     }
 }
