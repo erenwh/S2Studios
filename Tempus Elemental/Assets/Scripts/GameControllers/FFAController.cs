@@ -6,20 +6,13 @@ using System.Collections.Generic;
 
 public class FFAController : GameController {
 
-    protected void SpawnPlayers()
-    {
-            for (int i = 0; i < numPlayers; ++i) {
-                GameObject newPlayer = Instantiate(playerPrefab);
-                newPlayer.GetComponent<PlayerTime>().timeRemaining = 20;
-                newPlayer.tag = "Player" + (i + 1);
-            }
-        }
-
     protected void SDReset()
     {
-        // remove the old players
-        // spawn the players set their reset times for sudden death
-        // let the games begin.
+        for (int i = 0; i < numPlayers; ++i)
+        {
+            // set new time and set active each player, then start the game again
+        }
+        // let the games begin again.
     }
 
     protected override void GameLogic() 
@@ -41,12 +34,9 @@ public class FFAController : GameController {
     {
         if (players.Count == 1) {
             return "The Sole Survivor ... " + players[0].tag;
-        } else if (players.Count == 0)
-        {
-            SDReset();
-            return "Sudden Death Activated.";
         }
-
-        return "REEEEEE Get off my board normies REEEEEE!"; // motivate the player for forcing a stalemate.
+        // the only other case that is not 1 is zero, meaning everyone died. Sudden Death Activates
+        SDReset();
+        return "Sudden Death Activated.";
     }
 }
