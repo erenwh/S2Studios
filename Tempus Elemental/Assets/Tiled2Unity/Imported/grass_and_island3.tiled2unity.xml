@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <!--Tiled2Unity generated xml data-->
 <!--Do not modify by hand-->
-<!--Last exported: 11/27/2017 9:51:05 PM-->
+<!--Last exported: 11/27/2017 10:30:54 PM-->
 <Tiled2Unity version="1.0.13.1">
   <AssignMaterial mesh="grass_and_island3_mesh_0001" material="isometric_grass_and_water" />
   <Prefab name="grass_and_island3" orientation="Isometric" staggerAxis="Y" staggerIndex="Odd" hexSideLength="0" numLayers="1" numTilesWide="25" numTilesHigh="25" tileWidth="64" tileHeight="32" exportScale="1" mapWidthInPixels="1600" mapHeightInPixels="800" backgroundColor="#808080">
@@ -10,545 +10,56 @@
       <GameObject name="isometric_grass_and_water" x="0" y="0" mesh="grass_and_island3_mesh_0001" sortingLayerName="" sortingOrder="0" opacity="1" />
       <GameObject name="Collision">
         <PolygonCollider2D>
-          <Path>847,-50 832,-49 831,-63</Path>
-          <Path>931,-85 906,-83 924,-99</Path>
-          <Path>943,-98 928,-97 927,-111</Path>
-          <Path>579,-101 554,-99 572,-115</Path>
-          <Path>607,-108 610,-128 628,-130</Path>
-          <Path>591,-114 576,-113 575,-127</Path>
-          <Path>835,-229 810,-227 828,-243</Path>
-          <Path>735,-236 738,-256 756,-258</Path>
-          <Path>927,-236 930,-256 948,-258</Path>
-          <Path>655,-274 640,-273 639,-287</Path>
-          <Path>751,-290 736,-289 735,-303</Path>
-          <Path>1119,-300 1122,-320 1140,-322</Path>
-          <Path>255,-316 258,-336 276,-338</Path>
-          <Path>1283,-325 1258,-323 1276,-339</Path>
-          <Path>1119,-332 1122,-352 1140,-354</Path>
-          <Path>1375,-332 1378,-352 1396,-354</Path>
-          <Path>1295,-338 1280,-337 1279,-351</Path>
-          <Path>419,-341 394,-339 412,-355</Path>
-          <Path>255,-348 258,-368 276,-370</Path>
-          <Path>511,-348 514,-368 532,-370</Path>
-          <Path>1027,-357 1002,-355 1020,-371</Path>
-          <Path>1539,-357 1514,-355 1532,-371</Path>
-          <Path>1039,-370 1024,-369 1023,-383</Path>
-          <Path>163,-373 138,-371 156,-387</Path>
-          <Path>483,-373 458,-371 476,-387</Path>
-          <Path>495,-386 480,-385 479,-399</Path>
-          <Path>1391,-386 1376,-385 1375,-399</Path>
-          <Path>191,-412 194,-432 212,-434</Path>
-          <Path>175,-418 160,-417 159,-431</Path>
-          <Path>1283,-517 1258,-515 1276,-531</Path>
-          <Path>1183,-524 1186,-544 1204,-546</Path>
-          <Path>419,-533 394,-531 412,-547</Path>
-          <Path>319,-540 322,-560 340,-562</Path>
-          <Path>511,-540 514,-560 532,-562</Path>
-          <Path>1103,-562 1088,-561 1087,-575</Path>
-          <Path>739,-661 714,-659 732,-675</Path>
-          <Path>863,-684 866,-704 884,-706</Path>
+          <Path>740,-21 709,-21 709,-51 740,-51</Path>
+          <Path>804,-21 773,-21 773,-51 804,-51</Path>
+          <Path>708,-37 677,-37 677,-67 708,-67</Path>
+          <Path>772,-37 741,-37 741,-67 772,-67</Path>
+          <Path>836,-37 805,-37 805,-67 836,-67</Path>
+          <Path>900,-37 869,-37 869,-67 900,-67</Path>
+          <Path>676,-53 645,-53 645,-83 676,-83</Path>
+          <Path>644,-69 613,-69 613,-99 644,-99</Path>
+          <Path>964,-197 933,-197 933,-227 964,-227</Path>
+          <Path>612,-213 581,-213 581,-243 612,-243</Path>
+          <Path>932,-213 901,-213 901,-243 932,-243</Path>
+          <Path>644,-229 613,-229 613,-259 644,-259</Path>
+          <Path>900,-229 869,-229 869,-259 900,-259</Path>
+          <Path>676,-245 645,-245 645,-275 676,-275</Path>
+          <Path>644,-261 613,-261 613,-291 644,-291</Path>
+          <Path>708,-261 677,-261 677,-291 708,-291</Path>
+          <Path>740,-277 709,-277 709,-307 740,-307</Path>
+          <Path>804,-277 773,-277 773,-307 804,-307</Path>
+          <Path>868,-277 837,-277 837,-307 868,-307</Path>
+          <Path>1092,-325 1061,-325 1061,-355 1092,-355</Path>
+          <Path>1348,-325 1317,-325 1317,-355 1348,-355</Path>
+          <Path>228,-341 197,-341 197,-371 228,-371</Path>
+          <Path>484,-341 453,-341 453,-371 484,-371</Path>
+          <Path>1092,-357 1061,-357 1061,-387 1092,-387</Path>
+          <Path>228,-373 197,-373 197,-403 228,-403</Path>
+          <Path>1380,-373 1349,-373 1349,-403 1380,-403</Path>
+          <Path>1060,-469 1029,-469 1029,-499 1060,-499</Path>
+          <Path>516,-485 485,-485 485,-515 516,-515</Path>
+          <Path>548,-501 517,-501 517,-531 548,-531</Path>
+          <Path>1060,-501 1029,-501 1029,-531 1060,-531</Path>
+          <Path>516,-517 485,-517 485,-547 516,-547</Path>
+          <Path>1092,-517 1061,-517 1061,-547 1092,-547</Path>
+          <Path>484,-533 453,-533 453,-563 484,-563</Path>
+          <Path>1124,-533 1093,-533 1093,-563 1124,-563</Path>
+          <Path>1092,-549 1061,-549 1061,-579 1092,-579</Path>
+          <Path>1156,-549 1125,-549 1125,-579 1156,-579</Path>
+          <Path>1188,-565 1157,-565 1157,-595 1188,-595</Path>
+          <Path>452,-581 421,-581 421,-611 452,-611</Path>
+          <Path>803,-661 771,-661 771,-692 803,-692</Path>
+          <Path>836,-677 805,-677 805,-707 836,-707</Path>
+          <Path>804,-693 773,-693 773,-723 804,-723</Path>
+          <Path>772,-709 741,-709 741,-739 772,-739</Path>
+          <Path>836,-709 805,-709 805,-739 836,-739</Path>
+          <Path>740,-725 709,-725 709,-755 740,-755</Path>
+          <Path>804,-725 773,-725 773,-755 804,-755</Path>
+          <Path>868,-725 837,-725 837,-755 868,-755</Path>
+          <Path>772,-741 741,-741 741,-771 772,-771</Path>
+          <Path>836,-741 805,-741 805,-771 836,-771</Path>
+          <Path>804,-757 773,-757 773,-787 804,-787</Path>
         </PolygonCollider2D>
-        <EdgeCollider2D>
-          <Points>778,-11 799,-15 797,5 777,-10</Points>
-        </EdgeCollider2D>
-        <EdgeCollider2D>
-          <Points>739,-17 741,-33 772,-33 771,-9 758,-8 741,-19</Points>
-        </EdgeCollider2D>
-        <EdgeCollider2D>
-          <Points>802,-14 806,-33 832,-31 833,-19 802,-12</Points>
-        </EdgeCollider2D>
-        <EdgeCollider2D>
-          <Points>708,-53 740,-51 739,-22 710,-23 709,-51</Points>
-        </EdgeCollider2D>
-        <EdgeCollider2D>
-          <Points>772,-53 804,-51 803,-22 774,-23 773,-51</Points>
-        </EdgeCollider2D>
-        <EdgeCollider2D>
-          <Points>835,-33 837,-49 868,-49 867,-25 854,-24 837,-35</Points>
-        </EdgeCollider2D>
-        <EdgeCollider2D>
-          <Points>676,-69 708,-67 707,-38 678,-39 677,-67</Points>
-        </EdgeCollider2D>
-        <EdgeCollider2D>
-          <Points>740,-69 772,-67 771,-38 742,-39 741,-67</Points>
-        </EdgeCollider2D>
-        <EdgeCollider2D>
-          <Points>835,-49 835,-38 806,-39 805,-67</Points>
-        </EdgeCollider2D>
-        <EdgeCollider2D>
-          <Points>868,-69 900,-67 899,-38 870,-39 869,-67</Points>
-        </EdgeCollider2D>
-        <EdgeCollider2D>
-          <Points>910,-52 901,-53 900,-81 929,-81 929,-68 911,-53</Points>
-        </EdgeCollider2D>
-        <EdgeCollider2D>
-          <Points>644,-85 676,-83 675,-54 646,-55 645,-83</Points>
-        </EdgeCollider2D>
-        <EdgeCollider2D>
-          <Points>804,-69 836,-67 836,-59</Points>
-        </EdgeCollider2D>
-        <EdgeCollider2D>
-          <Points>612,-101 644,-99 643,-70 614,-71 613,-99</Points>
-        </EdgeCollider2D>
-        <EdgeCollider2D>
-          <Points>930,-78 934,-97 960,-95 961,-83 930,-76</Points>
-        </EdgeCollider2D>
-        <EdgeCollider2D>
-          <Points>608,-109 602,-84 583,-86 576,-94 592,-112</Points>
-        </EdgeCollider2D>
-        <EdgeCollider2D>
-          <Points>962,-94 966,-113 992,-111 993,-99 962,-92</Points>
-        </EdgeCollider2D>
-        <EdgeCollider2D>
-          <Points>608,-113 593,-110</Points>
-        </EdgeCollider2D>
-        <EdgeCollider2D>
-          <Points>938,-187 959,-191 957,-171 937,-186</Points>
-        </EdgeCollider2D>
-        <EdgeCollider2D>
-          <Points>913,-211 930,-210 927,-182 911,-183 913,-211</Points>
-        </EdgeCollider2D>
-        <EdgeCollider2D>
-          <Points>586,-203 607,-207 605,-187 585,-202</Points>
-        </EdgeCollider2D>
-        <EdgeCollider2D>
-          <Points>961,-191 965,-211 993,-211 994,-197 962,-193</Points>
-        </EdgeCollider2D>
-        <EdgeCollider2D>
-          <Points>561,-227 578,-226 575,-198 559,-199 561,-227</Points>
-        </EdgeCollider2D>
-        <EdgeCollider2D>
-          <Points>881,-227 898,-226 895,-198 879,-199 881,-227</Points>
-        </EdgeCollider2D>
-        <EdgeCollider2D>
-          <Points>932,-229 964,-227 963,-198 934,-199 933,-227</Points>
-        </EdgeCollider2D>
-        <EdgeCollider2D>
-          <Points>609,-207 613,-227 641,-227 642,-213 610,-209</Points>
-        </EdgeCollider2D>
-        <EdgeCollider2D>
-          <Points>844,-241 865,-241 863,-211 849,-208 845,-239</Points>
-        </EdgeCollider2D>
-        <EdgeCollider2D>
-          <Points>580,-245 612,-243 611,-214 582,-215 581,-243</Points>
-        </EdgeCollider2D>
-        <EdgeCollider2D>
-          <Points>932,-241 931,-214 902,-215 901,-243</Points>
-        </EdgeCollider2D>
-        <EdgeCollider2D>
-          <Points>714,-235 735,-239 733,-219 713,-234</Points>
-        </EdgeCollider2D>
-        <EdgeCollider2D>
-          <Points>641,-223 645,-243 673,-243 674,-229 642,-225</Points>
-        </EdgeCollider2D>
-        <EdgeCollider2D>
-          <Points>612,-261 644,-259 643,-230 614,-231 613,-259</Points>
-        </EdgeCollider2D>
-        <EdgeCollider2D>
-          <Points>868,-261 900,-259 899,-230 870,-231 869,-259</Points>
-        </EdgeCollider2D>
-        <EdgeCollider2D>
-          <Points>675,-241 677,-257 708,-257 707,-233 694,-232 677,-243</Points>
-        </EdgeCollider2D>
-        <EdgeCollider2D>
-          <Points>588,-273 609,-273 607,-243 593,-240 589,-271</Points>
-        </EdgeCollider2D>
-        <EdgeCollider2D>
-          <Points>900,-245 928,-243</Points>
-        </EdgeCollider2D>
-        <EdgeCollider2D>
-          <Points>718,-244 709,-245 708,-273 737,-273 737,-260 719,-245</Points>
-        </EdgeCollider2D>
-        <EdgeCollider2D>
-          <Points>849,-270 865,-273 858,-244 839,-246 832,-254 848,-272</Points>
-        </EdgeCollider2D>
-        <EdgeCollider2D>
-          <Points>901,-275 917,-274 916,-246 900,-245 900,-274</Points>
-        </EdgeCollider2D>
-        <EdgeCollider2D>
-          <Points>652,-277 676,-275 675,-246 646,-247 645,-273</Points>
-        </EdgeCollider2D>
-        <EdgeCollider2D>
-          <Points>778,-267 799,-271 797,-251 777,-266</Points>
-        </EdgeCollider2D>
-        <EdgeCollider2D>
-          <Points>878,-260 869,-261 868,-289 897,-289 897,-276 879,-261</Points>
-        </EdgeCollider2D>
-        <EdgeCollider2D>
-          <Points>643,-273 643,-262 614,-263 613,-291</Points>
-        </EdgeCollider2D>
-        <EdgeCollider2D>
-          <Points>676,-293 708,-291 707,-262 678,-263 677,-291</Points>
-        </EdgeCollider2D>
-        <EdgeCollider2D>
-          <Points>739,-273 741,-289 772,-289 771,-265 758,-264 741,-275</Points>
-        </EdgeCollider2D>
-        <EdgeCollider2D>
-          <Points>803,-273 805,-289 836,-289 835,-265 822,-264 805,-275</Points>
-        </EdgeCollider2D>
-        <EdgeCollider2D>
-          <Points>739,-289 739,-278 710,-279 709,-307</Points>
-        </EdgeCollider2D>
-        <EdgeCollider2D>
-          <Points>772,-309 804,-307 803,-278 774,-279 773,-307</Points>
-        </EdgeCollider2D>
-        <EdgeCollider2D>
-          <Points>836,-309 868,-307 867,-278 838,-279 837,-307</Points>
-        </EdgeCollider2D>
-        <EdgeCollider2D>
-          <Points>1098,-299 1119,-303 1117,-283 1097,-298</Points>
-        </EdgeCollider2D>
-        <EdgeCollider2D>
-          <Points>612,-293 644,-291 644,-283</Points>
-        </EdgeCollider2D>
-        <EdgeCollider2D>
-          <Points>1068,-321 1089,-321 1087,-291 1073,-288 1069,-319</Points>
-        </EdgeCollider2D>
-        <EdgeCollider2D>
-          <Points>802,-305 823,-324 833,-323 831,-308 817,-294 806,-292 800,-303</Points>
-        </EdgeCollider2D>
-        <EdgeCollider2D>
-          <Points>234,-315 255,-319 253,-299 233,-314</Points>
-        </EdgeCollider2D>
-        <EdgeCollider2D>
-          <Points>1258,-315 1279,-319 1277,-299 1257,-314</Points>
-        </EdgeCollider2D>
-        <EdgeCollider2D>
-          <Points>1322,-315 1343,-319 1341,-299 1321,-314</Points>
-        </EdgeCollider2D>
-        <EdgeCollider2D>
-          <Points>708,-309 740,-307 740,-299</Points>
-        </EdgeCollider2D>
-        <EdgeCollider2D>
-          <Points>204,-337 225,-337 223,-307 209,-304 205,-335</Points>
-        </EdgeCollider2D>
-        <EdgeCollider2D>
-          <Points>1036,-337 1057,-337 1055,-307 1041,-304 1037,-335</Points>
-        </EdgeCollider2D>
-        <EdgeCollider2D>
-          <Points>1102,-308 1093,-309 1092,-337 1120,-337</Points>
-        </EdgeCollider2D>
-        <EdgeCollider2D>
-          <Points>1103,-309 1121,-324 1121,-334</Points>
-        </EdgeCollider2D>
-        <EdgeCollider2D>
-          <Points>1283,-321 1285,-337 1316,-337 1315,-313 1302,-312 1285,-323</Points>
-        </EdgeCollider2D>
-        <EdgeCollider2D>
-          <Points>394,-331 415,-335 413,-315 393,-330</Points>
-        </EdgeCollider2D>
-        <EdgeCollider2D>
-          <Points>458,-331 479,-335 477,-315 457,-330</Points>
-        </EdgeCollider2D>
-        <EdgeCollider2D>
-          <Points>1376,-333 1377,-323 1346,-316</Points>
-        </EdgeCollider2D>
-        <EdgeCollider2D>
-          <Points>1346,-318 1350,-337 1375,-335</Points>
-        </EdgeCollider2D>
-        <EdgeCollider2D>
-          <Points>172,-353 193,-353 191,-323 177,-320 173,-351</Points>
-        </EdgeCollider2D>
-        <EdgeCollider2D>
-          <Points>238,-324 229,-325 228,-353 256,-353</Points>
-        </EdgeCollider2D>
-        <EdgeCollider2D>
-          <Points>239,-325 257,-340 257,-350</Points>
-        </EdgeCollider2D>
-        <EdgeCollider2D>
-          <Points>1060,-357 1092,-355 1091,-326 1062,-327 1061,-355</Points>
-        </EdgeCollider2D>
-        <EdgeCollider2D>
-          <Points>1316,-357 1348,-355 1347,-326 1318,-327 1317,-355</Points>
-        </EdgeCollider2D>
-        <EdgeCollider2D>
-          <Points>419,-337 421,-353 452,-353 451,-329 438,-328 421,-339</Points>
-        </EdgeCollider2D>
-        <EdgeCollider2D>
-          <Points>512,-349 513,-339 482,-332</Points>
-        </EdgeCollider2D>
-        <EdgeCollider2D>
-          <Points>482,-334 486,-353 511,-351</Points>
-        </EdgeCollider2D>
-        <EdgeCollider2D>
-          <Points>1036,-369 1057,-369 1055,-339 1041,-336 1037,-367</Points>
-        </EdgeCollider2D>
-        <EdgeCollider2D>
-          <Points>1102,-340 1093,-341 1092,-369 1121,-369 1121,-356 1103,-341</Points>
-        </EdgeCollider2D>
-        <EdgeCollider2D>
-          <Points>1358,-340 1349,-341 1348,-369 1377,-369 1377,-356 1359,-341</Points>
-        </EdgeCollider2D>
-        <EdgeCollider2D>
-          <Points>196,-373 228,-371 227,-342 198,-343 197,-371</Points>
-        </EdgeCollider2D>
-        <EdgeCollider2D>
-          <Points>469,-372 484,-371 483,-342 454,-343 453,-371</Points>
-        </EdgeCollider2D>
-        <EdgeCollider2D>
-          <Points>172,-385 193,-385 191,-355 177,-352 173,-383</Points>
-        </EdgeCollider2D>
-        <EdgeCollider2D>
-          <Points>238,-356 229,-357 228,-385 257,-385 257,-372 239,-357</Points>
-        </EdgeCollider2D>
-        <EdgeCollider2D>
-          <Points>494,-356 485,-357 484,-385 513,-385 513,-372 495,-357</Points>
-        </EdgeCollider2D>
-        <EdgeCollider2D>
-          <Points>1060,-389 1092,-387 1091,-358 1062,-359 1061,-387</Points>
-        </EdgeCollider2D>
-        <EdgeCollider2D>
-          <Points>1329,-387 1346,-386 1343,-358 1327,-359 1329,-387</Points>
-        </EdgeCollider2D>
-        <EdgeCollider2D>
-          <Points>1378,-366 1382,-385 1408,-383 1409,-371 1378,-364</Points>
-        </EdgeCollider2D>
-        <EdgeCollider2D>
-          <Points>1553,-398 1569,-401 1562,-372 1543,-374 1536,-382 1552,-400</Points>
-        </EdgeCollider2D>
-        <EdgeCollider2D>
-          <Points>452,-373 460,-373</Points>
-        </EdgeCollider2D>
-        <EdgeCollider2D>
-          <Points>196,-405 228,-403 227,-374 198,-375 197,-403</Points>
-        </EdgeCollider2D>
-        <EdgeCollider2D>
-          <Points>1379,-385 1379,-374 1350,-375 1349,-403</Points>
-        </EdgeCollider2D>
-        <EdgeCollider2D>
-          <Points>514,-382 518,-401 544,-399 545,-387 514,-380</Points>
-        </EdgeCollider2D>
-        <EdgeCollider2D>
-          <Points>1410,-382 1414,-401 1440,-399 1441,-387 1410,-380</Points>
-        </EdgeCollider2D>
-        <EdgeCollider2D>
-          <Points>1324,-417 1345,-417 1343,-387 1329,-384 1325,-415</Points>
-        </EdgeCollider2D>
-        <EdgeCollider2D>
-          <Points>192,-413 186,-388 167,-390 160,-398 176,-416</Points>
-        </EdgeCollider2D>
-        <EdgeCollider2D>
-          <Points>1348,-405 1380,-403 1380,-395</Points>
-        </EdgeCollider2D>
-        <EdgeCollider2D>
-          <Points>546,-398 550,-417 576,-415 577,-403 546,-396</Points>
-        </EdgeCollider2D>
-        <EdgeCollider2D>
-          <Points>160,-417 159,-403 145,-400 141,-431</Points>
-        </EdgeCollider2D>
-        <EdgeCollider2D>
-          <Points>192,-417 177,-414</Points>
-        </EdgeCollider2D>
-        <EdgeCollider2D>
-          <Points>140,-433 161,-433 161,-430</Points>
-        </EdgeCollider2D>
-        <EdgeCollider2D>
-          <Points>1034,-459 1055,-463 1053,-443 1033,-458</Points>
-        </EdgeCollider2D>
-        <EdgeCollider2D>
-          <Points>1354,-459 1375,-463 1373,-443 1353,-458</Points>
-        </EdgeCollider2D>
-        <EdgeCollider2D>
-          <Points>1418,-459 1439,-463 1437,-443 1417,-458</Points>
-        </EdgeCollider2D>
-        <EdgeCollider2D>
-          <Points>1009,-483 1026,-482 1023,-454 1007,-455 1009,-483</Points>
-        </EdgeCollider2D>
-        <EdgeCollider2D>
-          <Points>1379,-465 1381,-481 1412,-481 1411,-457 1398,-456 1381,-467</Points>
-        </EdgeCollider2D>
-        <EdgeCollider2D>
-          <Points>170,-475 191,-479 189,-459 169,-474</Points>
-        </EdgeCollider2D>
-        <EdgeCollider2D>
-          <Points>490,-475 511,-479 509,-459 489,-474</Points>
-        </EdgeCollider2D>
-        <EdgeCollider2D>
-          <Points>1057,-463 1061,-483 1089,-483 1090,-469 1058,-465</Points>
-        </EdgeCollider2D>
-        <EdgeCollider2D>
-          <Points>1356,-497 1377,-497 1375,-467 1361,-464 1357,-495</Points>
-        </EdgeCollider2D>
-        <EdgeCollider2D>
-          <Points>465,-499 482,-498 479,-470 463,-471 465,-499</Points>
-        </EdgeCollider2D>
-        <EdgeCollider2D>
-          <Points>1028,-501 1060,-499 1059,-470 1030,-471 1029,-499</Points>
-        </EdgeCollider2D>
-        <EdgeCollider2D>
-          <Points>1098,-491 1119,-495 1117,-475 1097,-490</Points>
-        </EdgeCollider2D>
-        <EdgeCollider2D>
-          <Points>193,-479 197,-499 225,-499 226,-485 194,-481</Points>
-        </EdgeCollider2D>
-        <EdgeCollider2D>
-          <Points>513,-479 517,-499 545,-499 546,-485 514,-481</Points>
-        </EdgeCollider2D>
-        <EdgeCollider2D>
-          <Points>1004,-513 1025,-513 1023,-483 1009,-480 1005,-511</Points>
-        </EdgeCollider2D>
-        <EdgeCollider2D>
-          <Points>484,-517 516,-515 515,-486 486,-487 485,-515</Points>
-        </EdgeCollider2D>
-        <EdgeCollider2D>
-          <Points>1329,-515 1346,-514 1343,-486 1327,-487 1329,-515</Points>
-        </EdgeCollider2D>
-        <EdgeCollider2D>
-          <Points>1059,-497 1061,-513 1092,-513 1091,-489 1078,-488 1061,-499</Points>
-        </EdgeCollider2D>
-        <EdgeCollider2D>
-          <Points>234,-507 255,-511 253,-491 233,-506</Points>
-        </EdgeCollider2D>
-        <EdgeCollider2D>
-          <Points>546,-494 550,-513 576,-511 577,-499 546,-492</Points>
-        </EdgeCollider2D>
-        <EdgeCollider2D>
-          <Points>1292,-529 1313,-529 1311,-499 1297,-496 1293,-527</Points>
-        </EdgeCollider2D>
-        <EdgeCollider2D>
-          <Points>465,-531 482,-530 479,-502 463,-503 465,-531</Points>
-        </EdgeCollider2D>
-        <EdgeCollider2D>
-          <Points>516,-533 548,-531 547,-502 518,-503 517,-531</Points>
-        </EdgeCollider2D>
-        <EdgeCollider2D>
-          <Points>1028,-533 1060,-531 1059,-502 1030,-503 1029,-531</Points>
-        </EdgeCollider2D>
-        <EdgeCollider2D>
-          <Points>1162,-523 1183,-527 1181,-507 1161,-522</Points>
-        </EdgeCollider2D>
-        <EdgeCollider2D>
-          <Points>1089,-511 1093,-531 1121,-531 1122,-517 1090,-513</Points>
-        </EdgeCollider2D>
-        <EdgeCollider2D>
-          <Points>428,-545 449,-545 447,-515 433,-512 429,-543</Points>
-        </EdgeCollider2D>
-        <EdgeCollider2D>
-          <Points>516,-545 515,-518 486,-519 485,-547</Points>
-        </EdgeCollider2D>
-        <EdgeCollider2D>
-          <Points>1060,-549 1092,-547 1091,-518 1062,-519 1061,-547</Points>
-        </EdgeCollider2D>
-        <EdgeCollider2D>
-          <Points>1123,-529 1125,-545 1156,-545 1155,-521 1142,-520 1125,-531</Points>
-        </EdgeCollider2D>
-        <EdgeCollider2D>
-          <Points>298,-539 319,-543 317,-523 297,-538</Points>
-        </EdgeCollider2D>
-        <EdgeCollider2D>
-          <Points>1036,-561 1057,-561 1055,-531 1041,-528 1037,-559</Points>
-        </EdgeCollider2D>
-        <EdgeCollider2D>
-          <Points>1166,-532 1157,-533 1156,-561 1185,-561 1185,-548 1167,-533</Points>
-        </EdgeCollider2D>
-        <EdgeCollider2D>
-          <Points>452,-565 484,-563 483,-534 454,-535 453,-563</Points>
-        </EdgeCollider2D>
-        <EdgeCollider2D>
-          <Points>1100,-565 1124,-563 1123,-534 1094,-535 1093,-561</Points>
-        </EdgeCollider2D>
-        <EdgeCollider2D>
-          <Points>1226,-555 1247,-559 1245,-539 1225,-554</Points>
-        </EdgeCollider2D>
-        <EdgeCollider2D>
-          <Points>484,-549 512,-547</Points>
-        </EdgeCollider2D>
-        <EdgeCollider2D>
-          <Points>433,-574 449,-577 442,-548 423,-550 416,-558 432,-576</Points>
-        </EdgeCollider2D>
-        <EdgeCollider2D>
-          <Points>485,-579 501,-578 500,-550 484,-549 484,-578</Points>
-        </EdgeCollider2D>
-        <EdgeCollider2D>
-          <Points>1091,-561 1091,-550 1062,-551 1061,-579</Points>
-        </EdgeCollider2D>
-        <EdgeCollider2D>
-          <Points>1124,-581 1156,-579 1155,-550 1126,-551 1125,-579</Points>
-        </EdgeCollider2D>
-        <EdgeCollider2D>
-          <Points>1187,-561 1189,-577 1220,-577 1219,-553 1206,-552 1189,-563</Points>
-        </EdgeCollider2D>
-        <EdgeCollider2D>
-          <Points>362,-571 383,-575 381,-555 361,-570</Points>
-        </EdgeCollider2D>
-        <EdgeCollider2D>
-          <Points>462,-564 453,-565 452,-593 481,-593 481,-580 463,-565</Points>
-        </EdgeCollider2D>
-        <EdgeCollider2D>
-          <Points>1156,-597 1188,-595 1187,-566 1158,-567 1157,-595</Points>
-        </EdgeCollider2D>
-        <EdgeCollider2D>
-          <Points>387,-577 389,-593 420,-593 419,-569 406,-568 389,-579</Points>
-        </EdgeCollider2D>
-        <EdgeCollider2D>
-          <Points>1060,-581 1092,-579 1092,-571</Points>
-        </EdgeCollider2D>
-        <EdgeCollider2D>
-          <Points>420,-613 452,-611 451,-582 422,-583 421,-611</Points>
-        </EdgeCollider2D>
-        <EdgeCollider2D>
-          <Points>778,-651 799,-655 797,-635 777,-650</Points>
-        </EdgeCollider2D>
-        <EdgeCollider2D>
-          <Points>753,-675 770,-674 767,-646 751,-647 753,-675</Points>
-        </EdgeCollider2D>
-        <EdgeCollider2D>
-          <Points>801,-655 805,-675 833,-675 834,-661 802,-657</Points>
-        </EdgeCollider2D>
-        <EdgeCollider2D>
-          <Points>772,-694 804,-693 800,-663 774,-666 772,-693</Points>
-        </EdgeCollider2D>
-        <EdgeCollider2D>
-          <Points>833,-671 837,-691 864,-691</Points>
-        </EdgeCollider2D>
-        <EdgeCollider2D>
-          <Points>834,-673 866,-677 865,-686</Points>
-        </EdgeCollider2D>
-        <EdgeCollider2D>
-          <Points>753,-702 769,-705 762,-676 743,-678 736,-686 752,-704</Points>
-        </EdgeCollider2D>
-        <EdgeCollider2D>
-          <Points>804,-709 836,-707 835,-678 806,-679 805,-707</Points>
-        </EdgeCollider2D>
-        <EdgeCollider2D>
-          <Points>846,-692 837,-693 836,-721 865,-721 865,-708 847,-693</Points>
-        </EdgeCollider2D>
-        <EdgeCollider2D>
-          <Points>721,-723 738,-722 735,-694 719,-695 721,-723</Points>
-        </EdgeCollider2D>
-        <EdgeCollider2D>
-          <Points>772,-725 804,-723 803,-694 774,-695 773,-723</Points>
-        </EdgeCollider2D>
-        <EdgeCollider2D>
-          <Points>689,-739 706,-738 703,-710 687,-711 689,-739</Points>
-        </EdgeCollider2D>
-        <EdgeCollider2D>
-          <Points>740,-741 772,-739 771,-710 742,-711 741,-739</Points>
-        </EdgeCollider2D>
-        <EdgeCollider2D>
-          <Points>804,-741 836,-739 835,-710 806,-711 805,-739</Points>
-        </EdgeCollider2D>
-        <EdgeCollider2D>
-          <Points>866,-718 870,-737 896,-735 897,-723 866,-716</Points>
-        </EdgeCollider2D>
-        <EdgeCollider2D>
-          <Points>708,-757 740,-755 739,-726 710,-727 709,-755</Points>
-        </EdgeCollider2D>
-        <EdgeCollider2D>
-          <Points>772,-757 804,-755 803,-726 774,-727 773,-755</Points>
-        </EdgeCollider2D>
-        <EdgeCollider2D>
-          <Points>836,-757 868,-755 867,-726 838,-727 837,-755</Points>
-        </EdgeCollider2D>
-        <EdgeCollider2D>
-          <Points>740,-773 772,-771 771,-742 742,-743 741,-771</Points>
-        </EdgeCollider2D>
-        <EdgeCollider2D>
-          <Points>804,-773 836,-771 835,-742 806,-743 805,-771</Points>
-        </EdgeCollider2D>
-        <EdgeCollider2D>
-          <Points>772,-789 804,-787 803,-758 774,-759 773,-787</Points>
-        </EdgeCollider2D>
       </GameObject>
     </GameObject>
   </Prefab>
