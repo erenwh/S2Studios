@@ -20,10 +20,15 @@ public class FlagSpawner : MonoBehaviour {
 			isCTF = 1;
 		}
 		if (isCTF == 1) {
+			//local declaration
+			GameObject goal;
+
 			Instantiate (flag1, flagPosition1 + transform.TransformPoint (0, 0, 0), gameObject.transform.rotation);
 			Instantiate (flag2, flagPosition2 + transform.TransformPoint (0, 0, 0), gameObject.transform.rotation);
-			Instantiate (goal1, goalPosition1 + transform.TransformPoint (0, 0, 0), gameObject.transform.rotation);
-			Instantiate (goal2, goalPosition2 + transform.TransformPoint (0, 0, 0), gameObject.transform.rotation);
+			goal = Instantiate (goal1, goalPosition1 + transform.TransformPoint (0, 0, 0), gameObject.transform.rotation);
+			goal.GetComponent<FlagGoal> ().fs = this;
+			goal = Instantiate (goal2, goalPosition2 + transform.TransformPoint (0, 0, 0), gameObject.transform.rotation);
+			goal.GetComponent<FlagGoal> ().fs = this;
 		}
 	}
 	

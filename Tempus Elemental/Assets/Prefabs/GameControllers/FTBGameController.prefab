@@ -51,7 +51,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 579b90fcd86d0c94f82c4cf949235d20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  victoryMessageWaitInSeconds: 3
+  victoryMessageWaitInSeconds: 2
   numPlayers: 0
   isStarted: 0
   barObj: {fileID: 0}

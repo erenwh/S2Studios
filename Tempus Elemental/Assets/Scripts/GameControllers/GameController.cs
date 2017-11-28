@@ -116,7 +116,8 @@ public abstract class GameController : MonoBehaviour
 
     public void OnUpdate() 
     {
-        
+		if (isStarted == false)
+			return;
 
         if (isFinishedState) {
             ShowVictoryMessage();

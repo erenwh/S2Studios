@@ -9,6 +9,7 @@ public class CTFController : GameController {
 	//public int numberPlayers = 0;
 	private string wTeam = "";
 
+	//upon starting the match, call each goal's onGameStart public function for setup
 	public override void OnStart ()
 	{
 		base.OnStart ();
@@ -23,7 +24,7 @@ public class CTFController : GameController {
 	{
 		int t1score = 0;
 		int t2score = 0;
-		for (int i = 0; i < numPlayers; i++) {
+		for (int i = 0; i < players.Count; i++) {
 			if (players [i].tag == "Player1" || players [i].tag == "Player3") {
 				t1score += players [i].GetComponent<PlayerFlags> ().numFlags;
 			}
@@ -32,11 +33,11 @@ public class CTFController : GameController {
 			}
 		}
 		
-		if (t1score >= 1) {
+		if (t1score >= 3) {
 			wTeam = "Team 1 Scored First!";
 			return true;
 		}
-		else if (t2score >= 1) {
+		else if (t2score >= 3) {
 			wTeam = "Team 2 Scored First YAYEET!";
 			return true;
 		}
