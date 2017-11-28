@@ -95,7 +95,7 @@ public class MenuHandler : MonoBehaviour
     public void ChangeMap ()
     {
         Game.Instance.mapSelected++;
-        if (Game.Instance.mapSelected > 3) Game.Instance.mapSelected = 1;
+        if (Game.Instance.mapSelected > 4) Game.Instance.mapSelected = 1;
 
         if (Game.Instance.mapSelected == 1)
         {
@@ -115,6 +115,12 @@ public class MenuHandler : MonoBehaviour
             selectedMap.sprite = mapSprites[Game.Instance.mapSelected - 1];
             selectedMap.color = Color.gray;
             Game.Instance.mapSelected = 3;
+        }
+        else if (Game.Instance.mapSelected == 4)
+        {
+            //selectedMap.sprite = mapSprites[Game.Instance.mapSelected - 1];
+            selectedMap.color = Color.gray;
+            Game.Instance.mapSelected = 4;
         }
     }
 
