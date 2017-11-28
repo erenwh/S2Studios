@@ -63,10 +63,12 @@ public abstract class GameController : MonoBehaviour
     {
         victoryMessageWaitInRealTime = float.PositiveInfinity;
         //performing actions to switch the maps
-        GameObject map1, map2;
+        //Find the maps' gameObjects
+        GameObject map1, map2, map3;
         map1 = GameObject.Find("DummyMap");
         map2 = GameObject.Find("DummyMap2");
-        Utils.SwitchMap(map1, map2);
+        map3 = GameObject.Find("Dynamic Map Walls");
+        Utils.SelectMap(map1, map2, map3);
 
         // settings the players
         numPlayers = Game.Instance.numPlayers;
