@@ -6,14 +6,14 @@ using System.Collections.Generic;
 
 public class FFAController : GameController {
 
-    protected void SpawnPlayers()
-    {
-            for (int i = 0; i < numPlayers; ++i) {
-                GameObject newPlayer = Instantiate(playerPrefab);
-                newPlayer.GetComponent<PlayerTime>().timeRemaining = 20;
-                newPlayer.tag = "Player" + (i + 1);
-            }
-        }
+//    protected void SpawnPlayers()
+//    {
+//            for (int i = 0; i < numPlayers; ++i) {
+//                GameObject newPlayer = Instantiate(playerPrefab);
+//                newPlayer.GetComponent<PlayerTime>().timeRemaining = 20;
+//                newPlayer.tag = "Player" + (i + 1);
+//            }
+//    }
 
     protected void SDReset()
     {
