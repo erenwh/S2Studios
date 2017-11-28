@@ -32,12 +32,12 @@ public class CTFController : GameController {
 			}
 		}
 		
-		if (t1score >= 3) {
-			wTeam = "Team 1 Wins CTF Bitch!";
+		if (t1score >= 1) {
+			wTeam = "Team 1 Scored First!";
 			return true;
 		}
-		else if (t2score >= 3) {
-			wTeam = "Team 2 Wins CTF YAYEET!";
+		else if (t2score >= 1) {
+			wTeam = "Team 2 Scored First YAYEET!";
 			return true;
 		}
 		return false;
