@@ -20,6 +20,12 @@ public class FFAController : GameController
     //    //return;
     //}
 
+    protected void suddenDeathReset()
+    {
+        // remove the old players
+        // spawn the players set their reset times for sudden death
+        // let the games begin.
+    }
 
     protected override void GameLogic() 
     {
@@ -39,9 +45,12 @@ public class FFAController : GameController
     protected override string VictoryText()
     {
         if (players.Count == 1) {
-            return " WINNER! : " + players[0].tag;
+            return "The Sole Survivor ... " + players[0].tag;
+        } else if (players.Count == 0)
+        {
+            suddenDeathReset();
         }
 
-        return " Well don't just sit there."; // motivate the player for being cheeky.
+        // return "REEEEEE Get off my board normies REEEEEE!"; // motivate the player for forcing a stalemate.
     }
 }
