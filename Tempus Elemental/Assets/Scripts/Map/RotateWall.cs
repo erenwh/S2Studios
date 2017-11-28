@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class RotateWall : MonoBehaviour {
 
-    public float speed = 1f;
+    public float speed = 7f;
     private Rigidbody2D rb2D;
 
 	// Use this for initialization
