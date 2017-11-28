@@ -2673,13 +2673,14 @@ MonoBehaviour:
   - {fileID: 114798265181320856, guid: 2e4b8b6c47e6caf428daf2a99568d454, type: 2}
   - {fileID: 114023818021056810, guid: 98d55a9aa477a114a8d28299ade98482, type: 2}
   - {fileID: 114956674206138662, guid: 4f18bb9cad05bf843b18bb8df5820d60, type: 2}
+  - {fileID: 114432852110072704, guid: 72399f3a03c42cb40b7fa45f3b66979f, type: 2}
   selectedMap: {fileID: 1887805638}
   mapSprites:
   - {fileID: 21300000, guid: 1b884353f48b23f48a696fe8bd1e68f2, type: 3}
   - {fileID: 21300000, guid: 61d436c22e79e4dd1a0062c7b859c747, type: 3}
   - {fileID: 21300000, guid: a8718e21795276945bacb8d0d9f300f6, type: 3}
   selectControl: {fileID: 0}
-  numGameModes: 4
+  numGameModes: 5
 --- !u!4 &1422248588
 Transform:
   m_ObjectHideFlags: 0

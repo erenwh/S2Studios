@@ -40,6 +40,13 @@ public class PlayerTime : MonoBehaviour {
         DecrementTime(Time.deltaTime);
         if (TimeRemaining == 0) 
         {
+			//string y = GetComponent<MenuHandler> ().selectedGameModeText;
+			if (Game.Instance.gameModeSelected == 4) {
+				if (gameObject.GetComponent<PlayerFlags> ().hasFlag == true) {
+					gameObject.GetComponent<PlayerMovement> ().speed = gameObject.GetComponent<PlayerMovement> ().speed * 2;
+					gameObject.GetComponent<PlayerFlags> ().hasFlag = false;
+				}
+			}
             //let game controller know
             Game.Instance.GameController.KillPlayer(gameObject);
         }
