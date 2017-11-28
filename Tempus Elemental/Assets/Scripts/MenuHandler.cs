@@ -17,6 +17,7 @@ public class MenuHandler : MonoBehaviour
     public Text selectedAmountPlayers;
 	public Text selectedGameModeText;
     public Text playerStartingTimeText;
+	public Text soundEffectsStartingVolumeText;
     public GameController[] gameControllers;
     public Image selectedMap;
     public Sprite[] mapSprites;
@@ -41,6 +42,7 @@ public class MenuHandler : MonoBehaviour
         "2 players selected" };
 
     private const string startingTimeText = "Players' starting time is: ";
+	private const string startingVolumeText = "Sound Effects Volume is: ";
 
 
 	//right arrow selecting the game mode
@@ -146,6 +148,13 @@ public class MenuHandler : MonoBehaviour
         Game.Instance.playersStartingTime = startingTime;
         Debug.Log("players' starting time " + startingTime);
     }
+
+	public void ChangeSoundEffectsVolume(Slider slider) {
+		int startingVolume = (int)slider.value;
+		soundEffectsStartingVolumeText.text = startingVolumeText + startingVolume;
+		Game.Instance.soundEffectsVolume = startingVolume;
+		Debug.Log ("sound effects volume " + startingVolume);
+	}
 
     public void PlayerControlSwitch(string tag)
     {
