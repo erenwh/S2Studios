@@ -50,36 +50,47 @@ public static class Utils
         return ObjectType.Other;
     }
 
-    public static void SelectMap(GameObject map1, GameObject map2, GameObject map3)
+    public static void SelectMap(GameObject map1, GameObject map2, GameObject map3, GameObject map4)
     {
 
 
         //Something went wrong when finding the maps' gameObjects
-        if (map1 == null || map2 == null || map3 == null) return;
+        if (map1 == null || map2 == null || map3 == null || map4 == null) return;
 
         if (Game.Instance.mapSelected == 1)
         {
             map1.SetActive(true);
             map2.SetActive(false);
             map3.SetActive(false);
+            map4.SetActive(false);
         }
         else if (Game.Instance.mapSelected == 2)
         {
             map1.SetActive(false);
             map2.SetActive(true);
             map3.SetActive(false);
+            map4.SetActive(false);
         }
         else if (Game.Instance.mapSelected == 3)
         {
             map1.SetActive(false);
             map2.SetActive(false);
             map3.SetActive(true);
+            map4.SetActive(false);
+        }
+        else if (Game.Instance.mapSelected == 4)
+        {
+            map1.SetActive(false);
+            map2.SetActive(false);
+            map3.SetActive(false);
+            map4.SetActive(true);
         }
         else //default to one in error case
         {
             map1.SetActive(true);
             map2.SetActive(false);
             map3.SetActive(false);
+            map4.SetActive(false);
         }
     }
 }
