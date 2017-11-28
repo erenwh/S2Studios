@@ -13,6 +13,8 @@ public class Game : MonoBehaviour
     //Use to change players' starting time (default at 90 sec)
     public int playersStartingTime = 90;
 
+	public int soundEffectsVolume = 100;
+
     public GameController GameController
     {
         get;
