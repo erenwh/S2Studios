@@ -18,8 +18,7 @@ public class MenuHandler : MonoBehaviour
     public Text playerStartingTimeText;
     public GameController[] gameControllers;
     public Image selectedMap;
-    public Sprite dummyMap;
-    public Sprite mageCityMap;
+    public Sprite[] mapSprites;
 
     public Text selectControl;
     
@@ -89,17 +88,27 @@ public class MenuHandler : MonoBehaviour
 
     public void ChangeMap ()
     {
-        if (selectedMap.sprite == dummyMap)
+        Game.Instance.mapSelected++;
+        if (Game.Instance.mapSelected > 3) Game.Instance.mapSelected = 1;
+
+        if (Game.Instance.mapSelected == 1)
         {
-            selectedMap.sprite = mageCityMap;
+            selectedMap.sprite = mapSprites[Game.Instance.mapSelected - 1];
             selectedMap.color = Color.gray;
             Game.Instance.mapSelected = 1;
+            return;
         }
-        else if (selectedMap.sprite == mageCityMap)
+        else if (Game.Instance.mapSelected == 2)
         {
-            selectedMap.sprite = dummyMap;
+            selectedMap.sprite = mapSprites[Game.Instance.mapSelected - 1];
             selectedMap.color = Color.magenta;
             Game.Instance.mapSelected = 2;
+        }
+        else if (Game.Instance.mapSelected == 3)
+        {
+            selectedMap.sprite = mapSprites[Game.Instance.mapSelected - 1];
+            selectedMap.color = Color.gray;
+            Game.Instance.mapSelected = 3;
         }
     }
 
