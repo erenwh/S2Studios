@@ -51,5 +51,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01de4fedaf954ee4aaf1bd2f70d20baa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isStarted: 0
+  victoryMessageWaitInSeconds: 2
   numPlayers: 0
+  isStarted: 0

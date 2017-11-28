@@ -16,6 +16,8 @@ TagManager:
   - Powerup
   - Game
   - InGameMenu
+  - FlagGoal
+  - FlagSpawner
   layers:
   - Default
   - TransparentFX

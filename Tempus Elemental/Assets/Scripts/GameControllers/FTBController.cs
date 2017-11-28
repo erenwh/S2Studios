@@ -11,8 +11,8 @@ public class FTBController : GameController {
 	public GameObject timeLeftUI;
 
 	//variables
-	private GameObject bar;			//that bar that shows how much time each player has collected
-	public float matchTime = 120;	//how many seconds does a match last?
+	private GameObject bar;					//that bar that shows how much time each player has collected
+	public float matchTime = 120;			//how many seconds does a match last?
 	private float timeLeft;
 
 
