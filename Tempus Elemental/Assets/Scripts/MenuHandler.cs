@@ -118,7 +118,7 @@ public class MenuHandler : MonoBehaviour
         }
         else if (Game.Instance.mapSelected == 4)
         {
-            //selectedMap.sprite = mapSprites[Game.Instance.mapSelected - 1];
+            selectedMap.sprite = mapSprites[Game.Instance.mapSelected - 1];
             selectedMap.color = Color.gray;
             Game.Instance.mapSelected = 4;
         }
