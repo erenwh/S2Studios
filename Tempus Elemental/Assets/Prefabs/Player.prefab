@@ -435,8 +435,8 @@ MonoBehaviour:
   charging: 0
   circleOffsetCoefficient: 0.18
   dashSpeed: 5
-  dashTime: 0.25
-  dashCost: 3
+  dashTime: 0.22
+  dashCost: 2
   frozen: 0
 --- !u!114 &114789800082031028
 MonoBehaviour:
@@ -538,7 +538,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fireball: {fileID: 1027716303461822, guid: aa00f6fc1b86ab045ba3b9f37b01da39, type: 2}
-  delay: 0.4
+  delay: 0.3
   costToThrow: 1
 --- !u!212 &212096129990206330
 SpriteRenderer:
