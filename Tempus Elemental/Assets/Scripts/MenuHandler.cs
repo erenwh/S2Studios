@@ -44,6 +44,9 @@ public class MenuHandler : MonoBehaviour
     private const string startingTimeText = "Players' starting time is: ";
 	private const string startingVolumeText = "Sound Effects Volume is: ";
 
+	void Start () {
+		SetGameModeText ();
+	}
 
 	//right arrow selecting the game mode
 	public void NextGameMode () {

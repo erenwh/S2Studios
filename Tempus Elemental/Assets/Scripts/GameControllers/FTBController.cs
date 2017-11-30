@@ -10,9 +10,9 @@ public class FTBController : GameController {
 	public GameObject barObj;
 
 	//variables
-	private GameObject bar;									//that bar that shows how much time each player has collected
+	private Bar bar;										//that bar that shows how much time each player has collected
 	public float timeToRespawn = 5.0f;						//how long does it take a player to respawn
-	public int maxTime = 120;								//how many seconds do the players have to collect until the match ends
+	public int maxTime = 230;								//how many seconds do the players have to collect until the match ends
 	private int[] timeCollected;							//how much time has been collected by each player
 	private float[] deadPlayers;							//how long has each player been dead
 	private bool[] respawningPlayers;						//which players are respawning
@@ -20,7 +20,8 @@ public class FTBController : GameController {
 	//called when the map is loaded
 	public override void OnStart () {
 		base.OnStart ();
-		//bar = Instantiate (barObj);
+		bar = Instantiate (barObj).GetComponent<Bar>();
+		bar.maxTime = maxTime;
 		timeCollected = new int[4];
 		deadPlayers = new float[4];
 		respawningPlayers = new bool[4];
@@ -51,6 +52,7 @@ public class FTBController : GameController {
 	// Add the amount of time collected to the bar
 	public override void CollectTime (int playerNum, int amount) {
 		timeCollected [playerNum] += amount;
+		bar.UpdateBars (timeCollected [0], timeCollected [1], timeCollected [2], timeCollected [3]);
 	}
 
 	//respawn players rather than killing them off
@@ -81,7 +83,8 @@ public class FTBController : GameController {
 			}
 			if (timeCollected [i] > max) {
 				winner = i;
-				max = maxTime;
+				draw = false;
+				max = timeCollected[i];
 			}
 		}
 

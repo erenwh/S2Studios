@@ -96,7 +96,7 @@ public class PlayerTime : MonoBehaviour {
             playerTo.GetComponent<PlayerTime>().AddTime(amount);
         }
 
-		if (Game.Instance.gameModeSelected == 5) {
+		if (Game.Instance.gameModeSelected == 3) {
 			Game.Instance.GameController.CollectTime(playerTo.GetComponent<PlayerColor>().playerNum, amount);
 		}
     }

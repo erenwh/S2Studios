@@ -442,7 +442,7 @@ InputManager:
     descriptiveName: gamepad alt
     descriptiveNegativeName: 
     negativeButton: 
-    positiveButton: t
+    positiveButton: joystick 1 button 2
     altNegativeButton: 
     altPositiveButton: 
     gravity: 1000
