@@ -83,6 +83,7 @@ public class FTBController : GameController {
 			}
 			if (timeCollected [i] > max) {
 				winner = i;
+				draw = false;
 				max = timeCollected[i];
 			}
 		}
