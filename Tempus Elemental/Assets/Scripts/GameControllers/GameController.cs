@@ -25,7 +25,6 @@ public abstract class GameController : MonoBehaviour
 
     protected List<GameObject> players;
 
-
     public void BackToMenu() 
     {
         SceneManager.LoadScene("Menu");
@@ -144,6 +143,11 @@ public abstract class GameController : MonoBehaviour
 			
 		GameLogic ();
     }
+
+	virtual public void CollectTime(int playerNum, int amount) {
+		//allow access to FTBController.CollectTime from PlayerTime
+		//go ahead and refactor if there's an easier way to do this
+	}
 
     virtual public void KillPlayer(GameObject player)
     {

@@ -10,12 +10,12 @@ public class FTBController : GameController {
 	public GameObject barObj;
 
 	//variables
-	private GameObject bar;					//that bar that shows how much time each player has collected
-	public float timeToRespawn = 5.0f;		//how long does it take a player to respawn
-	public int maxTime = 120;				//how many seconds do the players have to collect until the match ends
-	private int[] timeCollected;			//how much time has been collected by each player
-	private float[] deadPlayers;			//how long has each player been dead
-	private bool[] respawningPlayers;		//which players are respawning
+	private GameObject bar;									//that bar that shows how much time each player has collected
+	public float timeToRespawn = 5.0f;						//how long does it take a player to respawn
+	public int maxTime = 120;								//how many seconds do the players have to collect until the match ends
+	private int[] timeCollected;							//how much time has been collected by each player
+	private float[] deadPlayers;							//how long has each player been dead
+	private bool[] respawningPlayers;						//which players are respawning
 
 	//called when the map is loaded
 	public override void OnStart () {
@@ -46,6 +46,11 @@ public class FTBController : GameController {
 		}
 
 		// Keep track of time collected, update bar
+	}
+
+	// Add the amount of time collected to the bar
+	public override void CollectTime (int playerNum, int amount) {
+		timeCollected [playerNum] += amount;
 	}
 
 	//respawn players rather than killing them off
