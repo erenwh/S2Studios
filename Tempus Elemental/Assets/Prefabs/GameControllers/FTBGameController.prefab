@@ -54,7 +54,6 @@ MonoBehaviour:
   victoryMessageWaitInSeconds: 2
   numPlayers: 0
   isStarted: 0
-  barObj: {fileID: 0}
-  timeLeftUI: {fileID: 0}
+  barObj: {fileID: 1378964019602674, guid: 133e57ef8df372f4c935de3f4c92e281, type: 2}
   timeToRespawn: 5
-  maxTime: 120
+  maxTime: 690

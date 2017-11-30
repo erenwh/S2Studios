@@ -25,7 +25,7 @@ public class DistortionCreator : MonoBehaviour
 
 	private float multiplier = 1;				//the distortion multiplier that affects the distortion when multiple powerups are picked up
 
-    private DistortionType dType = DistortionType.SpeedUp;
+	private DistortionType dType = DistortionType.SlowDown;
     public DistortionType DistortionType 
     {
         get 
