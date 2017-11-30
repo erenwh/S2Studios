@@ -8,16 +8,41 @@ public class CTFController : GameController {
 	//public int t2score = 0;
 	//public int numberPlayers = 0;
 	private string wTeam = "";
+	private bool[] respawningPlayers;						//which players are respawning
+	private float[] deadPlayers;							//how long has each player been dead
+	public float timeToRespawn = 5.0f;						//how long does it take a player to respawn
 
 	//upon starting the match, call each goal's onGameStart public function for setup
 	public override void OnStart ()
 	{
 		base.OnStart ();
+		deadPlayers = new float[numPlayers];
+		respawningPlayers = new bool[numPlayers];
+		for (int i = 0; i < numPlayers; i++) {
+			deadPlayers [i] = 0;
+			respawningPlayers [i] = false;
+		}
 	}
 
 	protected override void GameLogic()
 	{
+		for (int i = 0; i < numPlayers; i++) {
+			if (deadPlayers [i] > 0) {
+				deadPlayers [i] -= Time.deltaTime;
+				players [i].GetComponent<PlayerTime> ().radialIndicator.fillAmount = (timeToRespawn - deadPlayers [i]) / timeToRespawn;
+			} else if (respawningPlayers[i] == true) {
+				respawningPlayers [i] = false;
+				deadPlayers [i] = 0;
+				players [i].GetComponent<PlayerTime> ().TimeRemaining = Game.Instance.playersStartingTime;
+				players [i].SetActive (true);
+			}
+		}
+	}
 
+	public override void KillPlayer (GameObject player) {
+		deadPlayers [player.GetComponent<PlayerColor> ().playerNum] = timeToRespawn;
+		respawningPlayers [player.GetComponent<PlayerColor> ().playerNum] = true;
+		player.SetActive (false);
 	}
 
 	protected override bool VictoryCondition () 

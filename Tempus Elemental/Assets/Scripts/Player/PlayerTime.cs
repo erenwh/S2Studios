@@ -5,6 +5,8 @@ public class PlayerTime : MonoBehaviour {
 
 	private float timeRemaining;			// how much time does this player have left?
 	public bool respawnable = false;		// will the player die or respawn upon running out of time?
+	public GameObject flag1;
+	public GameObject flag2;
     public int TimeRemaining
     {
         get
@@ -45,6 +47,12 @@ public class PlayerTime : MonoBehaviour {
 			if (Game.Instance.gameModeSelected == 4) {
 				if (gameObject.GetComponent<PlayerFlags> ().hasFlag == true) {
 					gameObject.GetComponent<PlayerMovement> ().speed = gameObject.GetComponent<PlayerMovement> ().speed * 2;
+					if (gameObject.tag == "Player1" || gameObject.tag == "Player3") {
+						Instantiate (flag2, gameObject.transform.position, gameObject.transform.rotation);
+					}
+					else if (gameObject.tag == "Player2" || gameObject.tag == "Player4") {
+						Instantiate (flag1, gameObject.transform.position, gameObject.transform.rotation);
+					}
 					gameObject.GetComponent<PlayerFlags> ().hasFlag = false;
 				}
 			}
