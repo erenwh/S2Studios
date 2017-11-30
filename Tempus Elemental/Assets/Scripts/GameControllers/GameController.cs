@@ -2,6 +2,7 @@
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using System.Collections.Generic;
+using System.Collections;
 using System;
 
 public abstract class GameController : MonoBehaviour
@@ -149,5 +150,4 @@ public abstract class GameController : MonoBehaviour
         players.Remove(player);
         player.SetActive(false);
     }
-
 }

@@ -8,41 +8,84 @@ public class FTBController : GameController {
 
 	//references
 	public GameObject barObj;
-	public GameObject timeLeftUI;
 
 	//variables
 	private GameObject bar;					//that bar that shows how much time each player has collected
-	public float matchTime = 120;			//how many seconds does a match last?
-	private float timeLeft;
-
+	public float timeToRespawn = 5.0f;		//how long does it take a player to respawn
+	public int maxTime = 120;				//how many seconds do the players have to collect until the match ends
+	private int[] timeCollected;			//how much time has been collected by each player
+	private float[] deadPlayers;			//how long has each player been dead
+	private bool[] respawningPlayers;		//which players are respawning
 
 	//called when the map is loaded
 	public override void OnStart () {
 		base.OnStart ();
-		bar = Instantiate (barObj);
-		timeLeft = matchTime;
+		//bar = Instantiate (barObj);
+		timeCollected = new int[4];
+		deadPlayers = new float[4];
+		respawningPlayers = new bool[4];
+		for (int i = 0; i < 4; i++) {
+			timeCollected[i] = 0;
+			deadPlayers [i] = 0;
+			respawningPlayers [i] = false;
+		}
 	}
 
 	protected override void GameLogic() {
 		// Check for player death and respawn them.
+		for (int i = 0; i < 4; i++) {
+			if (deadPlayers [i] > 0) {
+				deadPlayers [i] -= Time.deltaTime;
+				players [i].GetComponent<PlayerTime> ().radialIndicator.fillAmount = (timeToRespawn - deadPlayers [i]) / timeToRespawn;
+			} else if (respawningPlayers[i] == true) {
+				respawningPlayers [i] = false;
+				deadPlayers [i] = 0;
+				players [i].GetComponent<PlayerTime> ().TimeRemaining = Game.Instance.playersStartingTime;
+				players [i].SetActive (true);
+			}
+		}
 
-		// Keep track of match timer, update timeLeftUI
+		// Keep track of time collected, update bar
 	}
 
+	//respawn players rather than killing them off
+	public override void KillPlayer (GameObject player) {
+		deadPlayers [player.GetComponent<PlayerColor> ().playerNum] = timeToRespawn;
+		respawningPlayers [player.GetComponent<PlayerColor> ().playerNum] = true;
+		player.SetActive (false);
+	}
+
+	//Stop the match upon enough collection of time, when the bar is filled
 	protected override bool VictoryCondition() {
-		if (timeLeft <= 0) {
+		if ((timeCollected[0] + timeCollected[1] + timeCollected[2] + timeCollected[3]) >= maxTime) {
 			return true;
 		}
 
 		return false;
 	}
 
+	//Let the user know who one the round
 	protected override string VictoryText() {
 		//Return player with highest bar filled
-		if (players.Count == 1) {
-			return " WINNER! : " + players[0].tag;
+		int winner = 0;
+		int max = 0;
+		bool draw = false;
+		for (int i = 0; i < 4; i++) {
+			if (timeCollected [i] == max) {
+				draw = true;
+			}
+			if (timeCollected [i] > max) {
+				winner = i;
+				max = maxTime;
+			}
 		}
 
-		return "Fire Emblem HEROES!";
+		if (draw) {
+			return "It's a tie!";
+		} else {
+			return "Winner! : " + players [winner].tag;
+		}
+			
+		//return "Stay Hydrated!";
 	}
 }

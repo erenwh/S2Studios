@@ -56,4 +56,5 @@ MonoBehaviour:
   isStarted: 0
   barObj: {fileID: 0}
   timeLeftUI: {fileID: 0}
-  matchTime: 120
+  timeToRespawn: 5
+  maxTime: 120

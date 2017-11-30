@@ -4,6 +4,7 @@ using UnityEngine.UI;
 public class PlayerTime : MonoBehaviour {
 
 	private float timeRemaining;			// how much time does this player have left?
+	public bool respawnable = false;		// will the player die or respawn upon running out of time?
     public int TimeRemaining
     {
         get
@@ -47,8 +48,8 @@ public class PlayerTime : MonoBehaviour {
 					gameObject.GetComponent<PlayerFlags> ().hasFlag = false;
 				}
 			}
-            //let game controller know
-            Game.Instance.GameController.KillPlayer(gameObject);
+			//let game controller know
+			Game.Instance.GameController.KillPlayer (gameObject);
         }
     }
 
