@@ -12,7 +12,6 @@ public class FlagSpawner : MonoBehaviour {
 	Vector3 flagPosition2 = new Vector3(5, 5, 1);
 	Vector3 goalPosition1 = new Vector3(-5, -3, 1);
 	Vector3 goalPosition2 = new Vector3(6, 5, 1);
-	public int dropped = 0;
 	public int isCTF = 0;
 
 	// Use this for initialization
@@ -23,6 +22,7 @@ public class FlagSpawner : MonoBehaviour {
 		if (isCTF == 1) {
 			//local declaration
 			GameObject goal;
+
 			Instantiate (flag1, flagPosition1 + transform.TransformPoint (0, 0, 0), gameObject.transform.rotation);
 			Instantiate (flag2, flagPosition2 + transform.TransformPoint (0, 0, 0), gameObject.transform.rotation);
 			goal = Instantiate (goal1, goalPosition1 + transform.TransformPoint (0, 0, 0), gameObject.transform.rotation);
@@ -37,11 +37,10 @@ public class FlagSpawner : MonoBehaviour {
 		if (isCTF == 1) {
 			if (respawn == 1) {
 				Instantiate (flag1, flagPosition1 + transform.TransformPoint (0, 0, 0), gameObject.transform.rotation);
-				respawn = 0;
 			} else if (respawn == 2) {
 				Instantiate (flag2, flagPosition2 + transform.TransformPoint (0, 0, 0), gameObject.transform.rotation);
-				respawn = 0;
 			}
+			respawn = 0;
 		}
 	}
 }

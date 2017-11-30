@@ -14,6 +14,9 @@ public class FlagGoal : MonoBehaviour {
 						coll.GetComponent<PlayerFlags> ().hasFlag = false;
 						coll.GetComponent<PlayerFlags> ().numFlags++;
 						coll.gameObject.GetComponent<PlayerMovement> ().speed = coll.gameObject.GetComponent<PlayerMovement> ().speed * 2;
+						//Game.Instance.GetComponent<FlagSpawner> ().respawn = 1;
+						//FindObjectOfType<FlagSpawner> ().respawn = 1;
+						//GetComponent<FlagSpawner> ().respawn = 1;
 						fs.respawn = 2;
 					}
 				} else if (goalTeam == 1) {
@@ -21,6 +24,7 @@ public class FlagGoal : MonoBehaviour {
 						coll.GetComponent<PlayerFlags> ().hasFlag = false;
 						coll.GetComponent<PlayerFlags> ().numFlags++;
 						coll.gameObject.GetComponent<PlayerMovement> ().speed = coll.gameObject.GetComponent<PlayerMovement> ().speed * 2;
+						//FindObjectOfType<FlagSpawner> ().respawn = 2;
 						fs.respawn = 1;
 					}
 				}
