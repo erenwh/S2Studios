@@ -15,6 +15,11 @@ public class Game : MonoBehaviour
     //Use to change music volume (default at full)
     public int musicVolume = 100;
 	public int soundEffectsVolume = 100;
+    //Used to change players' colors
+    public Color p1Color = new Color(144f / 256f, 208f / 256f, 1, 1);
+    public Color p2Color = Color.red;
+    public Color p3Color = Color.green;
+    public Color p4Color = Color.yellow;
 
     public GameController GameController
     {

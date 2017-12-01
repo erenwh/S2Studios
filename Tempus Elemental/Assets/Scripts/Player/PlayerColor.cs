@@ -39,22 +39,22 @@ public class PlayerColor : MonoBehaviour
         {
             if (CompareTag("Player1"))
             {
-                color = new Color(144f / 256f, 208f / 256f, 1, 1);
+                color = Game.Instance.p1Color;
 				playerNum = 0;
             }
             else if (CompareTag("Player2"))
             {
-                color = Color.red;
+                color = Game.Instance.p2Color;
 				playerNum = 1;
             }
             else if (CompareTag("Player3"))
             {
-                color = Color.green;
+                color = Game.Instance.p3Color;
 				playerNum = 2;
             }
             else if (CompareTag("Player4"))
             {
-                color = Color.yellow;
+                color = Game.Instance.p4Color;
 				playerNum = 3;
             }
         }

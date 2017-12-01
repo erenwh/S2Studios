@@ -209,4 +209,24 @@ public class MenuHandler : MonoBehaviour
 
         selectControl.text = gameControls[playerNum];
     }
+
+    public void ChangeP1Color()
+    {
+
+    }
+
+    public void ChangeP2Color()
+    {
+
+    }
+
+    public void ChangeP3Color()
+    {
+
+    }
+
+    public void ChangeP4Color()
+    {
+
+    }
 }
