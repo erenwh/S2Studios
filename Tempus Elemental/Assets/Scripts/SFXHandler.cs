@@ -8,6 +8,7 @@ public class SFXHandler : MonoBehaviour {
 	public AudioClip hurt;
 	public AudioClip dash;
 	public AudioClip collect;
+	public AudioClip suddenDeath;
 
 	void Start () {
 		DontDestroyOnLoad(transform.gameObject);
@@ -29,5 +30,11 @@ public class SFXHandler : MonoBehaviour {
 		SFXHandler sfx = GameObject.FindGameObjectWithTag ("SFXHandler").GetComponent<SFXHandler> ();
 		AudioSource aus = sfx.gameObject.GetComponent<AudioSource> ();
 		aus.PlayOneShot (sfx.collect, Game.Instance.soundEffectsVolume / 100.0f);
+	}
+
+	public static void SuddenDeathSFX() {
+		SFXHandler sfx = GameObject.FindGameObjectWithTag ("SFXHandler").GetComponent<SFXHandler> ();
+		AudioSource aus = sfx.gameObject.GetComponent<AudioSource> ();
+		aus.PlayOneShot (sfx.suddenDeath, Game.Instance.soundEffectsVolume / 100.0f);
 	}
 }
