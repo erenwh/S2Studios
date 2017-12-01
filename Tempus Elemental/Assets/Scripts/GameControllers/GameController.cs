@@ -61,6 +61,11 @@ public abstract class GameController : MonoBehaviour
 
     virtual public void OnStart()
     {
+        //update music volume
+        GameObject musicSource;
+        musicSource = GameObject.Find("TmpMusicSource");
+        musicSource.GetComponent<AudioSource>().volume = (float)Game.Instance.musicVolume/(float)100;
+
         victoryMessageWaitInRealTime = float.PositiveInfinity;
         //performing actions to switch the maps
         //Find the maps' gameObjects
