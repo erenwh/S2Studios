@@ -54,3 +54,4 @@ MonoBehaviour:
   victoryMessageWaitInSeconds: 2
   numPlayers: 0
   isStarted: 0
+  timeToRespawn: 10
