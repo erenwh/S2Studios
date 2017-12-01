@@ -2227,11 +2227,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 5
       objectReference: {fileID: 0}
-    - target: {fileID: 114354829194110490, guid: 7d4f45117b4f025479076c7ae86f3376,
-        type: 2}
-      propertyPath: distortionIndicator
-      value: 
-      objectReference: {fileID: 1874894168}
     - target: {fileID: 114204873116486256, guid: 7d4f45117b4f025479076c7ae86f3376,
         type: 2}
       propertyPath: timeText
@@ -2242,12 +2237,13 @@ Prefab:
       propertyPath: radialIndicator
       value: 
       objectReference: {fileID: 1847117338}
+    - target: {fileID: 114354829194110490, guid: 7d4f45117b4f025479076c7ae86f3376,
+        type: 2}
+      propertyPath: distortionIndicator
+      value: 
+      objectReference: {fileID: 1874894168}
     - target: {fileID: 1412594545588478, guid: 7d4f45117b4f025479076c7ae86f3376, type: 2}
       propertyPath: m_Name
-      value: Player1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1412594545588478, guid: 7d4f45117b4f025479076c7ae86f3376, type: 2}
-      propertyPath: m_TagString
       value: Player1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
