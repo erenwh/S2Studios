@@ -48,7 +48,16 @@ public class MenuHandler : MonoBehaviour
 
 	void Start () {
 		SetGameModeText ();
+        SetGameSettingsText ();
 	}
+
+    //Preserve settings that the players selected
+    public void SetGameSettingsText ()
+    {
+        playerStartingTimeText.text = startingTimeText + Game.Instance.playersStartingTime;
+        soundEffectsStartingVolumeText.text = startingVolumeText + Game.Instance.soundEffectsVolume;
+        musicVolumeTextRef.text = musicVolumeText + Game.Instance.musicVolume;
+    }
 
 	//right arrow selecting the game mode
 	public void NextGameMode () {
