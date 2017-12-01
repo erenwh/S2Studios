@@ -3376,6 +3376,9 @@ MonoBehaviour:
   playerStartingTimeText: {fileID: 1208824535}
   soundEffectsStartingVolumeText: {fileID: 320160461}
   musicVolumeTextRef: {fileID: 297707472}
+  playerTimeSliderRef: {fileID: 1409471335}
+  soundEffectsSliderRef: {fileID: 105984419}
+  musicVolumeSliderRef: {fileID: 297945772}
   gameControllers:
   - {fileID: 114254666280343000, guid: e05636b08049bbe4285ca5368948aaa5, type: 2}
   - {fileID: 114798265181320856, guid: 2e4b8b6c47e6caf428daf2a99568d454, type: 2}

@@ -19,6 +19,9 @@ public class MenuHandler : MonoBehaviour
     public Text playerStartingTimeText;
 	public Text soundEffectsStartingVolumeText;
     public Text musicVolumeTextRef;
+    public Slider playerTimeSliderRef;
+    public Slider soundEffectsSliderRef;
+    public Slider musicVolumeSliderRef;
     public GameController[] gameControllers;
     public Image selectedMap;
     public Sprite[] mapSprites;
@@ -48,15 +51,20 @@ public class MenuHandler : MonoBehaviour
 
 	void Start () {
 		SetGameModeText ();
-        SetGameSettingsText ();
+        SetGameSettings ();
 	}
 
     //Preserve settings that the players selected
-    public void SetGameSettingsText ()
+    public void SetGameSettings ()
     {
+        //preserve text settings
         playerStartingTimeText.text = startingTimeText + Game.Instance.playersStartingTime;
         soundEffectsStartingVolumeText.text = startingVolumeText + Game.Instance.soundEffectsVolume;
         musicVolumeTextRef.text = musicVolumeText + Game.Instance.musicVolume;
+        //preserve slider settings
+        playerTimeSliderRef.value = Game.Instance.playersStartingTime;
+        soundEffectsSliderRef.value = Game.Instance.soundEffectsVolume;
+        musicVolumeSliderRef.value = Game.Instance.musicVolume;
     }
 
 	//right arrow selecting the game mode
