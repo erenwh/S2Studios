@@ -218,21 +218,53 @@ public class MenuHandler : MonoBehaviour
 
     public void ChangeP1Color()
     {
-        Game.Instance.p1Color = Color.red;
+        if(colorIndex > 2)
+        {
+            colorIndex = 0;
+        }
+        Color tmpColor = Game.Instance.p1Color;
+        Game.Instance.p1Color = colorArr[colorIndex];
+        colorArr[colorIndex] = Game.Instance.p1Color;
+        colorButtons[0].GetComponent<Image>().color = Game.Instance.p1Color;
+        colorIndex++;
     }
 
     public void ChangeP2Color()
     {
-        Game.Instance.p2Color = Color.red;
+        if (colorIndex > 2)
+        {
+            colorIndex = 0;
+        }
+        Color tmpColor = Game.Instance.p2Color;
+        Game.Instance.p2Color = colorArr[colorIndex];
+        colorArr[colorIndex] = Game.Instance.p2Color;
+        colorButtons[1].GetComponent<Image>().color = Game.Instance.p2Color;
+        colorIndex++;
     }
 
     public void ChangeP3Color()
     {
-        Game.Instance.p3Color = Color.red;
+        if (colorIndex > 2)
+        {
+            colorIndex = 0;
+        }
+        Color tmpColor = Game.Instance.p3Color;
+        Game.Instance.p3Color = colorArr[colorIndex];
+        colorArr[colorIndex] = Game.Instance.p3Color;
+        colorButtons[2].GetComponent<Image>().color = Game.Instance.p3Color;
+        colorIndex++;
     }
 
     public void ChangeP4Color()
     {
-        Game.Instance.p4Color = Color.red;
+        if (colorIndex > 2)
+        {
+            colorIndex = 0;
+        }
+        Color tmpColor = Game.Instance.p4Color;
+        Game.Instance.p4Color = colorArr[colorIndex];
+        colorArr[colorIndex] = Game.Instance.p4Color;
+        colorButtons[3].GetComponent<Image>().color = Game.Instance.p4Color;
+        colorIndex++;
     }
 }
