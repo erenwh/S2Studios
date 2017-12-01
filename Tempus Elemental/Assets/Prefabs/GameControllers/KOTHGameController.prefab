@@ -61,7 +61,7 @@ MonoBehaviour:
   - {x: -5.53, y: -4.47, z: 90}
   - {x: -5.55, y: 1.52, z: 90}
   - {x: 4.36, y: 1.93, z: 90}
-  timeBtwnZoneSwitch: 5
+  timeBtwnZoneSwitch: 7
   dealTimeTreshold: 1
   exchangeRate: 2
   zone: {fileID: 1418613555650522, guid: d7f48e618c6902444ab2777b8dceb02c, type: 2}
