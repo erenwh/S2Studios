@@ -49,6 +49,10 @@ public class MenuHandler : MonoBehaviour
 	private const string startingVolumeText = "Sound Effects Volume is: ";
     private const string musicVolumeText = "Music Volume is: ";
 
+    private static Color PURPLE = new Color(146, 45, 217, 1);
+    private static Color ORANGE = new Color(146, 97, 66, 1);
+    protected List<Color> colorList = new List<Color> {Color.magenta, PURPLE, ORANGE };
+
 	void Start () {
 		SetGameModeText ();
         SetGameSettings ();
