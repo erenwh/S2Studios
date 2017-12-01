@@ -12,7 +12,8 @@ public class Game : MonoBehaviour
     public int gameModeSelected = 0;
     //Use to change players' starting time (default at 90 sec)
     public int playersStartingTime = 90;
-
+    //Use to change music volume (default at full)
+    public int musicVolume = 100;
 	public int soundEffectsVolume = 100;
 
     public GameController GameController

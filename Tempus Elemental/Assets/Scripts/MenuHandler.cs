@@ -18,6 +18,7 @@ public class MenuHandler : MonoBehaviour
 	public Text selectedGameModeText;
     public Text playerStartingTimeText;
 	public Text soundEffectsStartingVolumeText;
+    public Text musicVolumeTextRef;
     public GameController[] gameControllers;
     public Image selectedMap;
     public Sprite[] mapSprites;
@@ -43,6 +44,7 @@ public class MenuHandler : MonoBehaviour
 
     private const string startingTimeText = "Players' starting time is: ";
 	private const string startingVolumeText = "Sound Effects Volume is: ";
+    private const string musicVolumeText = "Music Volume is: ";
 
 	void Start () {
 		SetGameModeText ();
@@ -158,6 +160,14 @@ public class MenuHandler : MonoBehaviour
 		Game.Instance.soundEffectsVolume = startingVolume;
 		Debug.Log ("sound effects volume " + startingVolume);
 	}
+
+    public void ChangeMusicVolume(Slider slider)
+    {
+        int startingMusicVolume = (int)slider.value;
+        musicVolumeTextRef.text = musicVolumeText + startingMusicVolume;
+        Game.Instance.musicVolume = startingMusicVolume;
+        Debug.Log("music volume " + startingMusicVolume);
+    }
 
     public void PlayerControlSwitch(string tag)
     {
