@@ -5,19 +5,19 @@ using UnityEngine.UI;
 
 public class MenuHandler : MonoBehaviour
 {
-	//const
-	private const int FREEFORALL = 0;
+    //const
+    private const int FREEFORALL = 0;
     private const int TEAMDEATHMATCH = 1;
     private const int KINGOFTHEHILL = 2;
-	private const int FILLTHEBAR = 3;
-	private const int CAPTURETHEFLAG = 4;
+    private const int FILLTHEBAR = 3;
+    private const int CAPTURETHEFLAG = 4;
 
-	//references
+    //references
     public Dropdown selectPlayerDropdown;
     public Text selectedAmountPlayers;
-	public Text selectedGameModeText;
+    public Text selectedGameModeText;
     public Text playerStartingTimeText;
-	public Text soundEffectsStartingVolumeText;
+    public Text soundEffectsStartingVolumeText;
     public Text musicVolumeTextRef;
     public Slider playerTimeSliderRef;
     public Slider soundEffectsSliderRef;
@@ -25,29 +25,35 @@ public class MenuHandler : MonoBehaviour
     public GameController[] gameControllers;
     public Image selectedMap;
     public Sprite[] mapSprites;
+    public Button[] colorButtons;
 
     public Text selectControl;
-    
-    private List<string> gameControls = 
-        new List<string>() { 
-        "Keyboard 1", 
-        "Keyboard 2", 
+
+    private List<string> gameControls =
+        new List<string>() {
+        "Keyboard 1",
+        "Keyboard 2",
         "Joystick 1",
-        "Joystick 2" };    
+        "Joystick 2" };
 
     //variables
     public int numGameModes = 5;
-	private int selectedGameMode = 0;
+    private int selectedGameMode = 0;
 
-    private List<string> numPlayers = 
-        new List<string>() { 
-        "4 players selected", 
-        "3 players selected", 
+    private List<string> numPlayers =
+        new List<string>() {
+        "4 players selected",
+        "3 players selected",
         "2 players selected" };
 
     private const string startingTimeText = "Players' starting time is: ";
-	private const string startingVolumeText = "Sound Effects Volume is: ";
+    private const string startingVolumeText = "Sound Effects Volume is: ";
     private const string musicVolumeText = "Music Volume is: ";
+
+    private static Color PURPLE = new Color(146, 45, 217, 1);
+    private static Color ORANGE = new Color(146, 97, 66, 1);
+    private int colorIndex = 0;
+    protected Color[] colorArr = {Color.magenta, PURPLE, ORANGE };
 
 	void Start () {
 		SetGameModeText ();
@@ -212,21 +218,21 @@ public class MenuHandler : MonoBehaviour
 
     public void ChangeP1Color()
     {
-
+        Game.Instance.p1Color = Color.red;
     }
 
     public void ChangeP2Color()
     {
-
+        Game.Instance.p2Color = Color.red;
     }
 
     public void ChangeP3Color()
     {
-
+        Game.Instance.p3Color = Color.red;
     }
 
     public void ChangeP4Color()
     {
-
+        Game.Instance.p4Color = Color.red;
     }
 }
