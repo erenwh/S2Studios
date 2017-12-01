@@ -18,6 +18,7 @@ public class DistortionCreator : MonoBehaviour
 	public float slowDownFactor = 0.5f;		    //how much should other players be slowed down by a slow down time distortion
 	public float speedUpFactor = 2f;		    //how much faster should the player become after using speedup time distortion
 	public float freezeRadius = 0.5f;		    //how big is the freeze time distortion
+    public float reverseRadius = 0.7f;
 
 	private bool distorting = false;			//is the player currently performing a time distortion
 	private GameObject createdDistortion;       //the current distortion created by the player
@@ -101,6 +102,7 @@ public class DistortionCreator : MonoBehaviour
 			createdDistortion.GetComponent<TimeFreeze> ().AssignPlayer (gameObject, freezeRadius);
 			    break;
             case DistortionType.Reverse:			
+                createdDistortion.GetComponent<TimeReverse>().AssignPlayer(gameObject, reverseRadius);
 			    break;
 		}
 	}
