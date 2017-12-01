@@ -25,6 +25,7 @@ public class Powerup : MonoBehaviour
         if (Utils.DetermineObjectType(coll) == ObjectType.Player)
         {
             activatePowerUpForPlayer(coll.gameObject);
+			SFXHandler.CollectSFX ();
         }
 
         Destroy(gameObject);

@@ -74,6 +74,7 @@ public class PlayerMovement : MonoBehaviour
 	// Performs the dash. Continue the player's momentum for a specified amount of time. Costs a second to perform.
 	IEnumerator PerformDash () {
 		dashing = true;
+		SFXHandler.DashSFX ();
 		Vector2 movement = Utils.GetPlayerMovement (tag);
 		rb2d.velocity = movement * (speed + dashSpeed);
 		dashDownTime = 0.0f;	//shouldn't need, just assuring that it is 0

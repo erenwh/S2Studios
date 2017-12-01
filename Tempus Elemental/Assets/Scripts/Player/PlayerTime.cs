@@ -99,5 +99,6 @@ public class PlayerTime : MonoBehaviour {
 		if (Game.Instance.gameModeSelected == 3) {
 			Game.Instance.GameController.CollectTime(playerTo.GetComponent<PlayerColor>().playerNum, amount);
 		}
+		SFXHandler.HurtSFX ();
     }
 }

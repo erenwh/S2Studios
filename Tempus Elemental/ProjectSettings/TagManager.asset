@@ -18,6 +18,7 @@ TagManager:
   - InGameMenu
   - FlagGoal
   - FlagSpawner
+  - SFXHandler
   layers:
   - Default
   - TransparentFX
