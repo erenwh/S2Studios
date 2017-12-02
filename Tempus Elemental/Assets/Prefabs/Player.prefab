@@ -332,7 +332,7 @@ MonoBehaviour:
   - {fileID: 1101663128922924, guid: fc6ba5a1f9b9040ab8adf3074bab2514, type: 2}
   distortionIndicator: {fileID: 0}
   distortionSprites:
-  - {fileID: 21300000, guid: 6f3fe0041e2557d42897cf0f6c042972, type: 3}
+  - {fileID: 21300000, guid: 7c0828f3ff829d0498cdf43fff647cc5, type: 3}
   - {fileID: 21300000, guid: b41625366d7b3614cb2cd6014487fe32, type: 3}
   - {fileID: 21300000, guid: 48b8a365e9fa31249bc0fedf9a10c0a0, type: 3}
   - {fileID: 21300000, guid: e83fa7a7511afb443b3a8efd73a4d13b, type: 3}
@@ -353,7 +353,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxSecondsToRecord: 10
-  records: []
 --- !u!114 &114437415000758466
 MonoBehaviour:
   m_ObjectHideFlags: 1
