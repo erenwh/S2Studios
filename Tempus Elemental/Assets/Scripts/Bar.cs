@@ -14,6 +14,14 @@ public class Bar : MonoBehaviour {
 	//references
 	public GameObject[] bars;									//the 4 colored bars that indicate how much time each player has collected
 
+	//Make sure the bars are the right color
+	void Start () {
+		bars[0].GetComponent<SpriteRenderer> ().color = Game.Instance.p1Color;
+		bars[1].GetComponent<SpriteRenderer> ().color = Game.Instance.p2Color;
+		bars[2].GetComponent<SpriteRenderer> ().color = Game.Instance.p3Color;
+		bars[3].GetComponent<SpriteRenderer> ().color = Game.Instance.p4Color;
+	}
+
 	//show to the player how much time each player has collected
 	public void UpdateBars (int time1, int time2, int time3, int time4) {
 		bars [0].transform.localScale = new Vector3(((float)time1 / (float)maxTime) * FULLBARSCALE, bars [0].transform.localScale.y, 1f);
