@@ -5,19 +5,19 @@ using UnityEngine.UI;
 
 public class MenuHandler : MonoBehaviour
 {
-	//const
-	private const int FREEFORALL = 0;
+    //const
+    private const int FREEFORALL = 0;
     private const int TEAMDEATHMATCH = 1;
     private const int KINGOFTHEHILL = 2;
-	private const int FILLTHEBAR = 3;
-	private const int CAPTURETHEFLAG = 4;
+    private const int FILLTHEBAR = 3;
+    private const int CAPTURETHEFLAG = 4;
 
-	//references
+    //references
     public Dropdown selectPlayerDropdown;
     public Text selectedAmountPlayers;
-	public Text selectedGameModeText;
+    public Text selectedGameModeText;
     public Text playerStartingTimeText;
-	public Text soundEffectsStartingVolumeText;
+    public Text soundEffectsStartingVolumeText;
     public Text musicVolumeTextRef;
     public Slider playerTimeSliderRef;
     public Slider soundEffectsSliderRef;
@@ -25,33 +25,35 @@ public class MenuHandler : MonoBehaviour
     public GameController[] gameControllers;
     public Image selectedMap;
     public Sprite[] mapSprites;
+    public Button[] colorButtons;
 
     public Text selectControl;
-    
-    private List<string> gameControls = 
-        new List<string>() { 
-        "Keyboard 1", 
-        "Keyboard 2", 
+
+    private List<string> gameControls =
+        new List<string>() {
+        "Keyboard 1",
+        "Keyboard 2",
         "Joystick 1",
-        "Joystick 2" };    
+        "Joystick 2" };
 
     //variables
     public int numGameModes = 5;
-	private int selectedGameMode = 0;
+    private int selectedGameMode = 0;
 
-    private List<string> numPlayers = 
-        new List<string>() { 
-        "4 players selected", 
-        "3 players selected", 
+    private List<string> numPlayers =
+        new List<string>() {
+        "4 players selected",
+        "3 players selected",
         "2 players selected" };
 
     private const string startingTimeText = "Players' starting time is: ";
-	private const string startingVolumeText = "Sound Effects Volume is: ";
+    private const string startingVolumeText = "Sound Effects Volume is: ";
     private const string musicVolumeText = "Music Volume is: ";
 
-    private static Color PURPLE = new Color(146, 45, 217, 1);
-    private static Color ORANGE = new Color(146, 97, 66, 1);
-    protected List<Color> colorList = new List<Color> {Color.magenta, PURPLE, ORANGE };
+    //private static Color PURPLE = new Color(14, 45, 217, 1);
+    //private static Color ORANGE = new Color(146, 97, 66, 1);
+    private int colorIndex = 0;
+    protected Color[] colorArr = {Color.magenta, Color.gray, Color.Lerp(Color.red, Color.blue, 2) };
 
 	void Start () {
 		SetGameModeText ();
@@ -216,21 +218,61 @@ public class MenuHandler : MonoBehaviour
 
     public void ChangeP1Color()
     {
-
+        if(colorIndex > 2)
+        {
+            colorIndex = 0;
+        }
+        Color tmpColor = Game.Instance.p1Color;
+        Game.Instance.p1Color = colorArr[colorIndex];
+        colorArr[colorIndex] = tmpColor;
+        var colors2 = colorButtons[0].colors;
+        colors2.normalColor = Game.Instance.p1Color;
+        colorButtons[0].colors = colors2;
+        colorIndex++;
     }
 
     public void ChangeP2Color()
     {
-
+        if (colorIndex > 2)
+        {
+            colorIndex = 0;
+        }
+        Color tmpColor = Game.Instance.p2Color;
+        Game.Instance.p2Color = colorArr[colorIndex];
+        colorArr[colorIndex] = tmpColor;
+        var colors2 = colorButtons[1].colors;
+        colors2.normalColor = Game.Instance.p2Color;
+        colorButtons[1].colors = colors2;
+        colorIndex++;
     }
 
     public void ChangeP3Color()
     {
-
+        if (colorIndex > 2)
+        {
+            colorIndex = 0;
+        }
+        Color tmpColor = Game.Instance.p3Color;
+        Game.Instance.p3Color = colorArr[colorIndex];
+        colorArr[colorIndex] = tmpColor;
+        var colors2 = colorButtons[2].colors;
+        colors2.normalColor = Game.Instance.p3Color;
+        colorButtons[2].colors = colors2;
+        colorIndex++;
     }
 
     public void ChangeP4Color()
     {
-
+        if (colorIndex > 2)
+        {
+            colorIndex = 0;
+        }
+        Color tmpColor = Game.Instance.p4Color;
+        Game.Instance.p4Color = colorArr[colorIndex];
+        colorArr[colorIndex] = tmpColor;
+        var colors2 = colorButtons[3].colors;
+        colors2.normalColor = Game.Instance.p4Color;
+        colorButtons[3].colors = colors2;
+        colorIndex++;
     }
 }

@@ -274,6 +274,10 @@ MonoBehaviour:
   playersStartingTime: 90
   musicVolume: 100
   soundEffectsVolume: 100
+  p1Color: {r: 0.5625, g: 0.8125, b: 1, a: 1}
+  p2Color: {r: 1, g: 0, b: 0, a: 1}
+  p3Color: {r: 0, g: 1, b: 0, a: 1}
+  p4Color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
 --- !u!4 &1101918857
 Transform:
   m_ObjectHideFlags: 0
@@ -318,6 +322,7 @@ MonoBehaviour:
   hurt: {fileID: 8300000, guid: 102a08a72205cd341961c411498d9129, type: 3}
   dash: {fileID: 8300000, guid: 92dedaec9a73d4b469c4684c82a70ee4, type: 3}
   collect: {fileID: 8300000, guid: 66eebf0f0c9ea944ea9e262deff3704b, type: 3}
+  suddenDeath: {fileID: 8300000, guid: 1c18b833d9da84b33b0f9b027dabf463, type: 3}
 --- !u!82 &1895446332
 AudioSource:
   m_ObjectHideFlags: 0
