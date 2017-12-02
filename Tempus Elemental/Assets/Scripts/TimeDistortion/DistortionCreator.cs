@@ -102,7 +102,7 @@ public class DistortionCreator : MonoBehaviour
 			createdDistortion.GetComponent<TimeFreeze> ().AssignPlayer (gameObject, freezeRadius);
 			    break;
             case DistortionType.Reverse:			
-                createdDistortion.GetComponent<TimeReverse>().AssignPlayer(gameObject, reverseRadius);
+                createdDistortion.GetComponent<TimeReverse>().AssignPlayer (gameObject, reverseRadius);
 			    break;
 		}
 	}

@@ -352,8 +352,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6505108b9e88a4b83b2c1ca9f6564f05, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shouldRecord: 0
-  shouldRewind: 0
+  maxSecondsToRecord: 10
+  records: []
 --- !u!114 &114437415000758466
 MonoBehaviour:
   m_ObjectHideFlags: 1

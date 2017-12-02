@@ -20,7 +20,7 @@ public class TimeReverse : MonoBehaviour
     public void AssignPlayer(GameObject player, float radius)
     {
         callingPlayer = player;
-        callingPlayer.GetComponent<PlayerMovement>().frozen = true;
+        callingPlayer.GetComponent<PlayerRecord>().Pause();
         transform.localScale = new Vector3(radius, radius, 1);
         SpriteRenderer[] srs = GetComponentsInChildren<SpriteRenderer>();
         foreach (SpriteRenderer sr in srs)
@@ -31,45 +31,46 @@ public class TimeReverse : MonoBehaviour
 
     // In this instance, used to make sure the time distortion stays with the calling player.
     void FixedUpdate()
-    {        
-        transform.position = callingPlayer.transform.position;
-
-        foreach (GameObject g in caughtPlayers)
-        {
-            g.GetComponent<PlayerRecord>().Rewind();
-        }
-    }
-
-    //// Upon entering the distortion, stop other objects
-    void OnTriggerEnter2D(Collider2D coll)
     {
-        if (Utils.DetermineObjectType(coll) == ObjectType.Player && 
-            coll.gameObject.tag != gameObject.tag)
-        {
-            caughtPlayers.Add(coll.gameObject);
-            coll.gameObject.GetComponent<PlayerRecord>().Pause();
-            coll.gameObject.GetComponent<PlayerMovement>().frozen = true;
-        }
+        callingPlayer.GetComponent<PlayerRecord>().Rewind();
+        //transform.position = callingPlayer.transform.position;
+
+        ////Debug.Log(caughtPlayers.Count);
+
+        //foreach (GameObject g in caughtPlayers)
+        //{
+        //    g.GetComponent<PlayerRecord>().Rewind();
+        //}
     }
 
-    private void OnTriggerExit2D(Collider2D coll)
-    {
-        if (Utils.DetermineObjectType(coll) == ObjectType.Player)
-        {
-            caughtPlayers.Remove(coll.gameObject);
-            coll.gameObject.GetComponent<PlayerRecord>().Resume();
-            coll.gameObject.GetComponent<PlayerMovement>().frozen = false;
-        }
-    }
+    ////// Upon entering the distortion, stop other objects
+    //void OnTriggerEnter2D(Collider2D coll)
+    //{
+    //    if (Utils.DetermineObjectType(coll) == ObjectType.Player && 
+    //        coll.gameObject != callingPlayer && !coll.isTrigger)
+    //    {
+    //        caughtPlayers.Add(coll.gameObject);
+    //        coll.gameObject.GetComponent<PlayerRecord>().Pause();
+    //    }
+    //}
+
+    //private void OnTriggerExit2D(Collider2D coll)
+    //{
+    //    if (Utils.DetermineObjectType(coll) == ObjectType.Player)
+    //    {
+    //        caughtPlayers.Remove(coll.gameObject);
+    //        coll.gameObject.GetComponent<PlayerRecord>().Resume();
+    //    }
+    //}
 
 
     void OnDestroy()
     {
-        foreach (GameObject g in caughtPlayers)
-        {
-            g.GetComponent<PlayerRecord>().Resume();
-            g.GetComponent<PlayerMovement>().frozen = false;
-            callingPlayer.GetComponent<PlayerMovement>().frozen = false;
-        }
+        //foreach (GameObject g in caughtPlayers)
+        //{
+        //    g.GetComponent<PlayerRecord>().Resume();
+        //}
+
+        callingPlayer.GetComponent<PlayerRecord>().Resume();
     }
 }

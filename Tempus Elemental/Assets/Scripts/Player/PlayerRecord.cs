@@ -4,24 +4,23 @@ using UnityEngine;
 
 public class PlayerRecord : MonoBehaviour 
 {
-    public static float maxSecondsToRecord = 3;
+    public float maxSecondsToRecord = 10;
     private List<Vector3> records = new List<Vector3>();
     private bool shouldRecord = true;
 
     private PlayerMovement playerMovement;
-    private PlayerTime playerTime;
     private Rigidbody2D rb;
 
 	void Start () 
     {        
         playerMovement = GetComponent<PlayerMovement>();
-        playerTime = GetComponent<PlayerTime>();
         rb = GetComponent<Rigidbody2D>();
 	}
 	
 	
 	void FixedUpdate () 
     {
+                
         if (shouldRecord)
         {
             Record();
@@ -34,17 +33,21 @@ public class PlayerRecord : MonoBehaviour
         {
             records.RemoveAt(records.Count - 1);
         }
-        records.Insert(0, gameObject.transform.position);
+        records.Insert(0, transform.position);
     }
 
     public void Resume()
     {
-        shouldRecord = false;
+        shouldRecord = true;
+        rb.isKinematic = false;
+        playerMovement.frozen = false;
     }
 
     public void Pause()
     {
-        shouldRecord = true;
+        shouldRecord = false;
+        rb.isKinematic = true;
+        playerMovement.frozen = true;
     }
 
     public bool Rewind()
@@ -53,12 +56,11 @@ public class PlayerRecord : MonoBehaviour
             return false;
         }
 
+        //Debug.Log(records[0]);
         // Rewind Logic
-        rb.isKinematic = true;
+
 
         gameObject.transform.position = records[0];
-
-        rb.isKinematic = false;
 
         records.RemoveAt(0);
         return true;
