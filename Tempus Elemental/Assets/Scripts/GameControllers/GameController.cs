@@ -24,6 +24,7 @@ public abstract class GameController : MonoBehaviour
     private GameObject inGameMenu;
 
     protected List<GameObject> players;
+	public GUIText guiText;
 
     public void BackToMenu() 
     {
@@ -61,6 +62,7 @@ public abstract class GameController : MonoBehaviour
 
     virtual public void OnStart()
     {
+		//ShowMSG ();
         //update music volume
         GameObject musicSource;
         musicSource = GameObject.Find("TmpMusicSource");
@@ -118,6 +120,17 @@ public abstract class GameController : MonoBehaviour
         isStarted = true;
         isFinishedState = false;
     }
+
+	private void ShowMSG() {
+		StartCoroutine (ShowMessage ("START!", 2));
+	}
+
+	IEnumerator ShowMessage(string message, float delay) {
+		guiText.text = message;
+		guiText.enabled = true;
+		yield return new WaitForSeconds (delay);
+		guiText.enabled = false;
+	}
 
     public void OnUpdate() 
     {
