@@ -12,7 +12,7 @@ public class PlayerColor : MonoBehaviour
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
 
-        if (Game.Instance.gameModeSelected == 1) //do color assignment for team death match
+        if (Game.Instance.gameModeSelected == 1 || Game.Instance.gameModeSelected == 4) //do color assignment for team death match
         {
             if (CompareTag("Player1"))
             {
