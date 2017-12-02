@@ -70,7 +70,11 @@ public class PlayerColor : MonoBehaviour
 			float time = (float)GetComponent<PlayerTime> ().TimeRemaining / 90.0f + 0.4f;
 			color.a = time;
 			spriteRenderer.color = color;
-		}
+            //Assign colors to indicators
+            gameObject.GetComponent<PlayerTime>().radialIndicator.color = color;
+            gameObject.GetComponent<PlayerTime>().timeText.color = color;
+            gameObject.GetComponent<PlayerTime>().playerText.color = color;
+        }
 	}
 	public void pickUpPowerUpNotification() 
     {

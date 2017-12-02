@@ -30,6 +30,7 @@ public class PlayerTime : MonoBehaviour {
 	public Slider timeIndicator;
 	public Text timeText;
     public Image radialIndicator;
+    public Text playerText;
 
     // added awake because start didn't update fast enough
     void Awake() 
