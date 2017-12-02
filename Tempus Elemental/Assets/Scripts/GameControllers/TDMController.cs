@@ -7,7 +7,7 @@ public class TDMController : GameController
 
     //default with p1 and p3 on teams and p2 and p4 on teams
     private string winningTeam = "";
-
+	public GUIText guiText;
 
     protected override void GameLogic()
     {
@@ -53,6 +53,17 @@ public class TDMController : GameController
 
         return false;
     }
+
+	private void ShowSuddenDeath(int oneTime) {
+		StartCoroutine (ShowMessage ("SUDDEN DEATH!", 2));
+	}
+
+	IEnumerator ShowMessage(string message, float delay) {
+		guiText.text = message;
+		guiText.enabled = true;
+		yield return new WaitForSeconds (delay);
+		guiText.enabled = false;
+	}
 
     protected override string VictoryText()
     {
