@@ -189,7 +189,7 @@ public class MenuHandler : MonoBehaviour
     {
         int startingMusicVolume = (int)slider.value;
         musicVolumeTextRef.text = musicVolumeText + startingMusicVolume;
-        menuMusic.GetComponent<AudioSource>().volume = startingMusicVolume;
+        menuMusic.GetComponent<AudioSource>().volume = (float)startingMusicVolume/(float)100;
         Game.Instance.musicVolume = startingMusicVolume;
         Debug.Log("music volume " + startingMusicVolume);
     }
