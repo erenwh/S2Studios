@@ -79,6 +79,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   flagTeam: 1
+  altPosition: {x: 8.643879, y: -1.391608, z: -0.1104035}
 --- !u!212 &212202144618281398
 SpriteRenderer:
   m_ObjectHideFlags: 1

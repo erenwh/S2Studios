@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class Flag : MonoBehaviour {
 	public int flagTeam;
+	public Vector3 altPosition;			//used on maps 3 and 4
+
+	void Start () {
+		transform.position = altPosition;
+	}
 
 	void OnTriggerEnter2D (Collider2D coll) {
 		if (coll.tag == "Player2" || coll.tag == "Player4" || coll.tag == "Player1" || coll.tag == "Player3") {
