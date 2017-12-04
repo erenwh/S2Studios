@@ -189,7 +189,7 @@ public class MenuHandler : MonoBehaviour
     {
         int startingMusicVolume = (int)slider.value;
         musicVolumeTextRef.text = musicVolumeText + startingMusicVolume;
-        menuMusic.GetComponent<AudioSource>().volume = startingMusicVolume / 100f;
+        menuMusic.GetComponent<AudioSource>().volume = startingMusicVolume;
         Game.Instance.musicVolume = startingMusicVolume;
         Debug.Log("music volume " + startingMusicVolume);
     }
@@ -229,7 +229,6 @@ public class MenuHandler : MonoBehaviour
         colorArr[colorIndex] = tmpColor;
         var colors2 = colorButtons[0].colors;
         colors2.normalColor = Game.Instance.p1Color;
-		colors2.highlightedColor = Game.Instance.p1Color;
         colorButtons[0].colors = colors2;
         colorIndex++;
     }
@@ -245,7 +244,6 @@ public class MenuHandler : MonoBehaviour
         colorArr[colorIndex] = tmpColor;
         var colors2 = colorButtons[1].colors;
         colors2.normalColor = Game.Instance.p2Color;
-		colors2.highlightedColor = Game.Instance.p2Color;
         colorButtons[1].colors = colors2;
         colorIndex++;
     }
@@ -261,7 +259,6 @@ public class MenuHandler : MonoBehaviour
         colorArr[colorIndex] = tmpColor;
         var colors2 = colorButtons[2].colors;
         colors2.normalColor = Game.Instance.p3Color;
-		colors2.highlightedColor = Game.Instance.p3Color;
         colorButtons[2].colors = colors2;
         colorIndex++;
     }
@@ -277,7 +274,6 @@ public class MenuHandler : MonoBehaviour
         colorArr[colorIndex] = tmpColor;
         var colors2 = colorButtons[3].colors;
         colors2.normalColor = Game.Instance.p4Color;
-		colors2.highlightedColor = Game.Instance.p4Color;
         colorButtons[3].colors = colors2;
         colorIndex++;
     }
