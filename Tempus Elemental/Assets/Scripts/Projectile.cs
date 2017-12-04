@@ -39,8 +39,25 @@ public class Projectile : MonoBehaviour
         if (!other.CompareTag(currP))
         {
             //other.SendMessage("TakeDamage", damage, SendMessageOptions.DontRequireReceiver);
-           	//other.GetComponent<PlayerTime>().timeRemaining -= damage;
-			PlayerTime.TransferTime(damage, other.gameObject, GameObject.FindGameObjectWithTag(currP));
+            //other.GetComponent<PlayerTime>().timeRemaining -= damage;
+            if (Game.Instance.gameModeSelected == 1 || Game.Instance.gameModeSelected == 4) //don't harm teammates in TDM or CTF
+            {
+                if (other.gameObject.CompareTag("Player1") || other.gameObject.CompareTag("Player3"))
+                {
+                    if (currP.Equals("Player1") || currP.Equals("Player3"))
+                    {
+                        return;
+                    }
+                }
+                else if (other.gameObject.CompareTag("Player2") || other.gameObject.CompareTag("Player4"))
+                {
+                    if (currP.Equals("Player2") || currP.Equals("Player4"))
+                    {
+                        return;
+                    }
+                }
+            }
+            PlayerTime.TransferTime(damage, other.gameObject, GameObject.FindGameObjectWithTag(currP));
             Destroy(gameObject);
         }
 
