@@ -26,6 +26,7 @@ public class MenuHandler : MonoBehaviour
     public Image selectedMap;
     public Sprite[] mapSprites;
     public Button[] colorButtons;
+    public GameObject menuMusic;
 
     public Text selectControl;
 
@@ -188,6 +189,7 @@ public class MenuHandler : MonoBehaviour
     {
         int startingMusicVolume = (int)slider.value;
         musicVolumeTextRef.text = musicVolumeText + startingMusicVolume;
+        menuMusic.GetComponent<AudioSource>().volume = startingMusicVolume;
         Game.Instance.musicVolume = startingMusicVolume;
         Debug.Log("music volume " + startingMusicVolume);
     }
