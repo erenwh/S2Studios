@@ -54,6 +54,23 @@ public class PlayerMeleeAttack : MonoBehaviour
     {
         if (Utils.DetermineObjectType(playerAttacked) == ObjectType.Player)
         {
+            if (Game.Instance.gameModeSelected == 1 || Game.Instance.gameModeSelected == 4) //don't harm teammates in TDM or CTF
+            {
+                if (playerAttacked.gameObject.CompareTag("Player1") || playerAttacked.gameObject.CompareTag("Player3"))
+                {
+                    if (gameObject.CompareTag("Player1") || gameObject.CompareTag("Player3"))
+                    {
+                        return;
+                    }
+                }
+                else if (playerAttacked.gameObject.CompareTag("Player2") || playerAttacked.gameObject.CompareTag("Player4"))
+                {
+                    if (gameObject.CompareTag("Player2") || gameObject.CompareTag("Player4"))
+                    {
+                        return;
+                    }
+                }
+            }
 			PlayerTime.TransferTime (damage, playerAttacked.gameObject, gameObject);
         }
     }
