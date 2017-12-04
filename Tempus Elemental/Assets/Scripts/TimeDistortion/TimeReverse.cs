@@ -13,7 +13,7 @@ public class TimeReverse : MonoBehaviour
     // make sure the proper animation is playing
     void Start()
     {
-        GetComponent<Animator>().SetInteger("Type", 2);
+        GetComponent<Animator>().SetInteger("Type", 3);
     }
 
     // The Player calls this function whenever he instantiates a time "slow down" distortion. This will make sure that only the calling player isn't by the slow down, and follows them around the map.
