@@ -69,6 +69,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   goalTeam: 0
+  altPosition: {x: -9.794361, y: -1.183924, z: -0.1104035}
+  fs: {fileID: 0}
 --- !u!212 &212627479176044402
 SpriteRenderer:
   m_ObjectHideFlags: 1

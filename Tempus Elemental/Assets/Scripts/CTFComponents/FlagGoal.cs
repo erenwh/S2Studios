@@ -4,7 +4,15 @@ using UnityEngine;
 
 public class FlagGoal : MonoBehaviour {
 	public int goalTeam;
+	public Vector3 altPosition;						//allow the flag goals to be reachable on maps 3 and 4
 	[HideInInspector] public FlagSpawner fs;
+
+
+	void Start () {
+		if (Game.Instance.mapSelected > 1) {
+			transform.position = altPosition;
+		}
+	}
 
 	void OnTriggerEnter2D (Collider2D coll) {
 		if (coll.tag == "Player2" || coll.tag == "Player4" || coll.tag == "Player1" || coll.tag == "Player3") {
