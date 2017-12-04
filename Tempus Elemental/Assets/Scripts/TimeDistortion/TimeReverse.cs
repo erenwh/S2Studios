@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TimeReverse : MonoBehaviour 
 {
-    private List<GameObject> caughtPlayers = new List<GameObject>();
+    //private List<GameObject> caughtPlayers = new List<GameObject>();
 
     public float transparency;                                          //how transparent is the clock
     private GameObject callingPlayer;                                   //keep track of the player who called it

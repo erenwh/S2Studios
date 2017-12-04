@@ -1,13 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TDMController : GameController 
 {
 
     //default with p1 and p3 on teams and p2 and p4 on teams
     private string winningTeam = "";
-	public GUIText guiText;
+	//public Text guiText;
 
     protected override void GameLogic()
     {

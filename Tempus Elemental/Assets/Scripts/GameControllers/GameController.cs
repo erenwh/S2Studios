@@ -24,7 +24,7 @@ public abstract class GameController : MonoBehaviour
     private GameObject inGameMenu;
 
     protected List<GameObject> players;
-	public GUIText guiText;
+	public Text guiText;
 
     public void BackToMenu() 
     {

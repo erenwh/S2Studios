@@ -281,4 +281,8 @@ public class MenuHandler : MonoBehaviour
         colorButtons[3].colors = colors2;
         colorIndex++;
     }
+
+	public void Quit() {
+		Application.Quit ();
+	}
 }
